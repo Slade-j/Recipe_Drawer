@@ -1,9 +1,16 @@
-const router = require('express').Router()
-const asyncHandler = require('express-async-handler');
-const { User } = require('../../db/models');
+const router = require('express').Router();
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
+
+router.use('/session', sessionRouter);
+
+router.use('/users', usersRouter);
+
 
 // ****** Routes to test User Auth Middleware ******************
 // const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
+// const { User } = require('../../db/models');
+// const asyncHandler = require('express-async-handler');
 
 // // GET /api/set-token-cookie - to test setTokenCookie
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
@@ -30,10 +37,5 @@ const { User } = require('../../db/models');
 //     (req, res) => res.json(req.user)
 //     );
 // **************************************************************
-
-// POST /api/test
-router.post('/test', (req, res) => {
-    res.json({ requestBody: req.body });
-});
 
 module.exports = router;
