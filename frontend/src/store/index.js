@@ -2,7 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-const roodReducer = combineReducers({
+const rootReducer = combineReducers({
 
 });
 
