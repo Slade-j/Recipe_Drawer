@@ -1,0 +1,19 @@
+#root ul {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+	background-color: whitesmoke;
+}
+
+a {
+  padding: 2px;
+  text-decoration: none;
+}
+
+button {
+  padding: 2px;
+  margin: 5px;
+}
