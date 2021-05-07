@@ -35,7 +35,7 @@ function App() {
 
 export default App;
 
-// ************* App with Modal ******************************************
+// // ************* App with Modal ******************************************
 // import React, { useState, useEffect } from "react";
 // import { useDispatch } from "react-redux";
 // import { Route, Switch } from "react-router-dom";
