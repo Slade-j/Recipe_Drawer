@@ -8,7 +8,7 @@ import './LoginForm.css';
 function LoginFormPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [credential, setCredential] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
@@ -19,7 +19,7 @@ function LoginFormPage() {
 		const handleSubmit = (e) => {
 			e.preventDefault();
 			setErrors([]);
-			return dispatch(sessionActions.login({ credential, password }))
+			return dispatch(sessionActions.login({ username, password }))
 				.catch(async (res) => {
 					const data = await res.json();
 					if (data && data.errors) setErrors(data.errors);
@@ -32,11 +32,11 @@ function LoginFormPage() {
 					{errors.map((error, idx) => <li key={idx}>{error}</li>)}
 				</ul>
 				<label>
-					Username or Email
+					Username
 					<input
 						type="text"
-						value={credential}
-						onChange={(e) => setCredential(e.target.value)}
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
 				</label>

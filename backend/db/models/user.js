@@ -9,19 +9,18 @@ module.exports = (sequelize, DataTypes) => {
       validate: { len: [1, 50] }
     },
     hashedPassword: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING.BINARY,
       allowNull: false,
       validate: { len: [60, 60] }
     },
-    defaultScope: {
-      attributes: {
-        exclude: ['hashedPassword', 'createdAt', 'updatedAt']
-      }
-    },
-    scopes: {
-      currentUser: { attributes: { exclude: ['hashedPassword'] } },
-      loginUser: { attributes: {} }
-    }
+    // defaultScope: {
+    //   attributes: {
+    //     exclude: ['hashedPassword']
+    //   }
+    // },
+    // scopes: {
+    //   currentUser: { attributes: { exclude: ['hashedPassword'] } },
+    // }
   }, {});
   User.associate = function(models) {
     User.hasMany(models.Recipe, { foreignKey: 'userId' });
@@ -38,16 +37,16 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.getCurrentUserById = async function (id) {
-    return await User.scope('currentUser').findByPk(id);
+    return await User.findByPk(id);
   };
 
   //this looks like it could use some cleaning...def refactoring
   User.login = async function ({ username, password }) {
-    const user = await User.scope('loginUser').findOne({
+    const user = await User.findOne({
       where: { username }
     });
     if (user && user.validatePassword(password)) {
-      return await User.scope('currentUser').findByPk(user.id);
+      return await User.findByPk(user.id);
     }
   };
 
@@ -55,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
     const { username, password } = signUpData;
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({ username, hashedPassword });
-    return await User.scope('currentUser').findByPk(user.id);
+    return await User.findByPk(user.id);
   };
 
 
