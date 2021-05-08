@@ -7,6 +7,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import RecipeForm from "./components/RecipeForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact={true} path="/" >
-            <h1>Hello from Recipe Drawer</h1>
+            <RecipeForm />
           </Route>
           <Route exact={true} path="/login">
             <LoginFormPage />
