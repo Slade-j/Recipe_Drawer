@@ -1,0 +1,67 @@
+.mainWrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-areas:
+    'head'
+    'forms';
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 100%;
+}
+
+.header {
+  grid-area: head;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statusContainer {
+  flex: 1 1 0;
+  box-sizing: border-box;
+  display: flex;
+  height: inherit;
+  align-items: center;
+}
+
+.status {
+  height: 64px;
+  width: 64px;
+  background-color: whitesmoke;
+}
+
+.status.titleGood {
+  background-color: red;
+}
+
+.status.ingredientsGood {
+  background-color: yellow;
+}
+
+.status.discriptionGood {
+  background-color: green;
+}
+
+.enabled {
+  background-color: green;
+}
+
+.formsWrapper {
+  grid-area: forms;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.textWrapper {
+  height: inherit;
+  width: flex 1;
+}
+
+.stageing {
+  height: 100%;
+  width: inherit;
+}
