@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
   mainWrapper,
   header,
@@ -10,7 +12,21 @@ import {
   enabled,
   formsWrapper,
   textWrapper,
-  stageing, } from './RecipeForm.module.css';
+  submitWrapper,
+  stageingForm,
+  submitForm,
+  setWrapper,
+  headerFlex,
+  textArea,
+  titleButton,
+  ingredientButton,
+  instructionButton,
+  grid,
+  headSpacer,
+  titleInput,
+  ingredientInput,
+  instructionInput,
+  inputWrapper, } from './RecipeForm.module.css';
 
 const RecipeForm = () => {
   const [ areaValue, setAreaValue ] = useState('');
@@ -21,6 +37,11 @@ const RecipeForm = () => {
   const [ titleCheck, setTitleCheck ] = useState('');
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
   const [ discriptionCheck, setDiscriptionCheck ] = useState('');
+//   const currentUser = useSelector(state => state.session.user)
+
+//   if (!currentUser) return (
+//     <Redirect to='/' />
+// );
 
   useEffect(() => {
     if (title && ingredients && discription) {
@@ -72,47 +93,67 @@ const RecipeForm = () => {
 
   return (
     <div className={mainWrapper}>
-     <div className={header}>
-        <div className={statusContainer}>
-          <div className={`${status} ${titleCheck}`}>
+      <div className={grid}>
+        <div className={header}>
+          <div className={headerFlex}>
+            <div className={headSpacer} />
+            <div className={statusContainer}>
+              <div className={`${status} ${titleCheck}`}>
+              </div>
+              <div className={'titlePrompt'}>
+                <p className={'prompts'}>
+                  Select a title or enter a new one.
+                </p>
+              </div>
+            </div>
+            <div className={statusContainer}>
+              <div className={`${status} ${ingredientsCheck}`}>
+              </div>
+              <div className={'ingredientsPrompt'}></div>
+            </div>
+            <div className={statusContainer}>
+              <div className={`${status} ${discriptionCheck}`}>
+              </div>
+              <div className={'instructionsPrompt'}></div>
+            </div>
           </div>
-          <div className={'instructions'}></div>
         </div>
-        <div className={statusContainer}>
-          <div className={`${status} ${ingredientsCheck}`}>
+        <div className={formsWrapper}>
+          <div className={textWrapper}>
+            <form className={stageingForm}>
+              <textarea
+                className={textArea}
+                value={areaValue}
+                onChange={e => setAreaValue(e.target.value)}>
+                </textarea>
+              <div className={setWrapper}>
+                <button className={titleButton} onClick={handleTitle}>Set Title</button>
+                <button className={ingredientButton} onClick={handleIngredients}>Set Ingredients</button>
+                <button className={instructionButton} onClick={handleDiscription}>Set Discription</button>
+              </div>
+            </form>
           </div>
-          <div className={'instructions'}></div>
-        </div>
-        <div className={statusContainer}>
-          <div className={`${status} ${discriptionCheck}`}>
+          <div className={submitWrapper}>
+            <form className={submitForm}>
+              <div className={titleInput}>
+                <div className={`${status} ${titleCheck}`} />
+                <div className={inputWrapper}>
+                  <input value={title} onChange={e => setTitle(e.target.value)}></input>
+                </div>
+              </div>
+              <div className={ingredientInput}>
+                <div className={`${status} ${ingredientsCheck}`} />
+                <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
+              </div>
+              <div className={instructionInput}>
+                <div className={`${status} ${discriptionCheck}`} />
+                <textarea value={discription} onChange={e => setDiscription(e.target.value)} />
+              </div>
+              <div className={'subButtonWrapper'}>
+                <button className={isDisabled?'disabled':enabled} disabled={isDisabled}>Create Recipe</button>
+              </div>
+            </form>
           </div>
-          <div className={'instructions'}></div>
-        </div>
-      </div>
-      <div className={formsWrapper}>
-        <div className={textWrapper}>
-          <form className={stageing}>
-            <textarea value={areaValue} onChange={e => setAreaValue(e.target.value)} ></textarea>
-            <button className={'textButton'} onClick={handleTitle}>Set Title</button>
-            <button className={'textButton'} onClick={handleIngredients}>Set Ingredients</button>
-            <button className={'textButton'} onClick={handleDiscription}>Set Discription</button>
-          </form>
-        </div>
-        <div className={'submitWrapper'}>
-          <form>
-            <div className={'titleStatus'}>
-              <input value={title} onChange={e => setTitle(e.target.value)}></input>
-            </div>
-            <div className={'ingredientStatus'}>
-              <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
-            </div>
-            <div className={'discriptionStatus'}>
-              <textarea value={discription} onChange={e => setDiscription(e.target.value)} />
-            </div>
-            <div className={'subButtonWrapper'}>
-              <button className={isDisabled?'disabled':enabled} disabled={isDisabled}>Create Recipe</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>

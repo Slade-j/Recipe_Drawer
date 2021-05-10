@@ -1,13 +1,24 @@
 .mainWrapper {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url('../../assets/recipe_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.grid {
+  width: inherit;
+  height: 90%;
   display: grid;
   grid-template-areas:
     'head'
     'forms';
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 180px 1fr;
   grid-template-columns: 100%;
+  margin-bottom: 10px;
 }
 
 .header {
@@ -17,6 +28,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.headerFlex {
+  background-color: inherit;
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.headSpacer {
+  height: 100%;
+  width: 50%;
 }
 
 .statusContainer {
@@ -54,14 +80,106 @@
   height: 100%;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
-.textWrapper {
-  height: inherit;
-  width: flex 1;
-}
-
-.stageing {
+.textWrapper, .submitWrapper {
   height: 100%;
-  width: inherit;
+  width: 42.5%;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.stageingForm, .submitForm {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+}
+
+.setWrapper {
+  width: 98%;
+  display: flex;
+  height: 40px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2px 0px;
+}
+
+.textArea {
+  resize: none;
+  height: 90%;
+  width: 98%;
+  border: none;
+}
+
+.titleButton,
+.ingredientButton,
+.instructionButton {
+  height: 100%;
+  flex: 1;
+  margin: 0;
+  color: rgb(245, 245, 245);
+  border: none;
+}
+
+.titleButton {
+  background-color: rgba(178, 34, 34, .6);
+}
+
+.titleButton:hover {
+  background-color: rgba(178, 34, 34, .7);
+  color: #fff;
+}
+
+.ingredientButton {
+  background-color: rgba(178, 178, 34, .6);
+}
+
+.ingredientButton:hover {
+  background-color: rgba(178, 178, 34, .7);
+  color: #fff;
+}
+
+.instructionButton {
+  background-color: rgba(34, 178, 34, .6);
+}
+
+.instructionButton:hover {
+  background-color: rgba(34, 178, 34, .7);
+  color: #fff;
+}
+
+
+
+.titleInput,
+.ingredientInput,
+.instructionInput {
+  width: 100%;
+  display: flex;
+  padding: 0px 24px;
+}
+
+.titleInput {
+  height: 10%;
+}
+
+.ingredientInput,
+.instructionInput {
+  height: 45%;
+}
+
+.inputWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.titleInput input {
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  border: none;
 }

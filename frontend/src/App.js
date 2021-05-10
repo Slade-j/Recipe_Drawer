@@ -18,17 +18,18 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact={true} path="/" >
-            <RecipeForm />
-          </Route>
-          <Route exact={true} path="/login">
+            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route exact={true} path="/signup">
+            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
+          </Route>
+          <Route exact={true} path='/recipe'>
+            <RecipeForm />
           </Route>
         </Switch>
       )}
