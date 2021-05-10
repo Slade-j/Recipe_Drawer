@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import {
   mainWrapper,
   header,
-  statusContainer,
+  // statusContainer,
   status,
   titleGood,
   ingredientsGood,
@@ -22,11 +22,18 @@ import {
   ingredientButton,
   instructionButton,
   grid,
-  headSpacer,
+  // headSpacer,
   titleInput,
   ingredientInput,
   instructionInput,
-  inputWrapper, } from './RecipeForm.module.css';
+  inputWrapper,
+  headerTitle,
+  hintHider,
+  cancel,
+  subButtonWrapper,
+  disabled,
+  ingredientTextWrapper,
+  instructionTextWrapper, } from './RecipeForm.module.css';
 
 const RecipeForm = () => {
   const [ areaValue, setAreaValue ] = useState('');
@@ -75,6 +82,10 @@ const RecipeForm = () => {
     }
   }, [discription])
 
+  // <div className={`${status} ${discriptionCheck}`} />
+  // <div className={`${status} ${ingredientsCheck}`} />
+  // <div className={`${status} ${titleCheck}`} />
+
 
   const handleTitle = e => {
     e.preventDefault();
@@ -96,26 +107,11 @@ const RecipeForm = () => {
       <div className={grid}>
         <div className={header}>
           <div className={headerFlex}>
-            <div className={headSpacer} />
-            <div className={statusContainer}>
-              <div className={`${status} ${titleCheck}`}>
-              </div>
-              <div className={'titlePrompt'}>
-                <p className={'prompts'}>
-                  Select a title or enter a new one.
-                </p>
-              </div>
-            </div>
-            <div className={statusContainer}>
-              <div className={`${status} ${ingredientsCheck}`}>
-              </div>
-              <div className={'ingredientsPrompt'}></div>
-            </div>
-            <div className={statusContainer}>
-              <div className={`${status} ${discriptionCheck}`}>
-              </div>
-              <div className={'instructionsPrompt'}></div>
-            </div>
+            <button className={cancel}>Cancel</button>
+            <span className={headerTitle}>
+              Create a new Recipe!
+            </span>
+            <button className={hintHider}>Disable prompts</button>
           </div>
         </div>
         <div className={formsWrapper}>
@@ -135,22 +131,23 @@ const RecipeForm = () => {
           </div>
           <div className={submitWrapper}>
             <form className={submitForm}>
-              <div className={titleInput}>
-                <div className={`${status} ${titleCheck}`} />
+              <div className={`${titleInput} ${titleCheck}`}>
                 <div className={inputWrapper}>
                   <input value={title} onChange={e => setTitle(e.target.value)}></input>
                 </div>
               </div>
-              <div className={ingredientInput}>
-                <div className={`${status} ${ingredientsCheck}`} />
-                <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
+              <div className={`${ingredientInput} ${ingredientsCheck}`}>
+                <div className={ingredientTextWrapper}>
+                  <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
+                </div>
               </div>
-              <div className={instructionInput}>
-                <div className={`${status} ${discriptionCheck}`} />
-                <textarea value={discription} onChange={e => setDiscription(e.target.value)} />
+              <div className={`${instructionInput} ${discriptionCheck}`}>
+                <div className={instructionTextWrapper}>
+                  <textarea value={discription} onChange={e => setDiscription(e.target.value)} />
+                </div>
               </div>
-              <div className={'subButtonWrapper'}>
-                <button className={isDisabled?'disabled':enabled} disabled={isDisabled}>Create Recipe</button>
+              <div className={subButtonWrapper}>
+                <button className={isDisabled?disabled:enabled} disabled={isDisabled}>Create Recipe</button>
               </div>
             </form>
           </div>
