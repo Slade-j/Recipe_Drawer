@@ -32,7 +32,6 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const login = (user) => async (dispatch) => {
-	console.log(user, "from login !!!!!!!!!!!!!")
 	const { username, password } = user;
 	const response = await csrfFetch('/api/session', {
 		method: 'POST',

@@ -1,13 +1,24 @@
 .mainWrapper {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px;
+  background-image: url('../../assets/recipe_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.grid {
+  width: inherit;
+  height: 100%;
   display: grid;
   grid-template-areas:
     'head'
     'forms';
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 69px 1fr;
   grid-template-columns: 100%;
+  margin-bottom: 10px;
 }
 
 .header {
@@ -19,31 +30,55 @@
   align-items: center;
 }
 
-.statusContainer {
+.headerFlex {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 22px;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.headerTitle {
+  color: rgba(245, 245, 245, .8);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.cancel, .hintHider {
+  margin: 0;
+}
+/* .headSpacer {
+  height: 100%;
+  width: 50%;
+} */
+
+/* .statusContainer {
   flex: 1 1 0;
   box-sizing: border-box;
   display: flex;
   height: inherit;
   align-items: center;
-}
+} */
 
-.status {
+/* .status {
   height: 64px;
   width: 64px;
   background-color: whitesmoke;
-}
+} */
 
-.status.titleGood {
+/* .status.titleGood {
   background-color: red;
-}
+} */
 
-.status.ingredientsGood {
+/* .status.ingredientsGood {
   background-color: yellow;
-}
+} */
 
-.status.discriptionGood {
+/* .discriptionGood {
   background-color: green;
-}
+} */
 
 .enabled {
   background-color: green;
@@ -54,14 +89,152 @@
   height: 100%;
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.textWrapper, .submitWrapper {
+  height: 100%;
+  width: 35%;
+  background-color: rgba(0, 0, 0, .6);
 }
 
 .textWrapper {
-  height: inherit;
-  width: flex 1;
+  padding-bottom: 22px;
+  padding-left: 22px;
 }
 
-.stageing {
+.submitWrapper {
+  padding: 0px 22px 22px 22px;
+}
+
+.stageingForm, .submitForm {
   height: 100%;
-  width: inherit;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+}
+
+.stageingForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding-top: 11px;
+}
+
+.setWrapper {
+  width: 100%;
+  display: flex;
+  height: 40px;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  /* padding: 2px 0px; */
+  margin-top: 22px;
+}
+
+.textArea {
+  resize: none;
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+.titleButton,
+.ingredientButton,
+.instructionButton {
+  height: 100%;
+  flex: 1;
+  margin: 0;
+  color: rgb(245, 245, 245);
+  border: none;
+}
+
+.titleButton, .titleGood {
+  background-color: rgba(178, 34, 34, .6);
+}
+
+.titleButton:hover {
+  background-color: rgba(178, 34, 34, .7);
+  color: #fff;
+}
+
+.ingredientButton, .ingredientsGood {
+  background-color: rgba(178, 178, 34, .6);
+}
+
+.ingredientButton:hover {
+  background-color: rgba(178, 178, 34, .7);
+  color: #fff;
+}
+
+.instructionButton, .discriptionGood {
+  background-color: rgba(34, 178, 34, .6);
+}
+
+.instructionButton:hover {
+  background-color: rgba(34, 178, 34, .7);
+  color: #fff;
+}
+
+.submitForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.titleInput,
+.ingredientInput,
+.instructionInput {
+  width: 100%;
+  display: flex;
+  padding: 11px 0px;
+  /* margin-bottom: 11px; */
+}
+
+.titleInput {
+  height: 65px;
+  /* padding: 11px 0; */
+}
+
+.ingredientInput,
+.instructionInput {
+  flex: 1;
+  width: 100%;
+}
+
+.inputWrapper,
+.ingredientTextWrapper,
+.instructionTextWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.titleInput input,
+.ingredientInput textarea,
+.instructionInput textarea {
+  width: 90%;
+  height: 100%;
+  margin: 0;
+  border: none;
+}
+
+.subButtonWrapper {
+  width: 100%;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2px 0px; */
+  margin-top: 11px;
+}
+
+.disabled,.enabled {
+  height: 100%;
+  flex: 1;
+  margin: 0;
+  color: rgb(245, 245, 245);
+  border: none;
 }

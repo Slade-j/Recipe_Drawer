@@ -2,15 +2,21 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const ocrSpace = require('ocr-space-api-wrapper');
 const fetch = require('node-fetch');
+const multer = require('multer');
 
+const upload = multer({ dest: 'uploads/' });
 const router = express.Router();
 
 // ocr.open api call for local file via ocr-space-aqi-wrapper
 // includes options object with api key and path to local file.
-router.get('/', asyncHandler(async (req, res) => {
-	console.log("HIT !!!!!!!!!!!!!!!!!!!!!!!!!")
+router.post('/', upload.single('image'), asyncHandler(async (req, res) => {
+	// console.log(data.get('image'), "DATA IN BACK !!!!!!!!!!!!!!!!!!")
+  console.log(req.body, 'req body!!!!!!!!!!!!!!!!!!!')
   try {
-    const response = await ocrSpace('/home/jason/appAcademy/capstone/recipe_drawer/backend/assets/gingerbread.jpg', {apiKey: '153e53ecc188957', isTable: true })
+    const response = await ocrSpace(
+      `${image}`,
+      {apiKey: '153e53ecc188957', isTable: true, file: 'file'}
+      )
     // const text = response["ParsedResults"]
 
 		// const textOverlay = text[0]["TextOverlay"]
