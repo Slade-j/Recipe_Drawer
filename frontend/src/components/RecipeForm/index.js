@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Uploader from '../Uploader';
 import {
   mainWrapper,
   header,
@@ -44,6 +45,7 @@ const RecipeForm = () => {
   const [ titleCheck, setTitleCheck ] = useState('');
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
   const [ discriptionCheck, setDiscriptionCheck ] = useState('');
+  const review = useSelector(state => state.recipe.review);
 //   const currentUser = useSelector(state => state.session.user)
 
 //   if (!currentUser) return (
@@ -82,6 +84,11 @@ const RecipeForm = () => {
     }
   }, [discription])
 
+  useEffect(() => {
+    if (!review) return;
+    setAreaValue(review);
+  }, [review])
+
   // <div className={`${status} ${discriptionCheck}`} />
   // <div className={`${status} ${ingredientsCheck}`} />
   // <div className={`${status} ${titleCheck}`} />
@@ -117,11 +124,14 @@ const RecipeForm = () => {
         <div className={formsWrapper}>
           <div className={textWrapper}>
             <form className={stageingForm}>
-              <textarea
-                className={textArea}
-                value={areaValue}
-                onChange={e => setAreaValue(e.target.value)}>
-                </textarea>
+              {areaValue !== ''?
+                <textarea
+                  className={textArea}
+                  value={areaValue}
+                  onChange={e => setAreaValue(e.target.value)}>
+                  </textarea>
+                  :
+                <Uploader />}
               <div className={setWrapper}>
                 <button className={titleButton} onClick={handleTitle}>Set Title</button>
                 <button className={ingredientButton} onClick={handleIngredients}>Set Ingredients</button>

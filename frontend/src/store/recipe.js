@@ -12,18 +12,32 @@ export const setReview = (data) => ({
 
 //thunks
 export const fetchReview = (data) => async (dispatch) => {
-  console.log(data, "in thunk>>>>>>>>>>>>>>>>>>")
   const formData = new FormData()
   formData.append('image', data)
   formData.append('name', 'testing')
-  // formData.append('name', data.name)
   const response = await csrfFetch('/api/ocr', {
     method: 'POST',
     body: formData,
     headers: { "Content-Type": "multipart/form-data" }
-    // headers: { "Contect-type": " x-www-form-urlencoded" }
   })
 
   const returnData = await response.json();
-  console.log(returnData, "checking return !!!!!!!!!")
+  console.log(returnData, "before keying")
+  const review = returnData.ParsedResults[0].ParsedText
+  dispatch(setReview(review));
 }
+
+// reducer
+const initialState = { review: ''};
+const recipeReducer = (state=initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case SET_REVIEW:
+      newState = Object.assign({}, state);
+      newState.review = action.payload;
+      return newState
+    default:
+      return state;
+  }
+}
+export default recipeReducer;
