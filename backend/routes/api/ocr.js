@@ -17,7 +17,7 @@ const router = express.Router();
 // if another ocr api is used in futre iterations it will be ideal to seperate
 // aws from this post
 router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
-
+  console.log("HITHITHIT")
   const { mimetype } = await req.file;
   try {
     // placing image in s3 bucket, getting url in return
@@ -26,9 +26,7 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
     const response = await ocrSpace(
       `${url}`, {apiKey: '153e53ecc188957', url: 'url', filetype: mimetype }
     )
-
-    return res.json(response)
-
+    return res.json(response);
    } catch (error) {
     console.error(error)
    }

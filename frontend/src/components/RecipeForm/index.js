@@ -45,6 +45,7 @@ const RecipeForm = () => {
   const [ titleCheck, setTitleCheck ] = useState('');
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
   const [ discriptionCheck, setDiscriptionCheck ] = useState('');
+  const review = useSelector(state => state.recipe.review);
 //   const currentUser = useSelector(state => state.session.user)
 
 //   if (!currentUser) return (
@@ -82,6 +83,11 @@ const RecipeForm = () => {
       setDiscriptionCheck('');
     }
   }, [discription])
+
+  useEffect(() => {
+    if (!review) return;
+    setAreaValue(review);
+  }, [review])
 
   // <div className={`${status} ${discriptionCheck}`} />
   // <div className={`${status} ${ingredientsCheck}`} />

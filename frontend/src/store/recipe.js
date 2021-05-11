@@ -22,5 +22,22 @@ export const fetchReview = (data) => async (dispatch) => {
   })
 
   const returnData = await response.json();
-  console.log(returnData, "checking return !!!!!!!!!")
+  console.log(returnData, "before keying")
+  const review = returnData.ParsedResults[0].ParsedText
+  dispatch(setReview(review));
 }
+
+// reducer
+const initialState = { review: ''};
+const recipeReducer = (state=initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case SET_REVIEW:
+      newState = Object.assign({}, state);
+      newState.review = action.payload;
+      return newState
+    default:
+      return state;
+  }
+}
+export default recipeReducer;

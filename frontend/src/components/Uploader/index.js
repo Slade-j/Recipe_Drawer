@@ -16,22 +16,21 @@ const Uploader = () => {
   const handleUpload = (e) => {
     e.preventDefault();
     dispatch(fetchReview(recipeFile));
+    setIsLoading(true)
   }
 
   useEffect (() => {
-
     if (!recipeFile) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
-
   }, [recipeFile])
 
   return (
     <div className={styles.mainWrapper}>
       {isLoading? <div className={'isLoading'}><h1>Loading...</h1></div>:
-        <form className={styles.uploadForm} onSubmit={handleUpload}>
+        <div className={styles.uploadForm}>
           <label
             htmlFor='file'
             className={styles.uploadSelector}>{recipeFile ? "Change selection":
@@ -47,8 +46,8 @@ const Uploader = () => {
             <div className={styles.previewer}>
               <img className={styles.imger}src={URL.createObjectURL(recipeFile)} />
             </div>}
-          <button disabled={isDisabled} onClick={e => setIsLoading(true)} className={styles.uploadButton}>Submit</button>
-        </form>}
+          <button disabled={isDisabled} onClick={handleUpload} className={styles.uploadButton}>Submit</button>
+        </div>}
     </div>
   )
 }
