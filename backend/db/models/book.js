@@ -5,8 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   Book.associate = function(models) {
+
+    const columnMapping = {
+      through: 'Recipe_book',
+      otherKey: 'recipeId',
+      foreignKey: 'bookId'
+    }
+
+    Book.belongsToMany(models.Recipe, columnMapping);
     Book.belongsTo(models.User, { foreignKey: 'userId' });
-    Book.hasMany(models.Section, { foreignKey: 'bookId' });
   };
   return Book;
 };

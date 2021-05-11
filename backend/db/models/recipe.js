@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   Recipe.associate = function(models) {
 
     const columnMapping = {
-      through: 'Recipe_section',
-      otherKey: 'sectionId',
+      through: 'Recipe_book',
+      otherKey: 'bookId',
       foreignKey: 'recipeId'
     }
 
-    Recipe.belongsToMany(models.Section, columnMapping);
+    Recipe.belongsToMany(models.Book, columnMapping);
     Recipe.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Recipe;
