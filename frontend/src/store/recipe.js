@@ -12,16 +12,13 @@ export const setReview = (data) => ({
 
 //thunks
 export const fetchReview = (data) => async (dispatch) => {
-  console.log(data, "in thunk>>>>>>>>>>>>>>>>>>")
   const formData = new FormData()
   formData.append('image', data)
   formData.append('name', 'testing')
-  // formData.append('name', data.name)
   const response = await csrfFetch('/api/ocr', {
     method: 'POST',
     body: formData,
     headers: { "Content-Type": "multipart/form-data" }
-    // headers: { "Contect-type": " x-www-form-urlencoded" }
   })
 
   const returnData = await response.json();

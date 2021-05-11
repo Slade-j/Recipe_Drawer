@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Uploader from '../Uploader';
 import {
   mainWrapper,
   header,
@@ -117,11 +118,14 @@ const RecipeForm = () => {
         <div className={formsWrapper}>
           <div className={textWrapper}>
             <form className={stageingForm}>
-              <textarea
-                className={textArea}
-                value={areaValue}
-                onChange={e => setAreaValue(e.target.value)}>
-                </textarea>
+              {areaValue !== ''?
+                <textarea
+                  className={textArea}
+                  value={areaValue}
+                  onChange={e => setAreaValue(e.target.value)}>
+                  </textarea>
+                  :
+                <Uploader />}
               <div className={setWrapper}>
                 <button className={titleButton} onClick={handleTitle}>Set Title</button>
                 <button className={ingredientButton} onClick={handleIngredients}>Set Ingredients</button>
