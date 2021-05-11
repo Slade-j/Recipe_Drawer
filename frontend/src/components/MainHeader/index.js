@@ -12,9 +12,6 @@ const MainHeader = () => {
 
   const handleUpload = (e) => {
     e.preventDefault();
-    // const image = formData.get('file');
-    console.log(recipeFile, "target here !!!")
-    // console.log(URL.createObjectURL(recipeFile))
     dispatch(fetchReview(recipeFile));
   }
 

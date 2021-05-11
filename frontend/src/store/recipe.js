@@ -15,7 +15,8 @@ export const fetchReview = (data) => async (dispatch) => {
   console.log(data, "in thunk>>>>>>>>>>>>>>>>>>")
   const formData = new FormData()
   formData.append('image', data)
-  formData.append('name', data.name)
+  formData.append('name', 'testing')
+  // formData.append('name', data.name)
   const response = await csrfFetch('/api/ocr', {
     method: 'POST',
     body: formData,

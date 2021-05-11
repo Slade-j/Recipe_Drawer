@@ -27,7 +27,7 @@ app.use(
     })
   );
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(routes)
 
 // Catch unhandled requests and forwar to error handler.
