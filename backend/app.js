@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const csurf = require('csurf');
+const bodyParser = require("body-parser");
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const routes = require('./routes');
@@ -14,7 +15,6 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
 if(!isProduction) app.use(cors());
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(
@@ -26,7 +26,8 @@ app.use(
       },
     })
   );
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes)
 
 // Catch unhandled requests and forwar to error handler.

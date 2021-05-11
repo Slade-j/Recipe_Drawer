@@ -8,6 +8,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import RecipeForm from "./components/RecipeForm";
+import MainHeader from "./components/MainHeader";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,8 +29,11 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
-          <Route exact={true} path='/recipe'>
+          <Route exact={true} path='/new-recipe'>
             <RecipeForm />
+          </Route>
+          <Route exact={true} path='/all-recipes'>
+            <MainHeader />
           </Route>
         </Switch>
       )}
