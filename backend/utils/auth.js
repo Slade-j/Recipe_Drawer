@@ -37,7 +37,8 @@ const setTokenCookie = (res, user) => {
 
       try {
         const { id } = jwtPayload.data;
-        req.user = await User.scope('currentUser').findByPk(id);
+        // req.user = await User.scope('currentUser').findByPk(id);
+        req.user = await User.findByPk(id);
       } catch (e) {
         res.clearCookie('token');
         return next();

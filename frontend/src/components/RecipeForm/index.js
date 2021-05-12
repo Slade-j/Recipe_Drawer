@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { createRecipe } from '../../utils/recipeUtil';
+import * as sessionActions from '../../store/session';
 import Uploader from '../Uploader';
 import {
   mainWrapper,
@@ -38,6 +39,7 @@ import {
   instructionTextWrapper, } from './RecipeForm.module.css';
 
 const RecipeForm = () => {
+  // const [ loaded, setLoaded ] = useState(false);
   const [ areaValue, setAreaValue ] = useState('');
   const [ title, setTitle ] = useState('');
   const [ ingredients, setIngredients ] = useState('');
@@ -47,12 +49,19 @@ const RecipeForm = () => {
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
   const [ instructionCheck, setInstructionCheck ] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
   const review = useSelector(state => state.recipe.review);
-//   const currentUser = useSelector(state => state.session.user)
+  const url = useSelector(state => state.recipe.url);
+  const currentUser = useSelector(state => state.session.user)
 
 //   if (!currentUser) return (
 //     <Redirect to='/' />
 // );
+
+// look into protected route for this. . . may need to refactor.
+// useEffect(() => {
+//   dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
+// }, [dispatch]);
 
   useEffect(() => {
     if (title && ingredients && instruction) {
@@ -113,9 +122,17 @@ const RecipeForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = { title, ingredients, instruction };
-    createRecipe(data).then(() => history.push('/'));
+    const data = {
+      title,
+      ingredients,
+      directions: instruction,
+      originUrl: url,
+      userId: currentUser.id
+    };
+    createRecipe(data).then(() => history.push('/recipe'));
   }
+
+  // if (!loaded) return null;
 
   return (
     <div className={mainWrapper}>
