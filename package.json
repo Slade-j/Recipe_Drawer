@@ -1,0 +1,20 @@
+{
+  "name": "recipe_drawer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slade-j/Recipe_Drawer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slade-j/Recipe_Drawer/issues"
+  },
+  "homepage": "https://github.com/Slade-j/Recipe_Drawer#readme",
+  "keywords": [],
+  "description": ""
+}
