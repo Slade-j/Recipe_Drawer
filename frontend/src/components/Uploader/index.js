@@ -29,7 +29,7 @@ const Uploader = () => {
 
   return (
     <div className={styles.mainWrapper}>
-      {isLoading? <div className={'isLoading'}><h1>Loading...</h1></div>:
+      {isLoading? <div className={styles.isLoading}><h1>Loading...</h1></div>:
         <div className={styles.uploadForm}>
           <label
             htmlFor='file'
