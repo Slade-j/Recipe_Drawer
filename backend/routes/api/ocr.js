@@ -1,3 +1,4 @@
+// backend/routes/api/ocr.js
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const ocrSpace = require('ocr-space-api-wrapper');
@@ -10,6 +11,7 @@ const {
   singlePublicFileUpload } = require('../../awsS3.js');
 
 const router = express.Router();
+const key = process.env.API_KEY
 
 // ocr.open api call for local file via ocr-space-aqi-wrapper
 // includes options object with api key and path to local file.
@@ -24,9 +26,9 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
     const url = await singlePublicFileUpload(req.file);
     // must set filetype because of default content-type comming back from aws
     const response = await ocrSpace(
-      `${url}`, {apiKey: '153e53ecc188957', url: 'url', filetype: mimetype }
+      `${url}`, {apiKey: key, url: 'url', filetype: mimetype }
     )
-    return res.json(response);
+    return res.json({ response, url });
    } catch (error) {
     console.error(error)
    }

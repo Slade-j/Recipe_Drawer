@@ -1,0 +1,10 @@
+PORT=5000
+DB_USERNAME=<<user>>
+DB_PASSWORD=<<password>>
+DB_DATABASE=<<database>>
+DB_HOST=localhost
+JWT_SECRET=<<jwt_secret>>
+JWT_EXPIRES_IN=604800
+AWS_ACCESS_KEY_ID=<<awsKey>>
+AWS_SECRET_ACCESS_KEY=<<awsKey>>
+API_KEY=<<ocr.open apiKey>>
