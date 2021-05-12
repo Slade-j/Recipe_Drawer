@@ -31,6 +31,9 @@ function App() {
           <Route exact={true} path='/new-recipe'>
             <RecipeForm />
           </Route>
+          <Route exact={true} path='/recipe'>
+            <h1>you made it!</h1>
+          </Route>
         </Switch>
       )}
     </>
