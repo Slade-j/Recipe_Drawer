@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
+import { createRecipe } from '../../utils/recipeUtil';
 import Uploader from '../Uploader';
 import {
   mainWrapper,
@@ -40,11 +41,12 @@ const RecipeForm = () => {
   const [ areaValue, setAreaValue ] = useState('');
   const [ title, setTitle ] = useState('');
   const [ ingredients, setIngredients ] = useState('');
-  const [ discription, setDiscription ] = useState('');
+  const [ instruction, setInstruction ] = useState('');
   const [ isDisabled, setIsDisabled ] = useState(true);
   const [ titleCheck, setTitleCheck ] = useState('');
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
-  const [ discriptionCheck, setDiscriptionCheck ] = useState('');
+  const [ instructionCheck, setInstructionCheck ] = useState('');
+  const history = useHistory();
   const review = useSelector(state => state.recipe.review);
 //   const currentUser = useSelector(state => state.session.user)
 
@@ -53,12 +55,12 @@ const RecipeForm = () => {
 // );
 
   useEffect(() => {
-    if (title && ingredients && discription) {
+    if (title && ingredients && instruction) {
       setIsDisabled(false)
     } else {
       setIsDisabled(true)
     }
-  }, [title, ingredients, discription])
+  }, [title, ingredients, instruction])
 
   useEffect(()=> {
     if (title) {
@@ -77,12 +79,12 @@ const RecipeForm = () => {
   }, [ingredients])
 
   useEffect(()=> {
-    if (discription) {
-      setDiscriptionCheck(discriptionGood);
+    if (instruction) {
+      setInstructionCheck(discriptionGood);
     } else {
-      setDiscriptionCheck('');
+      setInstructionCheck('');
     }
-  }, [discription])
+  }, [instruction])
 
   useEffect(() => {
     if (!review) return;
@@ -106,7 +108,13 @@ const RecipeForm = () => {
 
   const handleDiscription = e => {
     e.preventDefault();
-    window.getSelection().toString() && setDiscription(window.getSelection().toString())
+    window.getSelection().toString() && setInstruction(window.getSelection().toString())
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const data = { title, ingredients, instruction };
+    createRecipe(data).then(() => history.push('/'));
   }
 
   return (
@@ -140,7 +148,7 @@ const RecipeForm = () => {
             </form>
           </div>
           <div className={submitWrapper}>
-            <form className={submitForm}>
+            <form className={submitForm} onSubmit={handleSubmit}>
               <div className={`${titleInput} ${titleCheck}`}>
                 <div className={inputWrapper}>
                   <input value={title} onChange={e => setTitle(e.target.value)}></input>
@@ -151,9 +159,9 @@ const RecipeForm = () => {
                   <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
                 </div>
               </div>
-              <div className={`${instructionInput} ${discriptionCheck}`}>
+              <div className={`${instructionInput} ${instructionCheck}`}>
                 <div className={instructionTextWrapper}>
-                  <textarea value={discription} onChange={e => setDiscription(e.target.value)} />
+                  <textarea value={instruction} onChange={e => setInstruction(e.target.value)} />
                 </div>
               </div>
               <div className={subButtonWrapper}>

@@ -1,11 +1,14 @@
+// backend/routes/api/index.js
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const ocrRouter = require('./ocr.js');
+const recipeRouter = require('./recipe.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/ocr', ocrRouter);
+router.use('/recipe', recipeRouter);
 
 
 // ****** Routes to test User Auth Middleware ******************

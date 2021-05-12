@@ -23,8 +23,8 @@ export const fetchReview = (data) => async (dispatch) => {
 
   const returnData = await response.json();
   console.log(returnData, "before keying")
-  const review = returnData.ParsedResults[0].ParsedText
-  dispatch(setReview(review));
+  // const review = returnData.ParsedResults[0].ParsedText
+  // dispatch(setReview(review));
 }
 
 // reducer
