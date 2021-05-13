@@ -8,6 +8,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import RecipeForm from "./components/RecipeForm";
+import RecipeDisplay from "./components/RecipeDisplay";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
             <RecipeForm />
           </Route>
           <Route exact={true} path='/recipe'>
-            <h1>you made it!</h1>
+            <RecipeDisplay />
           </Route>
         </Switch>
       )}
