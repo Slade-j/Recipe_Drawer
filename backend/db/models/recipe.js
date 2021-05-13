@@ -26,5 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     return await Recipe.findByPk(recipe.id);
   };
 
+  Recipe.getByLimit = async function (data) {
+    const { offset, limit, userId } = data;
+    const recipes = await Recipe.findAll({
+      where: { userId },
+      offset,
+      limit
+    });
+    return recipes;
+  };
+
   return Recipe;
 };
