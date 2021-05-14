@@ -4,11 +4,16 @@ import { csrfFetch } from './csrf';
 // constants
 const SET_REVIEW = 'recipe/SET_REVIEW';
 const SET_URL = 'recipe/SET_URL';
+const RESET_REVIEW = 'recipe/RESET_REVIEW';
 
 //actions
 export const setReview = (data) => ({
   type: SET_REVIEW,
   payload: data
+})
+
+export const resetReview = () => ({
+  type: RESET_REVIEW
 })
 
 export const setUrl = (data) => ({
@@ -28,9 +33,10 @@ export const fetchReview = (data) => async (dispatch) => {
   })
 
   const { response, url } = await res.json();
+
   const review = response.ParsedResults[0].ParsedText
-  dispatch(setReview(review));
   dispatch(setUrl(url))
+  dispatch(setReview(review));
 }
 
 // reducer
@@ -46,6 +52,8 @@ const recipeReducer = (state=initialState, action) => {
       newState = Object.assign({}, state);
       newState.url = action.payload;
       return newState;
+    case RESET_REVIEW:
+      return initialState;
     default:
       return state;
   }

@@ -37,6 +37,7 @@ import {
   disabled,
   ingredientTextWrapper,
   instructionTextWrapper, } from './RecipeForm.module.css';
+import { resetReview } from '../../store/recipe';
 
 const RecipeForm = () => {
   // const [ loaded, setLoaded ] = useState(false);
@@ -96,7 +97,7 @@ const RecipeForm = () => {
   }, [instruction])
 
   useEffect(() => {
-    if (!review) return;
+    // if (!review) return;
     setAreaValue(review);
   }, [review])
 
@@ -129,7 +130,9 @@ const RecipeForm = () => {
       originUrl: url,
       userId: currentUser.id
     };
-    createRecipe(data).then(() => history.push('/recipe'));
+    createRecipe(data)
+      .then(() => dispatch(resetReview()))
+      .then(() => history.push('/recipe'));
   }
 
   // if (!loaded) return null;
@@ -149,7 +152,7 @@ const RecipeForm = () => {
         <div className={formsWrapper}>
           <div className={textWrapper}>
             <form className={stageingForm}>
-              {areaValue !== ''?
+              {areaValue?
                 <textarea
                   className={textArea}
                   value={areaValue}

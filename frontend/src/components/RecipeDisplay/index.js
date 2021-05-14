@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getLimitRecipes } from '../../utils/recipeUtil';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -33,6 +34,7 @@ const RecipeDisplay = () => {
 
   return (
     <div className={'mainWrapper'}>
+      <NavLink to={'/new-recipe'}>form</NavLink>
       <div className={'header'}></div>
       <div className={'scrollFlexer'}>
         <div className={'books'} />
