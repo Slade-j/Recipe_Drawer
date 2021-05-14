@@ -21,13 +21,16 @@ const key = process.env.API_KEY
 router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
   console.log("HITHITHIT")
   const { mimetype } = await req.file;
+  console.log(mimetype, "MIMETYPE>>>>>>>>>>>>>")
   try {
     // placing image in s3 bucket, getting url in return
     const url = await singlePublicFileUpload(req.file);
     // must set filetype because of default content-type comming back from aws
+    console.log(url, "URL>>>>>>>>>>>>>>>>>>>>>")
     const response = await ocrSpace(
       `${url}`, {apiKey: key, url: 'url', filetype: mimetype }
     )
+    console.log(response, "BACK FROM  OCR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     return res.json({ response, url });
    } catch (error) {
     console.error(error)
