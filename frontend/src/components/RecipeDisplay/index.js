@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getLimitRecipes } from '../../utils/recipeUtil';
 import { NavLink } from 'react-router-dom';
+import Recipe from '../Recipe';
+import styles from './RecipeDisplay.module.css';
+import header from '../../assets/recipe_backgroundSimple.jpg';
+
 
 
 
@@ -32,15 +36,21 @@ const RecipeDisplay = () => {
   //   console.log(window, "WINDOW>>>>>>>>>>>>>>>")
   // }, [])
 
+// ********holding for elements*********************
+
+// *************************************************
   return (
-    <div className={'mainWrapper'}>
-      <NavLink to={'/new-recipe'}>form</NavLink>
-      <div className={'header'}></div>
-      <div className={'scrollFlexer'}>
-        <div className={'books'} />
-        <div className={'scroller'} >
+    <div className={styles.mainWrapper}>
+      <div className={styles.topSpacer}>
+      <img className={styles.imger} src={header}></img>
+      </div>
+      <div className={styles.recipeNav}></div>
+      <div className={styles.header}></div>
+      <div className={styles.scrollFlexer}>
+        <div className={styles.books} />
+        <div className={styles.scroller} >
         {recipes.length > 0 && recipes.map(recipe => (
-          <div key={recipe.title}>{recipe.title}</div>
+          <Recipe recipe={recipe} />
         ))}
         </div>
       </div>

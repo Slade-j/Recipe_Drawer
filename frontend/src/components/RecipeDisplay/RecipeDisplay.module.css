@@ -1,0 +1,65 @@
+.mainWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  background-color: rgba(238, 245, 253, 0.883)
+}
+
+.topSpacer {
+  height: 123px;
+  width: 100%;
+  /* background-image: url('../../assets/header2b.jpg'); */
+  background-color: var(--pallet1-color-3);
+  /* background-size: cover; */
+  /* overflow: hidden; */
+}
+
+.imger {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.recipeNav {
+  height: 60px;
+  width: 100%;
+  border: 1px var(--pallet1-color-1) solid;
+  box-shadow: 0 2px 6px 0 var(--pallet1-color-3);
+  z-index: 4;
+}
+
+.header {
+  height: 166px;
+  width: 100%;
+  background-color: var(--pallet1-color-4);
+}
+
+.scrollFlexer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: center;
+  position: relative;
+}
+
+.books {
+  height: 250px;
+  width: 300px;
+  position: sticky;
+  margin: 60px 0 0 60px;
+  background-color: var(--pallet1-color-3);
+}
+
+.scroller {
+  min-height: 500px;
+  width: 876px;
+  background-color: var(--pallet1-color-2);
+  box-shadow: 2px 0 6px 0 var(--pallet1-color-1);
+  border-left: 1px var(--pallet1-color-1);
+  border-right: 1px var(--pallet1-color-1);
+  overflow-y: auto;
+  overflow-x: hidden;
+}

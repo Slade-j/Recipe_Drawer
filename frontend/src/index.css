@@ -1,4 +1,20 @@
 /* TODO Add site wide styles */
+:root {
+  --pallet1-color-1: #18121e;
+  --pallet1-color-2: #233237;
+  --pallet1-color-3: #984b43;
+  --pallet1-color-4: #eac67a;
+
+  --pallet2-color-1: #945d60;
+  --pallet2-color-2: #626e60;
+  --pallet2-color-3: #af473c;
+  --pallet2-color-4: #3c3c3c;
+
+  --pallet3-color-1: #de493c;
+  --pallet3-color-2: #608074;
+  --pallet3-color-3: #daefd9;
+}
+
 html #body #root {
   height: 100vh;
   width: 100vw;
