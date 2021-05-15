@@ -4,35 +4,22 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { createRecipe } from '../../utils/recipeUtil';
 import * as sessionActions from '../../store/session';
 import Uploader from '../Uploader';
-import {
-  mainWrapper,
-  header,
-  // statusContainer,
-  status,
+import styles, {
   titleGood,
   ingredientsGood,
   discriptionGood,
   enabled,
-  formsWrapper,
-  textWrapper,
   submitWrapper,
-  stageingForm,
   submitForm,
   setWrapper,
-  headerFlex,
   textArea,
   titleButton,
   ingredientButton,
   instructionButton,
-  grid,
-  // headSpacer,
   titleInput,
   ingredientInput,
   instructionInput,
   inputWrapper,
-  headerTitle,
-  hintHider,
-  cancel,
   subButtonWrapper,
   disabled,
   ingredientTextWrapper,
@@ -113,6 +100,7 @@ const RecipeForm = () => {
 
   const handleIngredients = e => {
     e.preventDefault();
+    console.log(window.getSelection().toString().split('\n'), "DID THIS WORK")
     window.getSelection().toString() && setIngredients(window.getSelection().toString())
   }
 
@@ -138,20 +126,20 @@ const RecipeForm = () => {
   // if (!loaded) return null;
 
   return (
-    <div className={mainWrapper}>
-      <div className={grid}>
-        <div className={header}>
-          <div className={headerFlex}>
-            <button className={cancel}>Cancel</button>
-            <span className={headerTitle}>
+    <div className={styles.mainWrapper}>
+      <div className={styles.grid}>
+        <div className={styles.header}>
+          <div className={styles.headerFlex}>
+            <button className={styles.cancel}>Cancel</button>
+            <span className={styles.headerTitle}>
               Create a new Recipe!
             </span>
-            <button className={hintHider}>Disable prompts</button>
+            <button className={styles.hintHider}>Disable prompts</button>
           </div>
         </div>
-        <div className={formsWrapper}>
-          <div className={textWrapper}>
-            <form className={stageingForm}>
+        <div className={styles.formsWrapper}>
+          <div className={styles.textWrapper}>
+            <form className={styles.stageingForm}>
               {areaValue?
                 <textarea
                   className={textArea}
@@ -160,10 +148,10 @@ const RecipeForm = () => {
                   </textarea>
                   :
                 <Uploader />}
-              <div className={setWrapper}>
-                <button className={titleButton} onClick={handleTitle}>Set Title</button>
-                <button className={ingredientButton} onClick={handleIngredients}>Set Ingredients</button>
-                <button className={instructionButton} onClick={handleDiscription}>Set Discription</button>
+              <div className={styles.setWrapper}>
+                <button className={styles.titleButton} onClick={handleTitle}>Set Title</button>
+                <button className={styles.ingredientButton} onClick={handleIngredients}>Set Ingredients</button>
+                <button className={styles.instructionButton} onClick={handleDiscription}>Set Discription</button>
               </div>
             </form>
           </div>
@@ -176,7 +164,7 @@ const RecipeForm = () => {
               </div>
               <div className={`${ingredientInput} ${ingredientsCheck}`}>
                 <div className={ingredientTextWrapper}>
-                  <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
+                  <textarea id={'ingredient'} value={ingredients} onChange={e => setIngredients(e.target.value)} />
                 </div>
               </div>
               <div className={`${instructionInput} ${instructionCheck}`}>

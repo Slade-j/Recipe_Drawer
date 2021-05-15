@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './Recipe.module.css';
 
 
 const Recipe = ({recipe}) => {
@@ -11,7 +12,7 @@ const Recipe = ({recipe}) => {
   }, []);
 
   return (
-    <div className={'mainWrapper'}>
+    <div className={styles.mainWrapper}>
       <div className={'editWrapper'}>
         <button className={'editRecipe'}>E</button>
       </div>
