@@ -96,3 +96,39 @@
 .directionsWrapper textarea {
   height: 240px;
 }
+
+.subButtonWrapper {
+  height: 10%;
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editer, .canceler {
+  height: 50px;
+  width: 25%;
+  color: #fff;
+  border: 2px rgba(0, 0, 0, .15) solid;
+  box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .2);
+  font-size: 15px;
+}
+
+.editer:focus,
+.canceler:focus {
+  margin-top: 2px;
+  margin-left: 2px;
+  box-shadow: none;
+}
+
+.canceler {
+  background-color: var(--pallet1-color-4);
+  margin-right: 5px;
+}
+
+.editer {
+  background-color: var(--pallet-color-2) ;
+}
+
+.editer:disabled {
+  background-color: rgba(var(--pallet1-rgba-2), .3);
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './RecipeEdit.module.css';
 
 const RecipeEdit = ({recipe, setShow, show}) => {
@@ -19,15 +20,63 @@ const RecipeEdit = ({recipe, setShow, show}) => {
     show?setDisplay(styles.overlay):setDisplay(styles.invisable);
   }, [show])
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    e.stopImediatePropigation();
     const data = { title, mainIngredient, ingredients, directions };
     // editRecipe(data).then(() => setShow(false));
   }
 
   const handleClick = (e) => {
     e.target.className === styles.overlay && setShow(false);
+  }
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+
+    if (e.target.value !== recipe.title) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }
+
+  const handleMainIngredient = (e) => {
+    setMainIngredient(e.target.value);
+    console.log(!e.target.value, recipe.mainIngredient, "COMPARE")
+
+    if (e.target.value !== recipe.mainIngredient) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }
+
+  const handleIngredients = (e) => {
+    setIngredients(e.target.value);
+
+    if (e.target.value !== recipe.ingredients) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }
+
+  const handleDirections = (e) => {
+    setDirections(e.target.value);
+
+    if (e.target.value !== recipe.directions) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShow(false);
+
   }
 
 // *****************holding for elements***************
@@ -41,19 +90,20 @@ const RecipeEdit = ({recipe, setShow, show}) => {
     <div className={display} onClick={handleClick}>
       <form className={styles.submitForm} onSubmit={handleSubmit}>
         <div className={styles.inputWrapper}>
-          <input value={title} onChange={e => setTitle(e.target.value)}></input>
+          <input value={title} onChange={handleTitle}></input>
         </div>
         <div className={styles.inputWrapper}>
-          <input value={mainIngredient} onChange={e => setMainIngredient(e.target.value)}></input>
+          <input value={mainIngredient} onChange={handleMainIngredient}></input>
         </div>
         <div className={styles.ingredientsWrapper}>
-          <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
+          <textarea value={ingredients} onChange={handleIngredients} />
         </div>
         <div className={styles.directionsWrapper}>
-          <textarea value={directions} onChange={e => setDirections(e.target.value)} />
+          <textarea value={directions} onChange={handleDirections} />
         </div>
-        <div className={'subButtonWrapper'}>
-          <button className={isDisabled?'disabled':'enabled'} disabled={isDisabled}>Edit Recipe</button>
+        <div className={styles.subButtonWrapper}>
+        <button className={styles.canceler} onClick={handleCancel}>Cancel</button>
+        <button className={styles.editer} disabled={isDisabled}>Edit Recipe</button>
         </div>
       </form>
     </div>

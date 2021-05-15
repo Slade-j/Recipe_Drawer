@@ -1,9 +1,13 @@
 /* TODO Add site wide styles */
 :root {
-  --pallet1-color-1: #18121e;
-  --pallet1-color-2: #233237;
-  --pallet1-color-3: #984b43;
-  --pallet1-color-4: #eac67a;
+  --pallet1-color-1: rgb(24, 18, 30);
+  --pallet1-color-2: rgb(35, 50, 55);
+  --pallet1-color-3: rgb(152, 75, 67);
+  --pallet1-color-4: rgb(234, 198, 122);
+  --pallet1-rgba-1: 24, 18, 30;
+  --pallet1-rgba-2: 35, 50, 55;
+  --pallet1-rgba-3: 152, 75, 67;
+  --pallet1-rgba-4: 234, 198, 122;
 
   --pallet2-color-1: #945d60;
   --pallet2-color-2: #626e60;
