@@ -78,8 +78,8 @@
   border-radius: 5px;
   width: 50%;
   border: .5px rgba(0, 0, 0, .15) solid;
-  box-shadow:
-  -2px 2px 6px 0 rgba(0, 0, 0, .15);
+  /* box-shadow:
+  -2px 2px 6px 0 rgba(0, 0, 0, .15); */
 }
 
 .ingredientsList li {
