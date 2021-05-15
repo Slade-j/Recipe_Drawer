@@ -22,5 +22,113 @@
   border-radius: 5px;
   border: 2px rgba(0, 0, 0, .15);
   position: relative;
-  z-index: 101;
+  z-index: 200;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputWrapper {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.inputWrapper input {
+  width: 600px;
+  height: 60px;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  padding: 10px;
+  border: 2px rgba(0, 0, 0, .15) solid;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, .15);
+}
+
+.inputWrapper input:focus,
+.inputWrapper input:hover,
+.ingredientsWrapper textarea:focus,
+.ingredientsWrapper textarea:hover,
+.directionsWrapper textarea:focus,
+.directionsWrapper textarea:hover {
+  margin-bottom: 2px;
+  margin-right: 2px;
+  border: 2px rgba(0, 0, 0, .20) solid;
+  box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.ingredientsWrapper,
+.directionsWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ingredientsWrapper textarea,
+.directionsWrapper textarea {
+  resize: none;
+  border: 2px rgba(0, 0, 0, .15) solid;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, .15);
+  width: 600px;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+}
+
+.ingredientsWrapper {
+  height: calc(20% - 10px);
+}
+
+.directionsWrapper {
+  height: calc(40% - 30px)
+}
+
+.ingredientsWrapper textarea {
+  height: 120px;
+}
+
+.directionsWrapper textarea {
+  height: 240px;
+}
+
+.subButtonWrapper {
+  height: 10%;
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editer, .canceler {
+  height: 50px;
+  width: 25%;
+  color: #fff;
+  border: 2px rgba(0, 0, 0, .15) solid;
+  box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .2);
+  font-size: 15px;
+}
+
+.editer:focus,
+.canceler:focus {
+  margin-top: 2px;
+  margin-left: 2px;
+  box-shadow: none;
+}
+
+.canceler {
+  background-color: var(--pallet1-color-4);
+  margin-right: 5px;
+}
+
+.editer {
+  background-color: var(--pallet-color-2) ;
+}
+
+.editer:disabled {
+  background-color: rgba(var(--pallet1-rgba-2), .3);
 }
