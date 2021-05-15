@@ -19,41 +19,38 @@ const RecipeEdit = ({recipe, setShow, show}) => {
     show?setDisplay(styles.overlay):setDisplay(styles.invisable);
   }, [show])
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    e.stopImediatePropigation();
     const data = { title, mainIngredient, ingredients, directions };
     // editRecipe(data).then(() => setShow(false));
   }
 
-  const handleClick = () => {
-    setShow(false);
+  const handleClick = (e) => {
+    e.target.className === styles.overlay && setShow(false);
   }
 
 // *****************holding for elements***************
 // <div className={'editWrapper'}>
+// <div className={'inputWrapper'}>
+// <div className={'ingredientInput'}>
+// <div className={'directionsInput'}>
 // ****************************************************
 
   return (
     <div className={display} onClick={handleClick}>
       <form className={styles.submitForm} onSubmit={handleSubmit}>
-        <div className={'titleInput'}>
-          <div className={'inputWrapper'}>
-            <input value={title} onChange={e => setTitle(e.target.value)}></input>
-          </div>
+        <div className={styles.inputWrapper}>
+          <input value={title} onChange={e => setTitle(e.target.value)}></input>
         </div>
-        <div className={'mainIngredientInput'}>
-          <div className={'inputWrapper'}>
-            <input value={mainIngredient} onChange={e => setMainIngredient(e.target.value)}></input>
-          </div>
+        <div className={styles.inputWrapper}>
+          <input value={mainIngredient} onChange={e => setMainIngredient(e.target.value)}></input>
         </div>
-        <div className={'ingredientInput'}>
-          <div className={'ingredientTextWrapper'}>
-            <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
-          </div>
+        <div className={styles.ingredientsWrapper}>
+          <textarea value={ingredients} onChange={e => setIngredients(e.target.value)} />
         </div>
-        <div className={'directionsInput'}>
-          <div className={'directionsTextWrapper'}>
-            <textarea value={directions} onChange={e => setDirections(e.target.value)} />
-          </div>
+        <div className={styles.directionsWrapper}>
+          <textarea value={directions} onChange={e => setDirections(e.target.value)} />
         </div>
         <div className={'subButtonWrapper'}>
           <button className={isDisabled?'disabled':'enabled'} disabled={isDisabled}>Edit Recipe</button>
