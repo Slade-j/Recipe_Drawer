@@ -35,6 +35,9 @@ function App() {
           <Route exact={true} path='/recipe'>
             <RecipeDisplay />
           </Route>
+          <Route exact={true} path='/recipe/:bookid'>
+            <h1>you created a book. . . hopefully</h1>
+          </Route>
         </Switch>
       )}
     </>

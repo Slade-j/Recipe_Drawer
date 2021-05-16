@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Recipe from '../Recipe';
 import styles from './RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
+import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
 
 
@@ -14,6 +15,7 @@ const RecipeDisplay = () => {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
+  const [ show, setShow ] = useState(false);
   const user = useSelector(state => state.session.user);
   const limit = 4;
 
@@ -29,7 +31,6 @@ const RecipeDisplay = () => {
 
   useEffect(() => {
     if (!recipes.length) return;
-    console.log(recipes, "RECIPES>>>>>>>>>>>")
   }, [recipes])
 
   // useEffect(() => {
@@ -47,11 +48,13 @@ const RecipeDisplay = () => {
           <img className={styles.imger} src={header}></img>
         </div>
         <div className={styles.recipeNav}></div>
-        <div className={styles.header}></div>
+        <div className={styles.header}>
+          {show && <BookCreate user={user} setShow={setShow}/>}
+        </div>
       </div>
       <div className={styles.scrollFlexer}>
         <div className={styles.books}>
-          <BookMenu />
+          <BookMenu setShow={setShow}/>
         </div>
         <div className={styles.scroller} >
           {recipes.length > 0 && recipes.map(recipe => (

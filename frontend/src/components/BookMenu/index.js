@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import BookCreate from '../BookCreate';
 
-const BookMenu = () => {
+const BookMenu = ({ setShow }) => {
   const userBooks = useSelector(state => state.books.allBooks);
-  const [ show, setShow ] = useState(false);
+
 
   const handleCreate = (e) => {
-
+    setShow(true);
   }
 
   // **************holding elements*****************

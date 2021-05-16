@@ -15,5 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     Book.belongsToMany(models.Recipe, columnMapping);
     Book.belongsTo(models.User, { foreignKey: 'userId' });
   };
+
+  Book.createNewBook = async function (data) {
+    const book = await Book.create(data);
+    return await Book.findByPk(book.id);
+  };
+
   return Book;
 };
