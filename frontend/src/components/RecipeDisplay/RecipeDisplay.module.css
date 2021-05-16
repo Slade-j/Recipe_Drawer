@@ -10,9 +10,9 @@
 
 .headWrapper {
   height: auto;
-  position: relative;
+  /* position: relative; */
   width: 100%;
-  z-index: 3;
+  /* z-index: 1; */
 }
 
 .topSpacer {
@@ -35,11 +35,13 @@
   width: 100%;
   border: 1px var(--pallet1-color-1) solid;
 
-  position: relative;
-  z-index: 4;
+  /* position: relative;
+  z-index: 4; */
 }
 
 .header {
+  position: relative;
+  z-index: 3;
   height: 166px;
   width: 100%;
   background-color: var(--pallet1-color-4);

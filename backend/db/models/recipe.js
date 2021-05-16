@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Recipe.createNewRecipe = async function (createRecipeData) {
-    // const { instruction, ingredients, url, title } = signUpData;
     const recipe = await Recipe.create(createRecipeData);
     return await Recipe.findByPk(recipe.id);
   };

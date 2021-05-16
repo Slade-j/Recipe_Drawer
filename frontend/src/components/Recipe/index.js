@@ -23,7 +23,7 @@ const Recipe = ({recipe}) => {
       <RecipeEdit recipe={recipe} show={show} setShow={setShow} />
       <div className={styles.editWrapper}>
         <button className={styles.editRecipe} onClick={handleEClick}>
-          <i class="far fa-edit fa-2x"></i>
+          <i className="far fa-edit fa-2x"></i>
         </button>
       </div>
       <div className={styles.titleWrapper}>
