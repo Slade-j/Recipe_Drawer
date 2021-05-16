@@ -15,7 +15,6 @@ export const getBooks = () => async (dispatch) => {
   const response = await csrfFetch('/api/book')
   const books = await response.json();
   const data = books.allBooks
-  console.log(data, "DATA BEFORE DISPATCH")
   dispatch(setBooks(data));
 }
 
