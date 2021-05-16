@@ -13,10 +13,10 @@ export const createRecipe = async (data) => {
 }
 
 // for getting user recipes for all-recipe page (4 at a time)
-export const getLimitRecipes = async (perams) => {
+export const getLimitRecipes = async (params) => {
   const response = await csrfFetch('/api/recipe/scroll', {
     method: 'POST',
-    body: JSON.stringify(perams),
+    body: JSON.stringify(params),
     header: { 'Content-Type': 'application/json' }
   });
 

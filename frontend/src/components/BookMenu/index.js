@@ -26,7 +26,7 @@ const BookMenu = ({ setShow }) => {
       <div className={'collections'}>
         {userBooks && userBooks.map(book => (
           <div key={Math.random() + book.title} className={'navWrapper'}>
-            <NavLink key={book.title} to={`/recipe/${book.id}`} exact={true}>
+            <NavLink key={book.title} to={`/${book.id}`} exact={true}>
               <span key={book.title + Math.random()} className={'title'}>
               {book.title}
               </span>
