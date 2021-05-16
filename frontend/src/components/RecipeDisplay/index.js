@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Recipe from '../Recipe';
 import styles from './RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
+import BookMenu from '../BookMenu';
 
 
 
@@ -49,10 +50,12 @@ const RecipeDisplay = () => {
         <div className={styles.header}></div>
       </div>
       <div className={styles.scrollFlexer}>
-        <div className={styles.books} />
+        <div className={styles.books}>
+          <BookMenu />
+        </div>
         <div className={styles.scroller} >
           {recipes.length > 0 && recipes.map(recipe => (
-            <Recipe recipe={recipe} />
+            <Recipe key={recipe.title} recipe={recipe} />
           ))}
         </div>
       </div>
