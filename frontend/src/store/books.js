@@ -7,22 +7,18 @@ const SET_BOOKS = 'books/SET_BOOKS';
 // actions
 export const setBooks = (data) => ({
   type: SET_BOOKS,
-  payloade: data
+  payload: data
 })
 
 // thunks
-export const createBook = (data) => async (dispatch) => {
-
-  const response = await csrfFetch('/api/book', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  })
-
-  const newBook = await response.json();
-  dispatch(setBooks(newBook));
-  return newBook;
+export const getBooks = () => async (dispatch) => {
+  const response = await csrfFetch('/api/book')
+  const books = await response.json();
+  const data = books.allBooks
+  console.log(data, "DATA BEFORE DISPATCH")
+  dispatch(setBooks(data));
 }
+
 // reducer
 const initialState = { allBooks: null }
 const booksReducer = (state=initialState, action) => {

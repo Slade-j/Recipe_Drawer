@@ -9,12 +9,15 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import RecipeForm from "./components/RecipeForm";
 import RecipeDisplay from "./components/RecipeDisplay";
+import { getBooks } from './store/books';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+      .then(() => dispatch(getBooks()))
+      .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

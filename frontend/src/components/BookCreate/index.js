@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './BookCreate.module.css';
-import { createBook } from '../../store/books';
+import { createBook } from '../../utils/bookUtil';
 import { useHistory } from 'react-router-dom';
 
 const BookCreate = ({ user, setShow }) => {
@@ -22,7 +22,7 @@ const BookCreate = ({ user, setShow }) => {
 
   const handleCreate = (e) => {
     e.preventDefault();
-    dispatch(createBook({ title, userId: user.id }))
+    createBook({ title, userId: user.id })
       .then(book => history.push(`/recipe/${book.newBook.id}`));
 
   }
