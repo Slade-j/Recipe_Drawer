@@ -1,5 +1,5 @@
 .mainWrapper {
-  height: 700px;
+  min-height: 700px;
   width: 870px;
   padding: 10px;
   background-color: #fff;
@@ -69,7 +69,8 @@
   /* color: var(--pallet1-color-2); */
 }
 
-.ingredientsWrapper {
+.ingredientsWrapper,
+.directionsWrapper {
   margin-left: 40px;
   margin-top: 40px;
   border-radius: 5px;
@@ -95,4 +96,9 @@
 
 .ingredientsList li {
   padding: 5px;
+}
+
+.directionsWrapper {
+  margin-bottom: 40px;
+  width: 90%;
 }
