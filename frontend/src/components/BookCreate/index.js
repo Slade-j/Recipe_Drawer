@@ -23,7 +23,7 @@ const BookCreate = ({ user, setShow }) => {
   const handleCreate = (e) => {
     e.preventDefault();
     createBook({ title, userId: user.id })
-      .then(book => history.push(`/recipe/${book.newBook.id}`));
+      .then(book => history.push(`/${book.newBook.id}`));
 
   }
 

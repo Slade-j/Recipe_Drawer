@@ -46,7 +46,7 @@ router.post('/:bookId', asyncHandler(async (req, res) => {
 }));
 
 // removing recipe from book
-router.delete('/:bookId', asyncHandler(async (req, res) => {
+router.patch('/:bookId', asyncHandler(async (req, res) => {
   const { bookId } = req.params;
   const { recipeId } = req.body;
 
@@ -55,6 +55,17 @@ router.delete('/:bookId', asyncHandler(async (req, res) => {
   await book.removeRecipe(recipe);
 
   return res.json({ book, recipe });
+}));
+
+// destroying book model instance from user
+router.delete('/:bookId', asyncHandler(async (req, res) => {
+  const { bookId } = req.params;
+  const { userId } = req.body;
+
+  await Book.destroy({where: { id: bookId }});
+  const allBooks = await Book.findAll({where: { userId }});
+
+  return res.json({ allBooks })
 }));
 
 module.exports = router;

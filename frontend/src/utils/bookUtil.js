@@ -39,7 +39,7 @@ export const addRecipe = async (data) => {
 export const removeRecipe = async (data) => {
   const { bookId, recipeId } = data;
   const response = await csrfFetch(`/api/book/${bookId}`, {
-    method: 'DELETE',
+    method: 'PATCH',
     body: JSON.stringify({ recipeId }),
     header: { 'Content-Type': 'application/json' }
   });

@@ -63,7 +63,7 @@ const BooksDisplay = () => {
       </div>
       <div className={styles.scrollFlexer}>
         <div className={styles.books}>
-          <BookMenu setShow={setShow}/>
+          <BookMenu setShow={setShow} currentId={id}/>
         </div>
         <div className={styles.scroller} >
           {recipes.length > 0 && recipes.map(recipe => (
