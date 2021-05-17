@@ -126,7 +126,7 @@
 }
 
 .editer {
-  background-color: var(--pallet-color-2) ;
+  background-color: var(--pallet1-color-2) ;
 }
 
 .editer:disabled {
