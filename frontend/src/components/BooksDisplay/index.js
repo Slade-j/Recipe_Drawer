@@ -30,11 +30,16 @@ const BooksDisplay = () => {
           setOffset(prevState => prevState + 4);
           setIsLoading(false)
         })
-  }, [isLoading, id])
+  }, [isLoading])
 
   useEffect(() => {
     if (!recipes.length) return;
   }, [recipes])
+
+  useEffect (() => {
+    setOffset(0)
+    setIsLoading(true);
+  }, [id])
 
   useEffect(() => {
     if (isLoading) return;
