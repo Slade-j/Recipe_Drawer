@@ -1,0 +1,95 @@
+@keyframes transitionIn {
+  from {
+    /* opacity: 0; */
+    transform: translateX(-200%);
+  }
+
+  to {
+    /* opacity: 1; */
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: .7;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+.mainWrapper {
+  animation: fadeIn 0.8s;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../../assets/recipe_backgroundgoodimage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.formWrapper {
+  animation: transitionIn 0.8s;
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(var(--pallet1-rgba-2), .9);
+}
+
+.title {
+  color: var(--pallet1-color-4);
+  font-style: italic;
+  font-size: 42px;
+  font-weight: 300;
+}
+
+.form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 33vw;
+}
+
+.form input {
+  margin-bottom: 25px;
+  height: 45px;
+  width: 80%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.form button {
+  background-color: var(--pallet1-color-4);
+  height: 45px;
+  width: 80%;
+  border: none;
+  color: var(--pallet1-color-1);
+  font-size: 18px;
+}
+
+.linkWrapper {
+  margin-top: 15px;
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.linkWrapper span {
+  color: var(--pallet1-color-4);
+}
+
+.nav {
+  padding-left: 5px;
+  color: var(--pallet3-color-1);
+  font-style: italic;
+  text-decoration: none;
+}

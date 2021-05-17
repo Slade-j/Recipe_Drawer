@@ -1,9 +1,9 @@
 // frontend/src/components/SignupFormPage/index.js
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css'
+import styles from './SignupFormPage.module.css';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -29,39 +29,46 @@ function SignupFormPage() {
 		};
 
 		return (
-			<form onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-				</ul>
-				<label>
-					Username
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Password
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Confirm Password
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Sign Up</button>
-			</form>
+			<div className={styles.mainWrapper}>
+				<div className={styles.formWrapper}>
+					<div className={styles.titleWrapper}>
+						<h2 className={styles.title}>Recipe Drawer</h2>
+					</div>
+					<form className={styles.form} onSubmit={handleSubmit}>
+						<ul>
+							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
+						</ul>
+						<input
+							placeholder={'Username'}
+							type="text"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							required/>
+						<input
+							placeholder={'Password'}
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required/>
+						<input
+							placeholder={'Confirm Password'}
+							type="password"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required/>
+						<button type="submit">Sign Up</button>
+						<div className={styles.linkWrapper}>
+							<span>Already have an account?</span>
+							<NavLink
+								className={styles.nav}
+								exact={true}
+								to={'/'}>
+								Log in
+							</NavLink>
+						</div>
+					</form>
+				</div>
+			</div>
 		);
 	}
 

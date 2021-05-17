@@ -37,11 +37,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact={true} path="/" >
-            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route exact={true} path="/signup">
-            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
           <AuthRoute exact={true} path='/new-recipe'>
