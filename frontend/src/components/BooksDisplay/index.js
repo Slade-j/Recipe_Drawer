@@ -99,23 +99,27 @@ const BooksDisplay = () => {
             </div>
           </div>
         </div>
-        <div className={styles.header}>
-          {show && <BookCreate user={user} setShow={setShow}/>}
-        </div>
       </div>
       <div className={styles.scrollFlexer}>
-        <div className={styles.books}>
-          <BookMenu setShow={setShow} currentId={id}/>
-        </div>
-        <div className={styles.scroller} >
-          {recipes.length > 0 && recipes.map(recipe => (
-            <Recipe
-            key={recipe.title}
-            recipe={recipe}
-            bookId={id}
-            changed={changed}
-            setChanged={setChanged}/>
-          ))}
+        <div className={styles.flexer}>
+          <div className={styles.header}>
+            {show && <BookCreate user={user} setShow={setShow}/>}
+          </div>
+          <div className={styles.bookFlex}>
+            <div className={styles.books}>
+              <BookMenu setShow={setShow} currentId={id}/>
+            </div>
+            <div className={styles.scroller} >
+              {recipes.length > 0 && recipes.map(recipe => (
+                <Recipe
+                key={recipe.title}
+                recipe={recipe}
+                bookId={id}
+                changed={changed}
+                setChanged={setChanged}/>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
