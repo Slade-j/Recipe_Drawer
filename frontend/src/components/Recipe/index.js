@@ -5,7 +5,7 @@ import styles from './Recipe.module.css';
 import { removeRecipe } from '../../utils/bookUtil';
 
 
-const Recipe = ({recipe, bookId}) => {
+const Recipe = ({recipe, bookId, setChanged, changed}) => {
   const title = recipe.title;
   const directions = recipe.directions;
   const ingredients = recipe.ingredients.split('\n');
@@ -15,7 +15,8 @@ const Recipe = ({recipe, bookId}) => {
 
   useEffect(() => {
     // console.log(ingredients.split('\n'), 'RECIPE from recipe')
-  }, []);
+    console.log(changed, 'inrecipeeffect')
+  }, [changed]);
 
   const handleEClick = () => {
     setShow(true);
@@ -28,6 +29,9 @@ const Recipe = ({recipe, bookId}) => {
   const handleRemove = () => {
     window.confirm(`Remove ${title.toUpperCase()} from book?`);
     removeRecipe({bookId, recipeId: recipe.id})
+      .then(() => console.log(changed, 'changed in remove'))
+      .then(() => setChanged(!changed))
+      .then(() => console.log(changed, 'changed in remove2'))
   }
 
   return (
