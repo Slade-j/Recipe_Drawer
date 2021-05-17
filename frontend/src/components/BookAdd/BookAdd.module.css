@@ -1,0 +1,33 @@
+.overlay {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitForm {
+  height: 700px;
+  width: 630px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px rgba(0, 0, 0, .15);
+  position: relative;
+  z-index: 200;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 210px, 210px, 210px;
+  grid-template-rows: auto;
+}

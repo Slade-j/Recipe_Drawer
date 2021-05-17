@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import RecipeForm from "./components/RecipeForm";
 import RecipeDisplay from "./components/RecipeDisplay";
 import { getBooks } from './store/books';
+import BooksDisplay from "./components/BooksDisplay";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,8 +39,8 @@ function App() {
           <Route exact={true} path='/recipe'>
             <RecipeDisplay />
           </Route>
-          <Route exact={true} path='/recipe/:bookid'>
-            <h1>you created a book. . . hopefully</h1>
+          <Route exact={true} path='/:bookid'>
+            <BooksDisplay />
           </Route>
         </Switch>
       )}

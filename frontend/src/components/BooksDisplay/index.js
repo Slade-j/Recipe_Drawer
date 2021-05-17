@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getLimitRecipes } from '../../utils/recipeUtil';
+import { getLimitBooks } from '../../utils/bookUtil';
+import { useParams, useRouteMatch } from 'react-router-dom';
 import Recipe from '../Recipe';
-import styles from './RecipeDisplay.module.css';
+import styles from '../RecipeDisplay/RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
 import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
@@ -10,27 +12,33 @@ import BookMenu from '../BookMenu';
 
 
 
-const RecipeDisplay = () => {
+const BooksDisplay = () => {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const user = useSelector(state => state.session.user);
+  const id = useParams().bookid;
   const limit = 4;
 
   useEffect(() => {
     if (!isLoading) return;
-    getLimitRecipes({ offset, limit, userId: user.id })
-      .then(res => setRecipes([...res]))
-      .then(() => {
-        setOffset(prevState => prevState + 4);
-        setIsLoading(false)
-      })
-  }, [isLoading])
+      getLimitBooks({ offset, limit, id })
+        // .then((res) => console.log(res, "RETURN FROM BACK"))
+        .then(res => setRecipes([...res.Recipes]))
+        .then(() => {
+          setOffset(prevState => prevState + 4);
+          setIsLoading(false)
+        })
+  }, [isLoading, id])
 
   useEffect(() => {
     if (!recipes.length) return;
   }, [recipes])
+
+  const handleAdd = () => {
+    console.log('clicked')
+  }
 
   // useEffect(() => {
   //   console.log(document., 'DOCUMENT!!!!!!!!!')
@@ -46,7 +54,11 @@ const RecipeDisplay = () => {
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}></div>
+        <div className={styles.recipeNav}>
+          <button className={'addRecipe'} onClick={handleAdd}>
+            Add a recipe
+          </button>
+        </div>
         <div className={styles.header}>
           {show && <BookCreate user={user} setShow={setShow}/>}
         </div>
@@ -65,4 +77,4 @@ const RecipeDisplay = () => {
   )
 }
 
-export default RecipeDisplay;
+export default BooksDisplay;
