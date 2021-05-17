@@ -17,6 +17,7 @@ const BooksDisplay = () => {
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
+  const [ changed, setChanged ] = useState(false);
   const user = useSelector(state => state.session.user);
   const id = useParams().bookid;
   const limit = 4;
@@ -24,17 +25,31 @@ const BooksDisplay = () => {
   useEffect(() => {
     if (!isLoading) return;
       getLimitBooks({ offset, limit, id })
-        // .then((res) => console.log(res, "RETURN FROM BACK"))
         .then(res => setRecipes([...res.Recipes]))
         .then(() => {
           setOffset(prevState => prevState + 4);
           setIsLoading(false)
         })
-  }, [isLoading, id])
+  }, [isLoading])
 
   useEffect(() => {
     if (!recipes.length) return;
   }, [recipes])
+
+  useEffect (() => {
+    setOffset(0)
+    setIsLoading(true);
+  }, [id])
+
+  useEffect(() => {
+    if (isLoading) return;
+    getLimitBooks({ offset: 0, limit, id })
+    .then(res => setRecipes([...res.Recipes]))
+    .then(() => {
+      setOffset(prevState => prevState + 4);
+      setIsLoading(false)
+    })
+  }, [changed])
 
   const handleAdd = () => {
     console.log('clicked')
@@ -67,7 +82,12 @@ const BooksDisplay = () => {
         </div>
         <div className={styles.scroller} >
           {recipes.length > 0 && recipes.map(recipe => (
-            <Recipe key={recipe.title} recipe={recipe} bookId={id} />
+            <Recipe
+            key={recipe.title}
+            recipe={recipe}
+            bookId={id}
+            changed={changed}
+            setChanged={setChanged}/>
           ))}
         </div>
       </div>
