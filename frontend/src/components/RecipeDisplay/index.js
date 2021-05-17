@@ -55,14 +55,25 @@ const RecipeDisplay = () => {
           <img className={styles.imger} src={header}></img>
         </div>
         <div className={styles.recipeNav}>
-          <div className={'logoutWrapper'}>
-            <button className={'logout'} onClick={signout}>Signout</button>
+          <div className={styles.leftWrapper}>
+            <h2 className={styles.title}>Recipe Drawer</h2>
+            <span>{' | '}</span>
+            <div className={'uploadWrapper'}>
+              <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+            </div>
           </div>
-          <div className={'linkWrapper'}>
-            <NavLink exact={true} to={'/recipe'}>All Recipes</NavLink>
-          </div>
-          <div className={'uploadWrapper'}>
-            <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+          <div className={styles.rightWrapper}>
+            <div className={'linkWrapper'}>
+              <NavLink
+                exact={true}
+                to={'/recipe'}
+                activeClassName={styles.selected}>
+                All Recipes
+                </NavLink>
+            </div>
+            <div className={'logoutWrapper'}>
+              <button className={'logout'} onClick={signout}>Signout</button>
+            </div>
           </div>
         </div>
         <div className={styles.header}>
