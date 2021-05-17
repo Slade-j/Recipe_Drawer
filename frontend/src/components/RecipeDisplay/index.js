@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getLimitRecipes } from '../../utils/recipeUtil';
 import Recipe from '../Recipe';
 import styles from './RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
 import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
+import { logout } from '../../store/session';
+import { NavLink, useHistory } from 'react-router-dom';
 
 
 
@@ -15,6 +17,8 @@ const RecipeDisplay = () => {
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const limit = 4;
 
@@ -32,21 +36,35 @@ const RecipeDisplay = () => {
     if (!recipes.length) return;
   }, [recipes])
 
-  // useEffect(() => {
-  //   console.log(document., 'DOCUMENT!!!!!!!!!')
-  //   console.log(window, "WINDOW>>>>>>>>>>>>>>>")
-  // }, [])
+  const signout = () => {
+    dispatch(logout())
+  }
+
+  const handleUpload = () => {
+    history.push('/new-recipe')
+  }
 
 // ********holding for elements*********************
-
+  // <i class="fas fa-sign-out-alt"></i>
 // *************************************************
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.headWrapper}>
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}></div>
+        <div className={styles.recipeNav}>
+          <div className={'logoutWrapper'}>
+            <button className={'logout'} onClick={signout}>Signout</button>
+          </div>
+          <div className={'linkWrapper'}>
+            <NavLink exact={true} to={'/recipe'}>All Recipes</NavLink>
+          </div>
+          <div className={'uploadWrapper'}>
+            <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+          </div>
+        </div>
         <div className={styles.header}>
           {show && <BookCreate user={user} setShow={setShow}/>}
         </div>

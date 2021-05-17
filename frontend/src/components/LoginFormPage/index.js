@@ -12,9 +12,12 @@ function LoginFormPage() {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return (
+    if (sessionUser) {
+			console.log(sessionUser, "USER")
+			return (
         <Redirect to='/recipe' />
     );
+			}
 
 		const handleSubmit = (e) => {
 			e.preventDefault();

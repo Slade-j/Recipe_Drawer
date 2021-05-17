@@ -42,14 +42,6 @@ const RecipeForm = () => {
   const url = useSelector(state => state.recipe.url);
   const currentUser = useSelector(state => state.session.user)
 
-//   if (!currentUser) return (
-//     <Redirect to='/' />
-// );
-
-// look into protected route for this. . . may need to refactor.
-// useEffect(() => {
-//   dispatch(sessionActions.restoreUser()).then(() => setLoaded(true));
-// }, [dispatch]);
 
   useEffect(() => {
     if (title && ingredients && instruction) {
@@ -123,14 +115,16 @@ const RecipeForm = () => {
       .then(() => history.push('/recipe'));
   }
 
-  // if (!loaded) return null;
+  const handleCancel = () => {
+    history.goBack();
+  }
 
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.grid}>
         <div className={styles.header}>
           <div className={styles.headerFlex}>
-            <button className={styles.cancel}>Cancel</button>
+            <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
             <span className={styles.headerTitle}>
               Create a new Recipe!
             </span>

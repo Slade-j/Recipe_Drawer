@@ -27,7 +27,7 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
   }
 
   const handleRemove = () => {
-    window.confirm(`Remove ${title.toUpperCase()} from book?`);
+    window.confirm(`Remove ${title.toUpperCase()} from book?`) &&
     removeRecipe({bookId, recipeId: recipe.id})
       .then(() => console.log(changed, 'changed in remove'))
       .then(() => setChanged(!changed))

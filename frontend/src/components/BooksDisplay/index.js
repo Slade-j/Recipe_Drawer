@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getLimitRecipes } from '../../utils/recipeUtil';
+import { useSelector, useDispatch } from 'react-redux';
 import { getLimitBooks } from '../../utils/bookUtil';
-import { useParams, useRouteMatch } from 'react-router-dom';
+import { useParams, NavLink, useHistory } from 'react-router-dom';
 import Recipe from '../Recipe';
 import styles from '../RecipeDisplay/RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
 import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
+import { logout } from '../../store/session';
 
 
 
@@ -18,6 +18,8 @@ const BooksDisplay = () => {
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const [ changed, setChanged ] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const id = useParams().bookid;
   const limit = 4;
@@ -55,23 +57,37 @@ const BooksDisplay = () => {
     console.log('clicked')
   }
 
-  // useEffect(() => {
-  //   console.log(document., 'DOCUMENT!!!!!!!!!')
-  //   console.log(window, "WINDOW>>>>>>>>>>>>>>>")
-  // }, [])
+  const signout = () => {
+    dispatch(logout())
+  }
+
+  const handleUpload = () => {
+    history.push('/new-recipe')
+  }
 
 // ********holding for elements*********************
 // <button className={'addRecipe'} onClick={handleAdd}>
 //             Add a recipe
 //           </button>
 // *************************************************
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.headWrapper}>
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}></div>
+        <div className={styles.recipeNav}>
+          <div className={'logoutWrapper'}>
+            <button className={'logout'} onClick={signout}>Signout</button>
+          </div>
+          <div className={'linkWrapper'}>
+            <NavLink exact={true} to={'/recipe'}>All Recipes</NavLink>
+          </div>
+          <div className={'uploadWrapper'}>
+            <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+          </div>
+        </div>
         <div className={styles.header}>
           {show && <BookCreate user={user} setShow={setShow}/>}
         </div>
