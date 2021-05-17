@@ -15,7 +15,7 @@ const BookMenu = ({ setShow, currentId }) => {
   }
 
   const handleDelete = (bookId, title) => {
-    window.confirm(`Delete ${title}?`)
+    window.confirm(`Delete ${title}?`) &&
     dispatch(deleteBook({ bookId, userId: user.id}))
       .then(() => {
         if (Number(currentId) === Number(bookId)) {

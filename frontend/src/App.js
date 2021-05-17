@@ -19,10 +19,18 @@ function App() {
   const user = useSelector(state => state.session.user)
 
   useEffect(() => {
+    console.log('this ran', isLoaded)
     dispatch(sessionActions.restoreUser())
-      .then(() =>user && dispatch(getBooks()))
-      .then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+    if(user) {
+      dispatch(getBooks())
+        .then(() => setIsLoaded(true))
+    } else {
+      setIsLoaded(true)
+    }
+  }, [user])
 
   return (
     <>
@@ -42,7 +50,7 @@ function App() {
           <AuthRoute exact={true} path='/recipe'>
             <RecipeDisplay />
           </AuthRoute>
-          <AuthRoute exact={true} path='/:bookid'>
+          <AuthRoute isLoaded={isLoaded} exact={true} path='/:bookid'>
             <BooksDisplay />
           </AuthRoute>
         </Switch>

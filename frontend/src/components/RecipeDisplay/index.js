@@ -7,6 +7,7 @@ import header from '../../assets/recipe_backgroundSimple.jpg';
 import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
 import { logout } from '../../store/session';
+import { NavLink, useHistory } from 'react-router-dom';
 
 
 
@@ -17,6 +18,7 @@ const RecipeDisplay = () => {
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const limit = 4;
 
@@ -38,14 +40,14 @@ const RecipeDisplay = () => {
     dispatch(logout())
   }
 
-  // useEffect(() => {
-  //   console.log(document., 'DOCUMENT!!!!!!!!!')
-  //   console.log(window, "WINDOW>>>>>>>>>>>>>>>")
-  // }, [])
+  const handleUpload = () => {
+    history.push('/new-recipe')
+  }
 
 // ********holding for elements*********************
   // <i class="fas fa-sign-out-alt"></i>
 // *************************************************
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.headWrapper}>
@@ -55,6 +57,12 @@ const RecipeDisplay = () => {
         <div className={styles.recipeNav}>
           <div className={'logoutWrapper'}>
             <button className={'logout'} onClick={signout}>Signout</button>
+          </div>
+          <div className={'linkWrapper'}>
+            <NavLink exact={true} to={'/recipe'}>All Recipes</NavLink>
+          </div>
+          <div className={'uploadWrapper'}>
+            <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
           </div>
         </div>
         <div className={styles.header}>
