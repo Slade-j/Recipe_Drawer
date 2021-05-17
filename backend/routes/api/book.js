@@ -19,7 +19,8 @@ router.post('/', asyncHandler(async (req, res) => {
   const { title, userId } = req.body;
 
   const newBook = await Book.createNewBook(req.body);
-  return res.json({ newBook });
+  const allBooks = await Book.findAll({where: {userId}})
+  return res.json({ allBooks });
 }));
 
 // getting all recipes for a book

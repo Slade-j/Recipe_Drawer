@@ -31,6 +31,19 @@ export const deleteBook = (data) => async (dispatch) => {
   dispatch(setBooks(allBooks))
 }
 
+export const createBook = (data) => async (dispatch) => {
+
+  const response = await csrfFetch('/api/book', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  })
+
+  const books = await response.json();
+  const { allBooks } = books
+  dispatch(setBooks(allBooks))
+}
+
 // reducer
 const initialState = { allBooks: null }
 const booksReducer = (state=initialState, action) => {
