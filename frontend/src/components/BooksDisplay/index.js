@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLimitBooks } from '../../utils/bookUtil';
-import { useParams, NavLink, useHistory } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import Recipe from '../Recipe';
 import styles from '../RecipeDisplay/RecipeDisplay.module.css';
 import header from '../../assets/recipe_backgroundSimple.jpg';
@@ -78,14 +78,25 @@ const BooksDisplay = () => {
           <img className={styles.imger} src={header}></img>
         </div>
         <div className={styles.recipeNav}>
-          <div className={'logoutWrapper'}>
-            <button className={'logout'} onClick={signout}>Signout</button>
+          <div className={styles.leftWrapper}>
+            <h2 className={styles.title}>Recipe Drawer</h2>
+            <span>{' | '}</span>
+            <div className={'uploadWrapper'}>
+              <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+            </div>
           </div>
-          <div className={'linkWrapper'}>
-            <NavLink exact={true} to={'/recipe'}>All Recipes</NavLink>
-          </div>
-          <div className={'uploadWrapper'}>
-            <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+          <div className={styles.rightWrapper}>
+            <div className={'linkWrapper'}>
+              <Link
+                id={styles.link}
+                exact={true}
+                to={'/recipe'}>
+                All Recipes
+                </Link>
+            </div>
+            <div className={'logoutWrapper'}>
+              <button className={'logout'} onClick={signout}>Signout</button>
+            </div>
           </div>
         </div>
         <div className={styles.header}>
