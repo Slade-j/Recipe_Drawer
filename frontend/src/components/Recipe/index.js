@@ -61,7 +61,8 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
           ))}
         </ul>
       </div>
-      <div className={'directionsWrapper'}>
+      <div className={styles.directionsWrapper}>
+        <h3>Directions</h3>
         <p>{recipe.directions}</p>
       </div>
     </div>
