@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import BookAdd from '../BookAdd';
 import RecipeEdit from '../RecipeEdit';
 import styles from './Recipe.module.css';
+import { removeRecipe } from '../../utils/bookUtil';
 
 
-const Recipe = ({recipe}) => {
+const Recipe = ({recipe, bookId}) => {
   const title = recipe.title;
   const directions = recipe.directions;
   const ingredients = recipe.ingredients.split('\n');
@@ -24,6 +25,11 @@ const Recipe = ({recipe}) => {
     setAddShow(true);
   }
 
+  const handleRemove = () => {
+    window.confirm(`Remove ${title.toUpperCase()} from book?`);
+    removeRecipe({bookId, recipeId: recipe.id})
+  }
+
   return (
     <div className={styles.mainWrapper}>
       <RecipeEdit recipe={recipe} show={show} setShow={setShow} />
@@ -32,12 +38,16 @@ const Recipe = ({recipe}) => {
         <button className={styles.editRecipe} onClick={handleEClick}>
           <i className="far fa-edit fa-2x"></i>
         </button>
+        {bookId &&
+          <button className={styles.removeBook} onClick={handleRemove}>
+            <i className="fas fa-book-dead fa-2x"></i>
+          </button>}
         <button className={styles.addBook} onClick={handleAdd}>
-          <i className="fas fa-book fa-2x"></i>
+          <i className="fas fa-book-medical fa-2x"></i>
         </button>
       </div>
       <div className={styles.titleWrapper}>
-        <h1 className={styles.titleHolder}>{recipe.title}</h1>
+        <h1 className={styles.titleHolder}>{title.toUpperCase()}</h1>
       </div>
       <div className={styles.ingredientsWrapper}>
         <h3>Ingredients</h3>

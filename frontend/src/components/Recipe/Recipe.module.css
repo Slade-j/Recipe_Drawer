@@ -23,7 +23,9 @@
   margin-top: 20px;
 }
 
-.editRecipe, .addBook {
+.editRecipe,
+.addBook,
+.removeBook {
   background-color: transparent;
   outline: none;
   border: none;
@@ -34,21 +36,21 @@
   margin-right: 20px;
 }
 
-/* .editRecipe {
-  margin-right: 20px;
-} */
-
 .editRecipe i,
-.addBook i  {
+.addBook i,
+.removeBook i  {
   color: rgba(var(--pallet1-rgba-3), .5);
 }
 
 .editRecipe i:hover,
-.addBook i:hover {
+.addBook i:hover,
+.removeBook i:hover {
   color: rgba(var(--pallet1-rgba-3), .8);
 }
 
-.editRecipe:focus {
+.editRecipe:active,
+.removeBook:active,
+.addBook:active {
   margin-top: 2px;
   margin-left: 2px;
 }
