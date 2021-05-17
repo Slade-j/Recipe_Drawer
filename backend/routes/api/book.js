@@ -62,6 +62,9 @@ router.delete('/:bookId', asyncHandler(async (req, res) => {
   const { bookId } = req.params;
   const { userId } = req.body;
 
+  const book = await Book.findOne({where: { id: bookId }});
+  const recipes = await book.getRecipes();
+  await book.removeRecipes(recipes)
   await Book.destroy({where: { id: bookId }});
   const allBooks = await Book.findAll({where: { userId }});
 
