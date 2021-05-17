@@ -27,7 +27,7 @@ const Recipe = ({recipe}) => {
   return (
     <div className={styles.mainWrapper}>
       <RecipeEdit recipe={recipe} show={show} setShow={setShow} />
-      {addShow && <BookAdd setAddShow={setAddShow} />}
+      {addShow && <BookAdd setAddShow={setAddShow} recipe={recipe} />}
       <div className={styles.editWrapper}>
         <button className={styles.editRecipe} onClick={handleEClick}>
           <i className="far fa-edit fa-2x"></i>
