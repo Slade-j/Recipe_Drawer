@@ -23,19 +23,28 @@
   margin-top: 20px;
 }
 
-.editRecipe {
+.editRecipe, .addBook {
   background-color: transparent;
-  margin-right: 20px;
   outline: none;
   border: none;
   cursor: pointer;
 }
 
-.editRecipe i {
+.addBook {
+  margin-right: 20px;
+}
+
+/* .editRecipe {
+  margin-right: 20px;
+} */
+
+.editRecipe i,
+.addBook i  {
   color: rgba(var(--pallet1-rgba-3), .5);
 }
 
-.editRecipe i:hover {
+.editRecipe i:hover,
+.addBook i:hover {
   color: rgba(var(--pallet1-rgba-3), .8);
 }
 

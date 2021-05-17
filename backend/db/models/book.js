@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Book.getByLimit = async function (data) {
-    const { offset, limit, id } = data;
-    const recipes = await Book.findAll({
+    const { offset, limit, id, Recipe } = data;
+    const recipes = await Book.findOne({
       where: { id },
-      include: models.Recipe,
+      include: Recipe,
       offset,
       limit
     });

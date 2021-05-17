@@ -23,21 +23,22 @@ const BooksDisplay = () => {
 
   useEffect(() => {
     if (!isLoading) return;
-    if (id) {
-      console.log(id, 'BOOKID IN BOOK')
-    } else {
-      getLimitRecipes({ offset, limit, userId: user.id })
-        .then(res => setRecipes([...res]))
+      getLimitBooks({ offset, limit, id })
+        // .then((res) => console.log(res, "RETURN FROM BACK"))
+        .then(res => setRecipes([...res.Recipes]))
         .then(() => {
           setOffset(prevState => prevState + 4);
           setIsLoading(false)
         })
-    }
   }, [isLoading, id])
 
   useEffect(() => {
     if (!recipes.length) return;
   }, [recipes])
+
+  const handleAdd = () => {
+    console.log('clicked')
+  }
 
   // useEffect(() => {
   //   console.log(document., 'DOCUMENT!!!!!!!!!')
@@ -53,7 +54,11 @@ const BooksDisplay = () => {
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}></div>
+        <div className={styles.recipeNav}>
+          <button className={'addRecipe'} onClick={handleAdd}>
+            Add a recipe
+          </button>
+        </div>
         <div className={styles.header}>
           {show && <BookCreate user={user} setShow={setShow}/>}
         </div>

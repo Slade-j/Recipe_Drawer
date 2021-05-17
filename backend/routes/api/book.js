@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
-const { Book } = require('../../db/models');
+const { Book, Recipe } = require('../../db/models');
 
 const router = express.Router();
 
@@ -25,7 +25,12 @@ router.post('/', asyncHandler(async (req, res) => {
 // getting all recipes for a book
 
 router.post('/recipes', asyncHandler(async (req, res) => {
-  const books = await Book.getByLimit(req.body);
-  return res.json({ books });
+  const { id, limit, offset } = req.body;
+  try {
+    const books = await Book.getByLimit({ id, limit, offset, Recipe });
+    return res.json(books);
+  } catch (err) {
+    console.log(err, "errfrom post")
+  }
 }))
 module.exports = router;
