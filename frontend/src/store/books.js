@@ -18,6 +18,19 @@ export const getBooks = () => async (dispatch) => {
   dispatch(setBooks(data));
 }
 
+export const deleteBook = (data) => async (dispatch) => {
+  const { bookId, userId } = data;
+  const response = await csrfFetch(`/api/book/${bookId}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ userId }),
+    header: { 'Content-Type': 'application/json' }
+  });
+
+  const books = await response.json();
+  const { allBooks } = books
+  dispatch(setBooks(allBooks))
+}
+
 // reducer
 const initialState = { allBooks: null }
 const booksReducer = (state=initialState, action) => {
