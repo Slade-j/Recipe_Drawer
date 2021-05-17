@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     const { offset, limit, userId } = data;
     const recipes = await Recipe.findAll({
       where: { userId },
-      offset,
-      limit
+      // offset,
+      // limit
     });
     return recipes;
   };
