@@ -34,3 +34,15 @@ export const addRecipe = async (data) => {
 
   return await response.json();
 }
+
+// for removeing a recipe from a book
+export const removeRecipe = async (data) => {
+  const { bookId, recipeId } = data;
+  const response = await csrfFetch(`/api/book/${bookId}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ recipeId }),
+    header: { 'Content-Type': 'application/json' }
+  });
+
+  return await response.json();
+}

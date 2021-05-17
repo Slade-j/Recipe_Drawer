@@ -31,7 +31,7 @@ router.post('/recipes', asyncHandler(async (req, res) => {
   } catch (err) {
     console.log(err, "errfrom post")
   }
-}))
+}));
 
 // adding recipe to book
 router.post('/:bookId', asyncHandler(async (req, res) => {
@@ -43,5 +43,18 @@ router.post('/:bookId', asyncHandler(async (req, res) => {
   await book.addRecipe(recipe);
 
   return res.json({ book, recipe });
-}))
+}));
+
+// removing recipe from book
+router.delete('/:bookId', asyncHandler(async (req, res) => {
+  const { bookId } = req.params;
+  const { recipeId } = req.body;
+
+  const recipe = await Recipe.findOne({where: { id: recipeId }});
+  const book = await Book.findOne({where: { id: bookId }});
+  await book.removeRecipe(recipe);
+
+  return res.json({ book, recipe });
+}));
+
 module.exports = router;

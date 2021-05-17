@@ -19,7 +19,7 @@ const BookAdd = ({ setAddShow, recipe }) => {
   }
 
   return (
-    <div className={styles.overlay} onSubmit={handleClick}>
+    <div className={styles.overlay} onClick={handleClick}>
       <form className={styles.submitForm} onSubmit={handleAddSubmit}>
         <div className={styles.grid}>
           {books.length > 0 ? books.map(book => (

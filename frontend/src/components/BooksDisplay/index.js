@@ -46,7 +46,9 @@ const BooksDisplay = () => {
   // }, [])
 
 // ********holding for elements*********************
-
+// <button className={'addRecipe'} onClick={handleAdd}>
+//             Add a recipe
+//           </button>
 // *************************************************
   return (
     <div className={styles.mainWrapper}>
@@ -54,11 +56,7 @@ const BooksDisplay = () => {
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}>
-          <button className={'addRecipe'} onClick={handleAdd}>
-            Add a recipe
-          </button>
-        </div>
+        <div className={styles.recipeNav}></div>
         <div className={styles.header}>
           {show && <BookCreate user={user} setShow={setShow}/>}
         </div>
@@ -69,7 +67,7 @@ const BooksDisplay = () => {
         </div>
         <div className={styles.scroller} >
           {recipes.length > 0 && recipes.map(recipe => (
-            <Recipe key={recipe.title} recipe={recipe} />
+            <Recipe key={recipe.title} recipe={recipe} bookId={id} />
           ))}
         </div>
       </div>
