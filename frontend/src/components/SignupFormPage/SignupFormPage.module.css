@@ -75,6 +75,11 @@
   font-size: 18px;
 }
 
+.form button:hover {
+  filter: brightness(.895);
+  cursor: pointer;
+}
+
 .linkWrapper {
   margin-top: 15px;
   width: 80%;
