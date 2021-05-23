@@ -65,6 +65,16 @@ const BooksDisplay = () => {
     history.push('/new-recipe')
   }
 
+  const handleScroll = (e) => {
+    if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+      getLimitBooks({ offset, limit, id })
+      .then(res => setRecipes(prevState => [...prevState, ...res]))
+      .then(() =>  setOffset(prevState => {
+        console.log(prevState, 'prevstate', prevState + 3, 'addition');
+        return prevState + 3}))
+    }
+  }
+
 // ********holding for elements*********************
 // <button className={'addRecipe'} onClick={handleAdd}>
 //             Add a recipe
@@ -100,7 +110,7 @@ const BooksDisplay = () => {
           </div>
         </div>
       </div>
-      <div className={styles.scrollFlexer}>
+      <div className={styles.scrollFlexer} onScroll={handleScroll}>
         <div className={styles.flexer}>
           <div className={styles.header}>
             {show && <BookCreate user={user} setShow={setShow}/>}
