@@ -15,7 +15,6 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
 
   useEffect(() => {
     // console.log(ingredients.split('\n'), 'RECIPE from recipe')
-    console.log(changed, 'inrecipeeffect')
   }, [changed]);
 
   const handleEClick = () => {
@@ -29,14 +28,12 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
   const handleRemove = () => {
     window.confirm(`Remove ${title.toUpperCase()} from book?`) &&
     removeRecipe({bookId, recipeId: recipe.id})
-      .then(() => console.log(changed, 'changed in remove'))
       .then(() => setChanged(!changed))
-      .then(() => console.log(changed, 'changed in remove2'))
   }
 
   return (
     <div className={styles.mainWrapper}>
-      <RecipeEdit recipe={recipe} show={show} setShow={setShow} />
+      <RecipeEdit recipe={recipe} show={show} setShow={setShow} changed={changed} setChanged={setChanged}/>
       {addShow && <BookAdd setAddShow={setAddShow} recipe={recipe} />}
       <div className={styles.editWrapper}>
         <button className={styles.editRecipe} onClick={handleEClick}>

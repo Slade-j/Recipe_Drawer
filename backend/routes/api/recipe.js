@@ -29,4 +29,20 @@ router.post('/', asyncHandler(async (req, res) => {
   return res.json({ newRecipe });
 }))
 
+// Editing an existing recipe
+router.put('/', asyncHandler(async (req, res) => {
+  const { title, mainIngredient, directions, ingredients, id } = req.body;
+
+  const recipe = await Recipe.findByPk(id);
+
+  const result = await recipe.update({
+    title,
+    mainIngredient,
+    directions,
+    ingredients
+  })
+
+  return res.json({ result });
+}))
+
 module.exports = router;

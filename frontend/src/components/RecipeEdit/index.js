@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './RecipeEdit.module.css';
+import { editRecipe } from '../../utils/recipeUtil';
 
-const RecipeEdit = ({recipe, setShow, show}) => {
+const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
   const [ title, setTitle ] = useState(recipe.title);
 
   // refactor default value once mainIngredient option is included in
@@ -15,6 +16,7 @@ const RecipeEdit = ({recipe, setShow, show}) => {
   const [ directions, setDirections ] = useState(recipe.directions);
   const [ isDisabled, setIsDisabled ] = useState(true);
   const [ display, setDisplay ] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
     show?setDisplay(styles.overlay):setDisplay(styles.invisable);
@@ -23,8 +25,16 @@ const RecipeEdit = ({recipe, setShow, show}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { title, mainIngredient, ingredients, directions };
-    // editRecipe(data).then(() => setShow(false));
+    const data = {
+      title,
+      mainIngredient,
+      ingredients,
+      directions,
+      id: recipe.id
+    }
+    editRecipe(data)
+    .then(() => setChanged(!changed))
+    .then(() => setShow(false))
   }
 
   const handleClick = (e) => {

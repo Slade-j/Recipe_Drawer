@@ -17,6 +17,7 @@ const RecipeDisplay = () => {
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
+  const [ changed, setChanged ] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
@@ -31,6 +32,16 @@ const RecipeDisplay = () => {
         setIsLoading(false)
       })
   }, [isLoading])
+
+  useEffect(() => {
+    if (isLoading) return;
+    getLimitRecipes({ offset: 0, limit, userId: user.id })
+    .then(res => setRecipes([...res]))
+    .then(() => {
+      setOffset(prevState => prevState + 3);
+      setIsLoading(false)
+    })
+  }, [changed])
 
   useEffect(() => {
     if (!recipes.length) return;
@@ -98,7 +109,11 @@ const RecipeDisplay = () => {
             </div>
             <div className={styles.scroller} >
               {recipes.length > 0 && recipes.map(recipe => (
-                <Recipe key={recipe.title} recipe={recipe} />
+                <Recipe
+                key={recipe.title}
+                recipe={recipe}
+                changed={changed}
+                setChanged={setChanged}/>
               ))}
             </div>
           </div>
