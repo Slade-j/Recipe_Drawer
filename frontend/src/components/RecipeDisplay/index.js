@@ -20,14 +20,14 @@ const RecipeDisplay = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
-  const limit = 4;
+  const limit = 3;
 
   useEffect(() => {
     if (!isLoading) return;
     getLimitRecipes({ offset, limit, userId: user.id })
       .then(res => setRecipes([...res]))
       .then(() => {
-        setOffset(prevState => prevState + 4);
+        setOffset(prevState => prevState + 3);
         setIsLoading(false)
       })
   }, [isLoading])
@@ -42,6 +42,16 @@ const RecipeDisplay = () => {
 
   const handleUpload = () => {
     history.push('/new-recipe')
+  }
+
+  const handleScroll = (e) => {
+    if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+      getLimitRecipes({ offset, limit, userId: user.id })
+      .then(res => setRecipes(prevState => [...prevState, ...res]))
+      .then(() =>  setOffset(prevState => {
+        console.log(prevState, 'prevstate', prevState + 3, 'addition');
+        return prevState + 3}))
+    }
   }
 
 // ********holding for elements*********************
@@ -77,7 +87,7 @@ const RecipeDisplay = () => {
           </div>
         </div>
       </div>
-      <div className={styles.scrollFlexer}>
+      <div className={styles.scrollFlexer} onScroll={handleScroll}>
         <div className={styles.flexer}>
           <div className={styles.header}>
             {show && <BookCreate user={user} setShow={setShow}/>}
