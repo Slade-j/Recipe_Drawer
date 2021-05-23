@@ -19,6 +19,19 @@ export const getLimitRecipes = async (params) => {
     body: JSON.stringify(params),
     header: { 'Content-Type': 'application/json' }
   });
-
   return await response.json();
+}
+
+// for editing a recipe
+
+export const editRecipe = async (data) => {
+  const response = await csrfFetch('/api/recipe/', {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    header: { 'Content-Type': 'application/json'},
+  });
+  const value =  await response.json();
+  console.log(value, "return value from update");
+  return value;
+
 }

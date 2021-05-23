@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     const recipes = await Recipe.findAll({
       where: { userId },
       offset,
-      limit
+      limit,
+      order: [["id", 'ASC']]
     });
     return recipes;
   };
