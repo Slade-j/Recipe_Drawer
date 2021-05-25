@@ -27,6 +27,7 @@ const BookMenu = ({ setShow, currentId }) => {
 
   // **************holding elements*****************
   // <i className="fas fa-book fa-2x"></i>
+
   // ***********************************************
 
   return (
@@ -37,16 +38,16 @@ const BookMenu = ({ setShow, currentId }) => {
           <i className="fas fa-plus"></i>
         </button>
       </div>
-      <div className={'collections'}>
+      <div className={styles.collections}>
         {userBooks && userBooks.map(book => (
-          <div key={Math.random() + book.title} className={'navWrapper'}>
-            <NavLink key={book.title} to={`/${book.id}`} exact={true}>
-              <span key={book.title + Math.random()} className={'title'}>
+          <div key={Math.random() + book.title} className={styles.navWrapper}>
+            <NavLink className={styles.nav} key={book.title} to={`/${book.id}`} exact={true} activeClassName={styles.activeNav}>
+              <span key={book.title + Math.random()} className={styles.title}>
               {book.title}
               </span>
             </NavLink>
-            <button className={'deleteBook'} key={Math.random() + book.id} onClick={() => handleDelete(book.id, book.title)}>
-              <i key={Math.random() + Math.random()} className="far fa-times-circle"></i>
+            <button className={styles.deleteBook} key={Math.random() + book.id} onClick={() => handleDelete(book.id, book.title)}>
+            <i key={Math.random() + Math.random()} className="fas fa-minus"></i>
             </button>
           </div>
         ))}

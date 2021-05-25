@@ -3,18 +3,23 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  background-color: var(--pallet1-color-3);
 }
 
 .header {
   width: 100%;
-  height: 60px;
+  min-height: 60px;
   border: .25px var(--pallet1-color-1) solid;
   /* box-shadow: 0px 6px 6px rgba(var(--pallet1-rgba-4), .25); ; */
   display: flex;
-  margin-bottom: 10px;
+  /* margin-bottom: 20px; */
   align-items: center;
   padding: 0px 20px;
   justify-content: space-between;
+  position: relative;
+  box-shadow: -2px 3px 6px 0 var(--pallet1-color-1);
+  z-index: 1;
 }
 
 .header:hover {
@@ -24,6 +29,7 @@
 .books {
   font-size: 20px;
   color: var(--pallet1-color-4);
+  position: relative;
 }
 
 .header:hover .createBook {
@@ -35,6 +41,7 @@
   height: 29px;
   width: 29px;
   display: block;
+  position: relative;
 }
 
 .createBook {
@@ -43,4 +50,66 @@
 
 .header:hover .createBook:hover {
   background-color: var(--pallet1-color-3);
+}
+
+.collections {
+  width: 100%;
+  height: auto;
+    /* background-color: fuchsia; */
+  border-left: .25px var(--pallet1-color-1) solid;
+  border-right: .25px var(--pallet1-color-1) solid;
+  border-bottom: .25px var(--pallet1-color-1) solid;
+  padding: 20px 0px;
+  background-color: var(--pallet1-color-3);
+  box-shadow: -2px 2px 6px 0 var(--pallet1-color-1);
+  z-index: 2;
+}
+
+.navWrapper {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navWrapper:hover {
+  background-color: rgba(0, 0, 0, .15);
+}
+
+.nav,
+.title
+.navWrapper a {
+  text-shadow: 1px 0px var(--pallet1-color-1);
+  color: var(--pallet1-color-4);
+  font-weight: 400;
+  text-decoration: none;
+  position: relative;
+}
+
+.deleteBook {
+  display: none;
+}
+
+.navWrapper:hover .deleteBook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 0px var(--pallet1-color-1);
+  color: var(--pallet1-color-4);
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  height: 25px;
+  width: 25px;
+}
+
+.navWrapper:hover .deleteBook:hover {
+  background-color: var(--pallet1-color-3);
+  /* color: #fff; */
+  cursor: pointer;
 }
