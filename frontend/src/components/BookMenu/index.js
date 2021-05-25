@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { deleteBook } from '../../store/books';
-import syles from './BookMenu.module.css';
+import styles from './BookMenu.module.css';
 
 const BookMenu = ({ setShow, currentId }) => {
   const userBooks = useSelector(state => state.books.allBooks);
@@ -27,26 +27,27 @@ const BookMenu = ({ setShow, currentId }) => {
 
   // **************holding elements*****************
   // <i className="fas fa-book fa-2x"></i>
+
   // ***********************************************
 
   return (
-    <div className={'mainWrapper'}>
-      <div className={'header'}>
-        <span className={'books'}>Recipe Books</span>
-        <button className={'createBook'} onClick={handleCreate}>
+    <div className={styles.mainWrapper}>
+      <div className={styles.header}>
+        <span className={styles.books}>Recipe Books</span>
+        <button className={styles.createBook} onClick={handleCreate}>
           <i className="fas fa-plus"></i>
         </button>
       </div>
-      <div className={'collections'}>
+      <div className={styles.collections}>
         {userBooks && userBooks.map(book => (
-          <div key={Math.random() + book.title} className={'navWrapper'}>
-            <NavLink key={book.title} to={`/${book.id}`} exact={true}>
-              <span key={book.title + Math.random()} className={'title'}>
+          <div key={Math.random() + book.title} className={styles.navWrapper}>
+            <NavLink className={styles.nav} key={book.title} to={`/${book.id}`} exact={true} activeClassName={styles.activeNav}>
+              <span key={book.title + Math.random()} className={styles.title}>
               {book.title}
               </span>
             </NavLink>
-            <button className={'deleteBook'} key={Math.random() + book.id} onClick={() => handleDelete(book.id, book.title)}>
-              <i key={Math.random() + Math.random()} className="far fa-times-circle"></i>
+            <button className={styles.deleteBook} key={Math.random() + book.id} onClick={() => handleDelete(book.id, book.title)}>
+            <i key={Math.random() + Math.random()} className="fas fa-minus"></i>
             </button>
           </div>
         ))}
