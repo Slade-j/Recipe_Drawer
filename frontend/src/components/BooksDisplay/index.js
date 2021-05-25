@@ -22,14 +22,14 @@ const BooksDisplay = () => {
   const history = useHistory();
   const user = useSelector(state => state.session.user);
   const id = useParams().bookid;
-  const limit = 4;
+  const limit = 3;
 
   useEffect(() => {
     if (!isLoading) return;
       getLimitBooks({ offset, limit, id })
-        .then(res => setRecipes([...res.Recipes]))
+        .then(res => setRecipes([...res]))
         .then(() => {
-          setOffset(prevState => prevState + 4);
+          setOffset(prevState => prevState + 3);
           setIsLoading(false)
         })
   }, [isLoading])
@@ -46,9 +46,9 @@ const BooksDisplay = () => {
   useEffect(() => {
     if (isLoading) return;
     getLimitBooks({ offset: 0, limit, id })
-    .then(res => setRecipes([...res.Recipes]))
+    .then(res => setRecipes([...res]))
     .then(() => {
-      setOffset(prevState => prevState + 4);
+      setOffset(prevState => prevState + 3);
       setIsLoading(false)
     })
   }, [changed])
@@ -68,10 +68,10 @@ const BooksDisplay = () => {
   const handleScroll = (e) => {
     if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
       getLimitBooks({ offset, limit, id })
-      .then(res => setRecipes(prevState => [...prevState, ...res]))
-      .then(() =>  setOffset(prevState => {
-        console.log(prevState, 'prevstate', prevState + 3, 'addition');
-        return prevState + 3}))
+        .then(res => setRecipes(prevState => [...prevState, ...res]))
+        .then(() =>  setOffset(prevState => {
+          console.log(prevState, 'prevstate', prevState + 3, 'addition');
+          return prevState + 3}))
     }
   }
 
