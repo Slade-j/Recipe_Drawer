@@ -26,9 +26,11 @@ router.post('/', asyncHandler(async (req, res) => {
 // getting all recipes for a book
 router.post('/recipes', asyncHandler(async (req, res) => {
   const { id, limit, offset } = req.body;
+
   try {
-    const books = await Book.getByLimit({ id, limit, offset, Recipe });
-    return res.json(books);
+    const recipes = await Book.getByLimit({ id, limit, offset });
+    return res.json(recipes);
+
   } catch (err) {
     console.log(err, "errfrom post")
   }

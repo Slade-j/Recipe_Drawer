@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { deleteBook } from '../../store/books';
+import syles from './BookMenu.module.css';
 
 const BookMenu = ({ setShow, currentId }) => {
   const userBooks = useSelector(state => state.books.allBooks);
