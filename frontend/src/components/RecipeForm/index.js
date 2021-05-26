@@ -4,26 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { createRecipe } from '../../utils/recipeUtil';
 import * as sessionActions from '../../store/session';
 import Uploader from '../Uploader';
-import styles, {
-  titleGood,
-  ingredientsGood,
-  discriptionGood,
-  enabled,
-  submitWrapper,
-  submitForm,
-  setWrapper,
-  textArea,
-  titleButton,
-  ingredientButton,
-  instructionButton,
-  titleInput,
-  ingredientInput,
-  instructionInput,
-  inputWrapper,
-  subButtonWrapper,
-  disabled,
-  ingredientTextWrapper,
-  instructionTextWrapper, } from './RecipeForm.module.css';
+import styles from './RecipeForm.module.css';
 import { resetReview } from '../../store/recipe';
 
 const RecipeForm = () => {
@@ -36,6 +17,8 @@ const RecipeForm = () => {
   const [ titleCheck, setTitleCheck ] = useState('');
   const [ ingredientsCheck, setIngredientsCheck ] = useState('');
   const [ instructionCheck, setInstructionCheck ] = useState('');
+  const [ mainIngredientCheck, setMainIngredientCheck ] = useState('');
+  const [ mainIngredient, setMainIngredient ] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector(state => state.recipe.review);
@@ -53,7 +36,7 @@ const RecipeForm = () => {
 
   useEffect(()=> {
     if (title) {
-      setTitleCheck(titleGood);
+      setTitleCheck(styles.titleGood);
     } else {
       setTitleCheck('');
     }
@@ -61,7 +44,7 @@ const RecipeForm = () => {
 
   useEffect(()=> {
     if (ingredients) {
-      setIngredientsCheck(ingredientsGood);
+      setIngredientsCheck(styles.ingredientsGood);
     } else {
       setIngredientsCheck('');
     }
@@ -69,11 +52,19 @@ const RecipeForm = () => {
 
   useEffect(()=> {
     if (instruction) {
-      setInstructionCheck(discriptionGood);
+      setInstructionCheck(styles.discriptionGood);
     } else {
       setInstructionCheck('');
     }
   }, [instruction])
+
+  useEffect(() => {
+    if (mainIngredient) {
+      setMainIngredientCheck(styles.mainIngredientGood);
+    } else {
+      setMainIngredientCheck('');
+    }
+  })
 
   useEffect(() => {
     // if (!review) return;
@@ -106,6 +97,7 @@ const RecipeForm = () => {
     const data = {
       title,
       ingredients,
+      mainIngredient,
       directions: instruction,
       originUrl: url,
       userId: currentUser.id
@@ -124,11 +116,13 @@ const RecipeForm = () => {
       <div className={styles.grid}>
         <div className={styles.header}>
           <div className={styles.headerFlex}>
-            <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+          <button className={styles.hintHider}>Disable prompts</button>
             <span className={styles.headerTitle}>
-              Create a new Recipe!
+              Create a new Recipe
             </span>
-            <button className={styles.hintHider}>Disable prompts</button>
+            <button className={styles.cancel} onClick={handleCancel}>
+            <i class="fas fa-times"></i>
+            </button>
           </div>
         </div>
         <div className={styles.formsWrapper}>
@@ -136,7 +130,7 @@ const RecipeForm = () => {
             <form className={styles.stageingForm}>
               {areaValue?
                 <textarea
-                  className={textArea}
+                  className={styles.textArea}
                   value={areaValue}
                   onChange={e => setAreaValue(e.target.value)}>
                   </textarea>
@@ -149,25 +143,30 @@ const RecipeForm = () => {
               </div>
             </form>
           </div>
-          <div className={submitWrapper}>
-            <form className={submitForm} onSubmit={handleSubmit}>
-              <div className={`${titleInput} ${titleCheck}`}>
-                <div className={inputWrapper}>
-                  <input value={title} onChange={e => setTitle(e.target.value)}></input>
+          <div className={styles.submitWrapper}>
+            <form className={styles.submitForm} onSubmit={handleSubmit}>
+              <div className={`${styles.titleInput} ${titleCheck}`}>
+                <div className={styles.inputWrapper}>
+                  <input className={styles.inputTitle} value={title} onChange={e => setTitle(e.target.value)} />
                 </div>
               </div>
-              <div className={`${ingredientInput} ${ingredientsCheck}`}>
-                <div className={ingredientTextWrapper}>
-                  <textarea id={'ingredient'} value={ingredients} onChange={e => setIngredients(e.target.value)} />
+              <div className={`${styles.titleInput} ${mainIngredientCheck}`}>
+                <div className={styles.inputWrapper}>
+                  <input className={styles.inputMain} value={mainIngredient} onChange={e => setMainIngredient(e.target.value)} placeholder='--Enter The Main Ingredient--'/>
                 </div>
               </div>
-              <div className={`${instructionInput} ${instructionCheck}`}>
-                <div className={instructionTextWrapper}>
-                  <textarea value={instruction} onChange={e => setInstruction(e.target.value)} />
+              <div className={`${styles.ingredientInput} ${ingredientsCheck}`}>
+                <div className={styles.ingredientTextWrapper}>
+                  <textarea className={styles.ingredient} value={ingredients} onChange={e => setIngredients(e.target.value)} />
                 </div>
               </div>
-              <div className={subButtonWrapper}>
-                <button className={isDisabled?disabled:enabled} disabled={isDisabled}>Create Recipe</button>
+              <div className={`${styles.instructionInput} ${instructionCheck}`}>
+                <div className={styles.instructionTextWrapper}>
+                  <textarea className={styles.directions} value={instruction} onChange={e => setInstruction(e.target.value)} />
+                </div>
+              </div>
+              <div className={styles.subButtonWrapper}>
+                <button className={isDisabled?styles.disabled:styles.enabled} disabled={isDisabled}>Create Recipe</button>
               </div>
             </form>
           </div>
