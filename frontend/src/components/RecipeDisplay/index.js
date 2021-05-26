@@ -101,7 +101,6 @@ const RecipeDisplay = () => {
       <div className={styles.scrollFlexer} onScroll={handleScroll}>
         <div className={styles.flexer}>
           <div className={styles.header}>
-            {show && <BookCreate user={user} setShow={setShow}/>}
           </div>
           <div className={styles.bookFlex}>
             <div className={styles.books}>

@@ -40,19 +40,23 @@ const BookCreate = ({ user, setShow }) => {
 
   return (
     <div className={styles.overlay} onClick={handleClick}>
-      <form className={styles.submitForm} onSubmit={handleCreate}>
-        <div className={'cancelWrapper'}>
-          <button className={'canceler'} onClick={handleCancel}>Cancel</button>
+      <div className={styles.mainWrapper}>
+        <div className={styles.cancelWrapper}>
+          <button className={styles.canceler} onClick={handleCancel}>
+          <i class="fas fa-times"></i>
+          </button>
         </div>
-        <div className={'inputWrapper'}>
-          <input value={title} onChange={e=>setTitle(e.target.value)} />
-        </div>
-        <div className={'subButtonWrapper'}>
-          <button className={'addRecipes'} onClick={handleCancel}>Add Recipes</button>
-          <div className={'or'}><span>OR</span></div>
-          <button className={'create'} disabled={isDisabled}>Create Book Now</button>
-        </div>
-      </form>
+        <form className={styles.submitForm} onSubmit={handleCreate}>
+          <div className={styles.inputWrapper}>
+            <input value={title} onChange={e=>setTitle(e.target.value)} placeholder='Enter New Book Title' />
+          </div>
+          <div className={styles.subButtonWrapper}>
+            <button className={styles.addRecipes} onClick={handleCancel}>Add Recipes</button>
+            <div className={styles.or}><span>OR</span></div>
+            <button className={styles.create} disabled={isDisabled}>Create Book Now</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

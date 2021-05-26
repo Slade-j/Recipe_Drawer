@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { deleteBook } from '../../store/books';
+import BookCreate from '../BookCreate';
 import styles from './BookMenu.module.css';
 
-const BookMenu = ({ setShow, currentId }) => {
+const BookMenu = ({ currentId }) => {
   const userBooks = useSelector(state => state.books.allBooks);
   const user = useSelector(state => state.session.user);
+  const [ show, setShow ] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -39,6 +41,7 @@ const BookMenu = ({ setShow, currentId }) => {
         </button>
       </div>
       <div className={styles.collections}>
+        {show && <BookCreate user={user} setShow={setShow}/>}
         {userBooks && userBooks.map(book => (
           <div key={Math.random() + book.title} className={styles.navWrapper}>
             <NavLink className={styles.nav} key={book.title} to={`/${book.id}`} exact={true} activeClassName={styles.activeNav}>
