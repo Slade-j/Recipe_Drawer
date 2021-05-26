@@ -8,6 +8,7 @@ import { removeRecipe } from '../../utils/bookUtil';
 const Recipe = ({recipe, bookId, setChanged, changed}) => {
   const title = recipe.title;
   const directions = recipe.directions;
+  const mainIngredient = recipe.mainIngredient;
   const ingredients = recipe.ingredients.split('\n');
   const [ show, setShow ] = useState(false);
   const [ addShow, setAddShow ] = useState(false);
@@ -35,17 +36,20 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
     <div className={styles.mainWrapper}>
       <RecipeEdit recipe={recipe} show={show} setShow={setShow} changed={changed} setChanged={setChanged}/>
       {addShow && <BookAdd setAddShow={setAddShow} recipe={recipe} />}
-      <div className={styles.editWrapper}>
-        <button className={styles.editRecipe} onClick={handleEClick}>
-          <i className="far fa-edit fa-2x"></i>
-        </button>
-        {bookId &&
-          <button className={styles.removeBook} onClick={handleRemove}>
-            <i className="fas fa-book-dead fa-2x"></i>
-          </button>}
-        <button className={styles.addBook} onClick={handleAdd}>
-          <i className="fas fa-book-medical fa-2x"></i>
-        </button>
+      <div className={styles.headContent}>
+        <span className={styles.mainIngredient}>{mainIngredient}</span>
+        <div className={styles.editWrapper}>
+          <button className={styles.editRecipe} onClick={handleEClick}>
+            <i className="far fa-edit fa-2x"></i>
+          </button>
+          {bookId &&
+            <button className={styles.removeBook} onClick={handleRemove}>
+              <i className="fas fa-book-dead fa-2x"></i>
+            </button>}
+          <button className={styles.addBook} onClick={handleAdd}>
+            <i className="fas fa-book-medical fa-2x"></i>
+          </button>
+        </div>
       </div>
       <div className={styles.titleWrapper}>
         <h1 className={styles.titleHolder}>{title.toUpperCase()}</h1>
@@ -60,7 +64,7 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
       </div>
       <div className={styles.directionsWrapper}>
         <h3>Directions</h3>
-        <p>{recipe.directions}</p>
+        <p>{directions}</p>
       </div>
     </div>
   )

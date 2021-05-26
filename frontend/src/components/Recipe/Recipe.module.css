@@ -14,13 +14,29 @@
   margin-top: 25px;
 }
 
-.editWrapper {
+.headContent {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.mainIngredient {
+  color: var(--pallet1-color-3);
+  margin-left: 40px;
+  padding: 0px 10px;
+  /* border: .25px var(--pallet1-color-1) solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editWrapper {
   height: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  margin-top: 20px;
 }
 
 .editRecipe,
