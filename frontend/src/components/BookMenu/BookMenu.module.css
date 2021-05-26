@@ -3,7 +3,6 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  position: relative;
   background-color: var(--pallet1-color-3);
 }
 
@@ -17,7 +16,6 @@
   align-items: center;
   padding: 0px 20px;
   justify-content: space-between;
-  position: relative;
   box-shadow: -2px 3px 6px 0 var(--pallet1-color-1);
   z-index: 1;
 }
@@ -29,7 +27,6 @@
 .books {
   font-size: 20px;
   color: var(--pallet1-color-4);
-  position: relative;
 }
 
 .header:hover .createBook {
@@ -41,7 +38,6 @@
   height: 29px;
   width: 29px;
   display: block;
-  position: relative;
 }
 
 .createBook {
@@ -72,7 +68,6 @@
   align-items: center;
   padding: 0px 20px;
   justify-content: space-between;
-  position: relative;
 }
 
 .navWrapper:hover {
@@ -86,7 +81,6 @@
   color: var(--pallet1-color-4);
   font-weight: 400;
   text-decoration: none;
-  position: relative;
 }
 
 .deleteBook {

@@ -11,9 +11,38 @@
   align-items: center;
 }
 
-.submitForm {
-  height: 700px;
+.mainWrapper {
   width: 630px;
+  height: 200px;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.cancelWrapper {
+  width: 26px;
+  padding-right: 5px;
+  padding-top: 2px;
+}
+.canceler {
+  background-color: transparent;
+  border: none;
+  height: 21px;
+  width: 21px;
+  border-radius: 5px;
+}
+
+.canceler:hover {
+  background-color: firebrick;
+  color: #fff;
+
+}
+
+.submitForm {
+  /* height: 700px; */
+  width: 600px;
   background-color: #fff;
   border-radius: 5px;
   border: 2px rgba(0, 0, 0, .15);
@@ -23,4 +52,53 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+}
+.inputWrapper {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
+.inputWrapper input {
+  height: 60px;
+  width: 80%;
+  outline: none;
+  border: none;
+  text-align: center;
+  border: 2px rgba(0, 0, 0, .15) solid;
+  box-shadow: -2px 2px 6px 0 rgba(0, 0, 0, .15);
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.inputWrapper input:hover,
+.inputWrapper input:focus {
+  margin-right: 2px;
+  border: 2px rgba(0, 0, 0, .20) solid;
+  box-shadow: -4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.subButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.addRecipes, .or {
+  display: none;
+}
+
+.create {
+  height: 50px;
+  width: 150px;
+  background-color: var(--pallet1-color-2);
+  border: 2px rgba(0, 0, 0, .2) solid;
+  box-shadow: -4px 4px 6px 0 rgba(0, 0, 0, .2);
+  color: #fff;
+  font-size: 15px;
+}
+
+.create:disabled {
+  background-color: rgba(var(--pallet1-rgba-2), .3);
+  box-shadow: -2px 2px 6px 0 rgba(0, 0, 0, .15);
+  border: 2px rgba(0, 0, 0, .15) solid;
 }
