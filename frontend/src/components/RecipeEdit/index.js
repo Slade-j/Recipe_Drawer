@@ -90,10 +90,10 @@ const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
   }
 
 // *****************holding for elements***************
-// <div className={'editWrapper'}>
-// <div className={'inputWrapper'}>
-// <div className={'ingredientInput'}>
-// <div className={'directionsInput'}>
+// <label className={styles.label}>Title</label>
+// <label className={styles.label}>Main Ingredient</label>
+// <label className={styles.label}>Directions</label>
+// <label className={styles.label}>Ingredients</label>
 // ****************************************************
 
   return (
