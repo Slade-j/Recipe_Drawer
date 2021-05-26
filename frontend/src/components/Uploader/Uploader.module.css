@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
+.uploadSelector:active {
+  margin-top: 4px;
+}
+
 .previewer {
   height: 30%;
   width: 21.21%;
@@ -69,6 +73,14 @@
   font-weight: 400;
   background-color: rgb(178, 34, 34);
   color: #fff;
+}
+
+.uploadButton:hover {
+  filter:brightness(80%)
+}
+
+.uploadButton:active {
+  margin-top: 4px;
 }
 
 .uploadButton:disabled {

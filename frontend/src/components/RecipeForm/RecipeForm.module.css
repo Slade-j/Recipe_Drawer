@@ -49,6 +49,20 @@
 .cancel, .hintHider {
   margin: 0;
 }
+
+.cancel {
+  border: none;
+  height: 21px;
+  width: 21px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.cancel:hover {
+  background-color: firebrick;
+  color: #fff;
+}
+
 /* .headSpacer {
   height: 100%;
   width: 50%;
@@ -82,6 +96,10 @@
 
 .enabled {
   background-color: green;
+}
+
+.enabled:hover {
+  filter:brightness(80%);
 }
 
 .formsWrapper {
@@ -138,6 +156,10 @@
   border: none;
 }
 
+button:active {
+  margin-top: 4px;
+}
+
 .titleButton,
 .ingredientButton,
 .instructionButton {
@@ -153,8 +175,9 @@
 }
 
 .titleButton:hover {
-  background-color: rgba(178, 34, 34, .7);
+  background-color: rgba(178, 34, 34, .8);
   color: #fff;
+  cursor: pointer;
 }
 
 .ingredientButton, .ingredientsGood {
@@ -162,8 +185,9 @@
 }
 
 .ingredientButton:hover {
-  background-color: rgba(178, 178, 34, .7);
+  background-color: rgba(178, 178, 34, .8);
   color: #fff;
+  cursor: pointer;
 }
 
 .instructionButton, .discriptionGood {
@@ -171,8 +195,13 @@
 }
 
 .instructionButton:hover {
-  background-color: rgba(34, 178, 34, .7);
+  background-color: rgba(34, 178, 34, .8);
   color: #fff;
+  cursor: pointer;
+}
+
+.mainIngredientGood {
+  background-color: rgba(0, 109, 172, .6);
 }
 
 .submitForm {
@@ -219,6 +248,52 @@
   height: 100%;
   margin: 0;
   border: none;
+  resize: none;
+}
+
+.inputTitle:focus {
+  box-shadow:
+    -6px -6px 12px rgba(178, 34, 34, .3),
+    6px 6px 12px rgba(178, 34, 34, .3),
+    -6px 6px 12px rgba(178, 34, 34, .3),
+    6px -6px 12px rgba(178, 34, 34, .3);
+  outline: none;
+  border:2px rgb(178, 34, 34) solid;
+}
+
+.inputMain {
+  text-align: center;
+  font-size: 15px;
+}
+
+.inputMain:focus {
+  box-shadow:
+    -6px -6px 12px rgba(0, 109, 172, .3),
+    6px 6px 12px rgba(0, 109, 172, .3),
+    -6px 6px 12px rgba(0, 109, 172, .3),
+    6px -6px 12px rgba(0, 109, 172, .3);
+  outline: none;
+  border: 2px rgb(0, 109, 172) solid;
+}
+
+.ingredient:focus {
+  box-shadow:
+    -6px -6px 12px rgba(178, 178, 34, .3),
+    6px 6px 12px rgba(178, 178, 34, .3),
+    -6px 6px 12px rgba(178, 178, 34, .3),
+    6px -6px 12px rgba(178, 178, 34, .3);
+  outline: none;
+  border:2px rgb(178, 178, 34) solid;
+}
+
+.directions:focus {
+  box-shadow:
+    -6px -6px 12px rgba(34, 178, 34, .3),
+    6px 6px 12px rgba(34, 178, 34, .3),
+    -6px 6px 12px rgba(34, 178, 34, .3),
+    6px -6px 12px rgba(34, 178, 34, .3);
+  outline: none;
+  border:2px rgb(34, 178, 34,) solid;
 }
 
 .subButtonWrapper {

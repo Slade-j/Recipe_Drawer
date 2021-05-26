@@ -22,10 +22,11 @@ router.post('/', asyncHandler(async (req, res) => {
     ingredients,
     directions,
     originUrl,
-    userId
+    userId,
+    mainIngredient
   } = req.body;
 
-  const newRecipe = await Recipe.createNewRecipe({ title, ingredients, directions, originUrl, userId })
+  const newRecipe = await Recipe.createNewRecipe({ title, ingredients, directions, originUrl, userId, mainIngredient })
   return res.json({ newRecipe });
 }))
 
