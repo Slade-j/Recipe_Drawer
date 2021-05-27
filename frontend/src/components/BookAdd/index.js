@@ -37,7 +37,7 @@ const BookAdd = ({ setAddShow, recipe }) => {
             )): <span key={'noBooks'}>There are no books</span>}
           </div>
           <div className={styles.confirmWrapper}>
-            <div className={styles.bookList}>
+            <div className={subValue.length > 0 ? `${styles.bookList} ${styles.activeList}`: styles.bookList}>
               {subValue.length > 0 && subValue.map(elem => {
                 const book = books.find(book => parseInt(elem) === book.id)
                 return <span key={'unique' + book.title}>{book.title}</span>

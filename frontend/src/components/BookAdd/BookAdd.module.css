@@ -70,12 +70,43 @@
 .bookList {
   min-height: 50px;
   border: .25px rgba(0, 0, 0, .15) solid;
-  border-radius: 5px 0px 0px 5px;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
   display: flex;
   flex-direction: column;
   padding: 10px 10px 10px 10px;
 }
 
+.activeList {
+  border: .25px rgba(0, 0, 0, .5) solid;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, .5)
+}
+
+.bookList span {
+  padding-bottom: 5px;
+}
+
 .submit {
-  height: 60px;
+  height: 40px;
+  font-size: 15px;
+  background-color: var(--pallet1-color-2);
+  color: #fff;
+  border-radius: 0px 0px 5px 5px;
+  border: none;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, .5)
+}
+
+.submit:disabled {
+  background-color: rgba(var(--pallet1-rgba-2), .15);
+  border: none;
+  box-shadow: none;
+}
+
+.submit:hover {
+  background-color: rgba(var(--pallet1-rgba-2), .9);
+  cursor: pointer;
+}
+
+.submit:active {
+  margin-right: 2px;
 }
