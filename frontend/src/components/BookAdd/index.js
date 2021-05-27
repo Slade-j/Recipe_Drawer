@@ -31,7 +31,11 @@ const BookAdd = ({ setAddShow, recipe }) => {
               <div key={'thisKey' + book.title} className={styles.checkboxFlexer}>
                 <Checkbox setSubValue={setSubValue} book={book} />
                 <label key={book.id + Math.random()}>
-                  <i key={'fafa' + book.title} className="fas fa-book"></i><span key={book.title}>{book.title}</span>
+                  <i
+                    key={'fafa' + book.title}
+                    className={subValue.includes(book.id.toString())? `fas fa-book ${styles.activeI}`: 'fas fa-book'}>
+                    </i>
+                    <span key={book.title}>{book.title}</span>
                 </label>
               </div>
             )): <span key={'noBooks'}>There are no books</span>}

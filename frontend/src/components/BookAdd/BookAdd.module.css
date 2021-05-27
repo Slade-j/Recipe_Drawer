@@ -57,6 +57,10 @@
 
 
 .checkboxFlexer i {
+  color: rgba(var(--pallet1-rgba-3), .5);
+}
+
+.checkboxFlexer .activeI {
   color: var(--pallet1-color-3);
 }
 
