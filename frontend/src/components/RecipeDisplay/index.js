@@ -8,6 +8,7 @@ import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
 import { logout } from '../../store/session';
 import { NavLink, useHistory } from 'react-router-dom';
+import { useLocation } from '../../context/LocationProvider';
 
 
 
@@ -17,7 +18,7 @@ const RecipeDisplay = () => {
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
-  const [ location, setLocation ] = useState('');
+  const { location, setLocation } = useLocation();
   const [ changed, setChanged ] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -118,7 +119,7 @@ const RecipeDisplay = () => {
               ))}
             </div>
             <div className={styles.location}>
-                <h1 className={styles.locationText}>All Recipes</h1>
+                <h1 className={styles.locationText}><i className="fas fa-scroll"></i>All Recipes</h1>
             </div>
           </div>
         </div>

@@ -2,12 +2,11 @@
 
 // ************* src/index.js without Modal *************
 import React from 'react';
-
 import './index.css';
-
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import LocationProvider from './context/LocationProvider';
 import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
@@ -26,11 +25,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 function Root() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <LocationProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </LocationProvider>
   );
 }
 

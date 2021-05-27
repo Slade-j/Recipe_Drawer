@@ -8,6 +8,7 @@ import header from '../../assets/recipe_backgroundSimple.jpg';
 import BookCreate from '../BookCreate';
 import BookMenu from '../BookMenu';
 import { logout } from '../../store/session';
+import { useLocation } from '../../context/LocationProvider';
 
 
 
@@ -18,7 +19,7 @@ const BooksDisplay = () => {
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const [ changed, setChanged ] = useState(false);
-  const [ location, setLocation ] = useState('')
+  const { location, setLocation } = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
@@ -26,6 +27,7 @@ const BooksDisplay = () => {
   const limit = 3;
 
   useEffect(() => {
+    if (location === '') return;
     console.log(location, 'Location in bookdisplY')
   }, [location])
 
@@ -131,12 +133,13 @@ const BooksDisplay = () => {
                 recipe={recipe}
                 bookId={id}
                 changed={changed}
+                setRecipes={setRecipes}
                 setChanged={setChanged}/>
               ))}
             </div>
-            <div className={styles.location}>
-                <h1 className={styles.locationText}>{location}</h1>
-            </div>
+            {location !== '' && <div className={styles.location}>
+                <h1 className={styles.locationText}><i className="fas fa-book-open"></i>{location}</h1>
+            </div>}
           </div>
         </div>
       </div>
