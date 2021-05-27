@@ -18,11 +18,16 @@ const BooksDisplay = () => {
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const [ changed, setChanged ] = useState(false);
+  const [ location, setLocation ] = useState('')
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
   const id = useParams().bookid;
   const limit = 3;
+
+  useEffect(() => {
+    console.log(location, 'Location in bookdisplY')
+  }, [location])
 
   useEffect(() => {
     if (!isLoading) return;
@@ -117,7 +122,7 @@ const BooksDisplay = () => {
           </div>
           <div className={styles.bookFlex}>
             <div className={styles.books}>
-              <BookMenu setShow={setShow} currentId={id}/>
+              <BookMenu setShow={setShow} currentId={id} setLocation={setLocation}/>
             </div>
             <div className={styles.scroller} >
               {recipes.length > 0 && recipes.map(recipe => (
@@ -128,6 +133,9 @@ const BooksDisplay = () => {
                 changed={changed}
                 setChanged={setChanged}/>
               ))}
+            </div>
+            <div className={styles.location}>
+                <h1 className={styles.locationText}>{location}</h1>
             </div>
           </div>
         </div>

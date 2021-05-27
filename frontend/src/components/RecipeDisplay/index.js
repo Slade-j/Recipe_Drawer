@@ -17,6 +17,7 @@ const RecipeDisplay = () => {
   const [ recipes, setRecipes ] = useState([]);
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
+  const [ location, setLocation ] = useState('');
   const [ changed, setChanged ] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -104,7 +105,7 @@ const RecipeDisplay = () => {
           </div>
           <div className={styles.bookFlex}>
             <div className={styles.books}>
-              <BookMenu setShow={setShow}/>
+              <BookMenu setShow={setShow} setLocation={setLocation}/>
             </div>
             <div className={styles.scroller} >
               {recipes.length > 0 && recipes.map(recipe => (
@@ -115,6 +116,9 @@ const RecipeDisplay = () => {
                 setRecipes={setRecipes}
                 setChanged={setChanged}/>
               ))}
+            </div>
+            <div className={styles.location}>
+                <h1 className={styles.locationText}>All Recipes</h1>
             </div>
           </div>
         </div>
