@@ -5,7 +5,8 @@ const Checkbox = ({ book, setSubValue }) => {
 
   const handleChange = (e) => {
     setChecked(e.target.checked);
-    setSubValue(e.target.value);
+    e.target.checked ? setSubValue(prevState => [...prevState, e.target.value]):
+      setSubValue(prevState => prevState.filter(el => el !== e.target.value));
   }
 
   return (
