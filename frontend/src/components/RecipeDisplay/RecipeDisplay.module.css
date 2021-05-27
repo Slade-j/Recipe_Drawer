@@ -128,7 +128,7 @@
 .bookFlex {
   display: flex;
   flex-flow: row-reverse;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .books {
@@ -143,8 +143,9 @@
 }
 
 .location {
+  width: 280px;
   height: 60px;
-  margin: 60px 60px 0 0;
+  margin: 60px 40px 0 75px;
   position: sticky;
   top: 20px;
   border-bottom: 1px var(--pallet1-color-1) solid;
