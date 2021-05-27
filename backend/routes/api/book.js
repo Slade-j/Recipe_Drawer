@@ -37,15 +37,19 @@ router.post('/recipes', asyncHandler(async (req, res) => {
 }));
 
 // adding recipe to book
-router.post('/:bookId', asyncHandler(async (req, res) => {
-  const { bookId } = req.params;
-  const { recipeId } = req.body;
+router.post('/add-recipe', asyncHandler(async (req, res) => {
+  const { subValue, recipeId } = req.body;
 
   const recipe = await Recipe.findOne({where: { id: recipeId }});
-  const book = await Book.findOne({where: { id: bookId }});
-  await book.addRecipe(recipe);
+  const books = await Promise.all(
+    subValue.map(id => Book.findOne({where: { id }}))
+    )
 
-  return res.json({ book, recipe });
+  for (const book of books) {
+    await book.addRecipe(recipe);
+  }
+
+  return res.json({ recipe });
 }));
 
 // removing recipe from book
