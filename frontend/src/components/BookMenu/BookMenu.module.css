@@ -3,7 +3,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: var(--pallet1-color-3);
+  background-color: #fff;
 }
 
 .header {
@@ -18,11 +18,12 @@
   justify-content: space-between;
   box-shadow: -2px 3px 6px 0 var(--pallet1-color-1);
   z-index: 1;
+  background-color: var(--pallet1-color-3);
 }
 
-.header:hover {
-  background-color: rgba(0, 0, 0, .15);
-}
+/* .header:hover {
+
+} */
 
 .books {
   font-size: 20px;
@@ -45,13 +46,12 @@
 }
 
 .header:hover .createBook:hover {
-  background-color: var(--pallet1-color-3);
+  background-color: rgba(0, 0, 0, .15);
 }
 
 .collections {
   width: 100%;
   height: auto;
-    /* background-color: fuchsia; */
   border-left: .25px var(--pallet1-color-1) solid;
   border-right: .25px var(--pallet1-color-1) solid;
   border-bottom: .25px var(--pallet1-color-1) solid;

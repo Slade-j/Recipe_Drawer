@@ -26,9 +26,9 @@ export const getLimitBooks = async (params) => {
 // for adding a recipe to a book
 export const addRecipe = async (data) => {
   const { recipeId, subValue } = data;
-  const response = await csrfFetch(`/api/book/${subValue}`, {
+  const response = await csrfFetch('/api/book/add-recipe', {
     method: 'POST',
-    body: JSON.stringify({ recipeId }),
+    body: JSON.stringify({ recipeId, subValue }),
     header: { 'Content-Type': 'application/json' }
   });
 

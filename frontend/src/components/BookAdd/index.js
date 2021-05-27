@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './BookAdd.module.css';
 import { addRecipe } from '../../utils/bookUtil';
+import Checkbox from '../Checkbox';
 
 const BookAdd = ({ setAddShow, recipe }) => {
   const books = useSelector(state => state.books.allBooks);
-  const [ subValue, setSubValue ] = useState('');
+  const [ subValue, setSubValue ] = useState([]);
 
   const handleClick = (e) => {
     e.target.className === styles.overlay && setAddShow(false);
@@ -18,26 +19,36 @@ const BookAdd = ({ setAddShow, recipe }) => {
       .then(() => { setAddShow(false)})
   }
 
+  // <h4 className={'question'}>Add recipe to:</h4>
+
   return (
     <div className={styles.overlay} onClick={handleClick}>
       <form className={styles.submitForm} onSubmit={handleAddSubmit}>
-        <div className={styles.grid}>
-          {books.length > 0 ? books.map(book => (
-            <label htmlFor={book.id} key={book.id + Math.random()}>
-            <i className="far fa-edit fa-2x"></i>{book.title}
-              <input
-                id={book.id}
-                key={book.title}
-                className={'bookInput'}
-                value={book.id}
-                onClick={e => setSubValue(e.target.value)}/>
-            </label>
-          )): <span key={'noBooks'}>There are no books</span>}
-        </div>
-        <div className={'confirmWrapper'}>
-          <span className={'question'}>Add recipe to</span>
-          <input className={'subVal'} value={subValue}/>
-          <button className={'submit'}>Confrim</button>
+        <h2 className={styles.select}>Select a book to add a recipe</h2>
+        <div className={styles.formFlexer}>
+          <div className={styles.checkboxWrapper}>
+            {books.length > 0 ? books.map(book => (
+              <div key={'thisKey' + book.title} className={styles.checkboxFlexer}>
+                <Checkbox setSubValue={setSubValue} book={book} />
+                <label key={book.id + Math.random()}>
+                  <i
+                    key={'fafa' + book.title}
+                    className={subValue.includes(book.id.toString())? `fas fa-book ${styles.activeI}`: 'fas fa-book'}>
+                    </i>
+                    <span key={book.title}>{book.title}</span>
+                </label>
+              </div>
+            )): <span key={'noBooks'}>There are no books</span>}
+          </div>
+          <div className={styles.confirmWrapper}>
+            <div className={subValue.length > 0 ? `${styles.bookList} ${styles.activeList}`: styles.bookList}>
+              {subValue.length > 0 && subValue.map(elem => {
+                const book = books.find(book => parseInt(elem) === book.id)
+                return <span key={'unique' + book.title}>{book.title}</span>
+              })}
+            </div>
+            <button disabled={!subValue.length} className={styles.submit}>{subValue.length > 1? 'Add to books': 'Add to book'}</button>
+          </div>
         </div>
       </form>
     </div>
