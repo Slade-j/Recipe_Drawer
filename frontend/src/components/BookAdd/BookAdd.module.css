@@ -12,7 +12,7 @@
 }
 
 .submitForm {
-  height: 700px;
+  /* height: 700px; */
   width: 630px;
   background-color: #fff;
   border-radius: 5px;
@@ -23,11 +23,31 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
 }
 
-.grid {
+.select {
+  border-bottom: .25px var(--pallet1-color-1) solid;
+  color: rgba(var(--pallet1-rgba-2), .8);
+}
+
+.checkboxWrapper {
   width: 100%;
-  display: grid;
-  grid-template-columns: 210px, 210px, 210px;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxFlexer {
+  display: flex;
+  padding: 5px 10px;
+}
+
+.checkboxFlexer label,
+.checkboxFlexer span {
+  padding: 0px 5px;
+}
+
+
+.checkboxFlexer i {
+  color: var(--pallet1-color-3);
 }
