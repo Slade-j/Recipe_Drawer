@@ -1,7 +1,7 @@
 // backend/routes/api/recipe.js
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Recipe, User } = require('../../db/models');
+const { Recipe, User, Recipe_book } = require('../../db/models');
 const { restoreUser  } = require('../../utils/auth');
 
 const router = express.Router();
@@ -44,6 +44,16 @@ router.put('/', asyncHandler(async (req, res) => {
   })
 
   return res.json({ result });
+}))
+
+// Delete a recipe
+router.delete('/', asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  await Recipe_book.destroy({ where: { recipeId: id }})
+  const recipe = await Recipe.findByPk(id);
+  await recipe.destroy();
+
+  return res.json({ recipe });
 }))
 
 module.exports = router;

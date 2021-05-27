@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import BookAdd from '../BookAdd';
 import RecipeEdit from '../RecipeEdit';
 import styles from './Recipe.module.css';
 import { removeRecipe } from '../../utils/bookUtil';
+import { deleteRecipe } from '../../utils/recipeUtil';
 
 
-const Recipe = ({recipe, bookId, setChanged, changed}) => {
+const Recipe = ({recipe, bookId, setChanged, changed, setRecipes}) => {
   const title = recipe.title;
   const directions = recipe.directions;
   const mainIngredient = recipe.mainIngredient;
   const ingredients = recipe.ingredients.split('\n');
   const [ show, setShow ] = useState(false);
   const [ addShow, setAddShow ] = useState(false);
+
 
 
   useEffect(() => {
@@ -32,6 +35,12 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
       .then(() => setChanged(!changed))
   }
 
+  const handleDelete = () => {
+    window.confirm(`Permenantly delete ${recipe.title}?`) &&
+      deleteRecipe({ id: recipe.id })
+        .then(() => setRecipes(prevState => prevState.filter(element => element !== recipe)))
+  }
+
   return (
     <div className={styles.mainWrapper}>
       <RecipeEdit recipe={recipe} show={show} setShow={setShow} changed={changed} setChanged={setChanged}/>
@@ -39,15 +48,18 @@ const Recipe = ({recipe, bookId, setChanged, changed}) => {
       <div className={styles.headContent}>
         <span className={styles.mainIngredient}>{mainIngredient}</span>
         <div className={styles.editWrapper}>
-          <button className={styles.editRecipe} onClick={handleEClick}>
+          <button className={styles.recipeButton} onClick={handleEClick}>
             <i className="far fa-edit fa-2x"></i>
           </button>
           {bookId &&
-            <button className={styles.removeBook} onClick={handleRemove}>
+            <button className={styles.recipeButton} onClick={handleRemove}>
               <i className="fas fa-book-dead fa-2x"></i>
             </button>}
-          <button className={styles.addBook} onClick={handleAdd}>
+          <button className={styles.recipeButton} onClick={handleAdd}>
             <i className="fas fa-book-medical fa-2x"></i>
+          </button>
+          <button className={styles.recipeButton} onClick={handleDelete}>
+            <i className="far fa-times-circle fa-2x"></i>
           </button>
         </div>
       </div>

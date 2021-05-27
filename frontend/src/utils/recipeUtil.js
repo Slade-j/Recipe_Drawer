@@ -23,7 +23,6 @@ export const getLimitRecipes = async (params) => {
 }
 
 // for editing a recipe
-
 export const editRecipe = async (data) => {
   const response = await csrfFetch('/api/recipe/', {
     method: 'PUT',
@@ -34,4 +33,15 @@ export const editRecipe = async (data) => {
   console.log(value, "return value from update");
   return value;
 
+}
+
+// for deleting a recipe
+export const deleteRecipe = async (data) => {
+  const response = await csrfFetch('/api/recipe/', {
+    method: 'DELETE',
+    body: JSON.stringify(data),
+    header: { 'Content-Type': 'applicaton/json' }
+  });
+
+  return await response.json();
 }
