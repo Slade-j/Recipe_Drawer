@@ -32,41 +32,42 @@
   align-items: center;
 }
 
-.editWrapper {
-  height: 30px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+.editWrapper button {
+  display: none;
 }
 
-.editRecipe,
-.addBook,
-.removeBook {
+.editWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.mainWrapper:hover .recipeButton {
   background-color: transparent;
   outline: none;
   border: none;
   cursor: pointer;
-}
-
-.addBook {
-  margin-right: 20px;
-}
-
-.editRecipe i,
-.addBook i,
-.removeBook i  {
   color: rgba(var(--pallet1-rgba-3), .5);
+  display: block;
 }
 
-.editRecipe i:hover,
-.addBook i:hover,
-.removeBook i:hover {
+/* .addBook {
+  margin-right: 20px;
+} */
+
+/* .editRecipe i,
+.addBook i,
+.removeBook i,
+.deleteRecipe i {
+  color: rgba(var(--pallet1-rgba-3), .5);
+} */
+
+.mainWrapper:hover .recipeButton:hover {
   color: rgba(var(--pallet1-rgba-3), .8);
 }
 
-.editRecipe:active,
-.removeBook:active,
-.addBook:active {
+.recipeButton:active {
   margin-top: 2px;
   margin-left: 2px;
 }

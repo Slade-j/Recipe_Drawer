@@ -112,6 +112,7 @@ const RecipeDisplay = () => {
                 key={recipe.title}
                 recipe={recipe}
                 changed={changed}
+                setRecipes={setRecipes}
                 setChanged={setChanged}/>
               ))}
             </div>
