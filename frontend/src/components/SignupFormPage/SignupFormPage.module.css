@@ -76,8 +76,12 @@
 }
 
 .form button:hover {
-  filter: brightness(.895);
+  background-color: rgb(206, 151, 34);
   cursor: pointer;
+}
+
+.form button:active {
+  margin-right: 2px;
 }
 
 .linkWrapper {

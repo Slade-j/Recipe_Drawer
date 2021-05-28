@@ -29,6 +29,10 @@ function LoginFormPage() {
 				});
 		}
 
+		const handleDemo = () => {
+			return dispatch(sessionActions.login({ username: 'Demo-user', password: 'Demopasswordq9!' }))
+		}
+
 		return (
 			<div className={styles.mainWrapper} >
 				<div className={styles.formWrapper}>
@@ -52,16 +56,19 @@ function LoginFormPage() {
 							onChange={(e) => setPassword(e.target.value)}
 							required/>
 						<button type="submit">Log In</button>
-						<div className={styles.linkWrapper}>
-							<span>Don't have an account?</span>
-							<NavLink
-								className={styles.nav}
-								exact={true}
-								to={'/signup'}>
-								Signup
-							</NavLink>
-						</div>
 					</form>
+					<div className={styles.demoWrapper}>
+						<button className={styles.demo} onClick={handleDemo}>Demo User</button>
+					</div>
+					<div className={styles.linkWrapper}>
+						<span>Don't have an account?</span>
+						<NavLink
+							className={styles.nav}
+							exact={true}
+							to={'/signup'}>
+							Signup
+						</NavLink>
+					</div>
 				</div>
 			</div>
 		);

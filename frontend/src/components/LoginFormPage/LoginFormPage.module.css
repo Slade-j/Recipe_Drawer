@@ -73,8 +73,9 @@
   font-size: 18px;
 }
 
-.form button:hover {
-  filter: brightness(.895);
+.form button:hover,
+.demo:hover {
+  background-color: rgb(206, 151, 34);
   cursor: pointer;
 }
 
@@ -95,4 +96,25 @@
   color: var(--pallet3-color-1);
   font-style: italic;
   text-decoration: none;
+}
+
+.demo {
+  background-color: var(--pallet1-color-4);
+  height: 45px;
+  width: 80%;
+  border: none;
+  color: var(--pallet1-color-1);
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+.demoWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.demo:active,
+.form button:active {
+  margin-right: 2px;
 }

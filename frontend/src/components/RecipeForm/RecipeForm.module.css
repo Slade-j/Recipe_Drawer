@@ -183,7 +183,7 @@
   border: none;
 }
 
-button:active {
+.mainWrapper button:active {
   margin-top: 4px;
 }
 
