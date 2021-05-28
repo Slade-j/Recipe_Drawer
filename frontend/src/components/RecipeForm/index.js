@@ -26,6 +26,7 @@ const RecipeForm = () => {
   const { enablePrompts, setEnablePrompts } = useLocation();
   const [ createTrue, setCreateTrue ] = useState(false);
   const [ highLightTrue, setHighLightTrue ] = useState(true);
+  const [ createShow, setCreateShow ] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector(state => state.recipe.review);
@@ -37,7 +38,7 @@ const RecipeForm = () => {
     if (title && ingredients && instruction) {
       setIsDisabled(false);
       setCreateTrue(true);
-      setShowPrompts(true);
+      createShow && setShowPrompts(true);
     } else {
       setIsDisabled(true);
     }
@@ -94,7 +95,6 @@ const RecipeForm = () => {
 
   const handleIngredients = e => {
     e.preventDefault();
-    console.log(window.getSelection().toString().split('\n'), "DID THIS WORK")
     window.getSelection().toString() && setIngredients(window.getSelection().toString())
   }
 
@@ -142,6 +142,8 @@ const RecipeForm = () => {
           createTrue={createTrue}
           setHighLightTrue={setHighLightTrue}
           highLightTrue={highLightTrue}
+          setCreateShow={setCreateShow}
+          createShow={createShow}
         />}
       <div className={styles.grid}>
         <div className={styles.header}>

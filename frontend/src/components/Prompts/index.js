@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import styles from './Prompts.module.css';
 
 
-const Prompts = ({ setEnablePrompts, setShowPrompts, triplePrompt, setCreateTrue, createTrue, setHighLightTrue, highLightTrue }) => {
+const Prompts = ({
+  setEnablePrompts,
+  setShowPrompts,
+  triplePrompt,
+  createTrue,
+  setHighLightTrue,
+  highLightTrue,
+  createShow,
+  setCreateShow}) => {
   const [ editTrue, setEditTrue ] = useState(false);
   const [ buttonsTrue, setButtonsTrue ] = useState(false);
 
@@ -31,7 +39,7 @@ const Prompts = ({ setEnablePrompts, setShowPrompts, triplePrompt, setCreateTrue
   }
 
   const gotItFive = () => {
-    setCreateTrue(false);
+    setCreateShow(false);
     setShowPrompts(false);
   }
 
@@ -50,8 +58,7 @@ const Prompts = ({ setEnablePrompts, setShowPrompts, triplePrompt, setCreateTrue
             Choose a recipe you would like to
             upload on the left
           </span>
-          <span>Or</span>
-          <span>Create a recipe from scratch on the right!</span>
+          <span>Or, create a recipe from scratch on the right!</span>
           <div className={styles.buttonWrapper}>
             <button className={styles.gotIt} onClick={gotItOne}>got it</button>
           </div>
@@ -100,7 +107,7 @@ const Prompts = ({ setEnablePrompts, setShowPrompts, triplePrompt, setCreateTrue
           </div>
         </div>
       </div>}
-      {createTrue && <div className={styles.createBubble}>
+      {createTrue && createShow && <div className={styles.createBubble}>
         <div className={styles.promptsFlexer}>
           <button className={styles.prompts} onClick={disablePrompts}>
             <i className="fas fa-ban"></i>
