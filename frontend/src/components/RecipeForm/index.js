@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { createRecipe } from '../../utils/recipeUtil';
 import * as sessionActions from '../../store/session';
+import Prompts from '../Prompts';
 import Uploader from '../Uploader';
 import styles from './RecipeForm.module.css';
 import { resetReview } from '../../store/recipe';
+import { useLocation } from '../../context/LocationProvider';
 
 const RecipeForm = () => {
   // const [ loaded, setLoaded ] = useState(false);
@@ -19,6 +21,11 @@ const RecipeForm = () => {
   const [ instructionCheck, setInstructionCheck ] = useState('');
   const [ mainIngredientCheck, setMainIngredientCheck ] = useState('');
   const [ mainIngredient, setMainIngredient ] = useState('');
+  const [ showPrompts, setShowPrompts ] = useState(true);
+  const [ triplePrompt, setTriplePrompt ] = useState(false);
+  const { enablePrompts, setEnablePrompts } = useLocation();
+  const [ createTrue, setCreateTrue ] = useState(false);
+  const [ highLightTrue, setHighLightTrue ] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector(state => state.recipe.review);
@@ -28,9 +35,11 @@ const RecipeForm = () => {
 
   useEffect(() => {
     if (title && ingredients && instruction) {
-      setIsDisabled(false)
+      setIsDisabled(false);
+      setCreateTrue(true);
+      setShowPrompts(true);
     } else {
-      setIsDisabled(true)
+      setIsDisabled(true);
     }
   }, [title, ingredients, instruction])
 
@@ -67,8 +76,10 @@ const RecipeForm = () => {
   })
 
   useEffect(() => {
-    // if (!review) return;
+    if (!review) return;
     setAreaValue(review);
+    setTriplePrompt(true);
+    setShowPrompts(true);
   }, [review])
 
   // <div className={`${status} ${discriptionCheck}`} />
@@ -108,15 +119,37 @@ const RecipeForm = () => {
   }
 
   const handleCancel = () => {
-    history.goBack();
+    dispatch(resetReview())
+    history.goBack()
+  }
+
+  const disablePrompts = () => {
+    setEnablePrompts(!enablePrompts);
+  }
+
+  const handleAreaValue = (e) => {
+    setAreaValue(e.target.value);
   }
 
   return (
     <div className={styles.mainWrapper}>
+      {showPrompts && enablePrompts &&
+        <Prompts
+          triplePrompt={triplePrompt}
+          setShowPrompts={setShowPrompts}
+          setEnablePrompts={setEnablePrompts}
+          setCreateTrue={setCreateTrue}
+          createTrue={createTrue}
+          setHighLightTrue={setHighLightTrue}
+          highLightTrue={highLightTrue}
+        />}
       <div className={styles.grid}>
         <div className={styles.header}>
           <div className={styles.headerFlex}>
-          <button className={styles.hintHider}>Disable prompts</button>
+          <button className={enablePrompts?styles.hintEnabled:styles.hintDisabled} onClick={disablePrompts}>
+            <span className={styles.hintSpan}>Help: </span>
+            {enablePrompts?'enabled':'disabled'}
+          </button>
             <span className={styles.headerTitle}>
               Create a new Recipe
             </span>
@@ -132,7 +165,7 @@ const RecipeForm = () => {
                 <textarea
                   className={styles.textArea}
                   value={areaValue}
-                  onChange={e => setAreaValue(e.target.value)}>
+                  onChange={handleAreaValue}>
                   </textarea>
                   :
                 <Uploader />}
