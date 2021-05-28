@@ -6,6 +6,7 @@ export const useLocation = () => useContext(LocationContext);
 const LocationProvider = (props) => {
   const [ location, setLocation ] = useState('');
   const [ enablePrompts, setEnablePrompts] = useState(true);
+  const [ menuActive, setMenuActive ] = useState(false);
 
   return (
     <LocationContext.Provider value={
@@ -13,7 +14,9 @@ const LocationProvider = (props) => {
         location,
         setLocation,
         enablePrompts,
-         setEnablePrompts
+        setEnablePrompts,
+        menuActive,
+        setMenuActive
         }
     }>
       {props.children}

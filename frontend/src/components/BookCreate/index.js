@@ -4,11 +4,13 @@ import styles from './BookCreate.module.css';
 // import { createBook } from '../../utils/bookUtil';
 import { createBook } from '../../store/books';
 import { useHistory } from 'react-router-dom';
+import { useLocation } from '../../context/LocationProvider';
 
 const BookCreate = ({ user, setShow }) => {
   const [ title, setTitle ] = useState('');
   // const [ recipes, setRecipes ] = useState([]);
   const [ isDisabled, setIsDisabled ] = useState(true);
+  const { setMenuActive } = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -32,10 +34,14 @@ const BookCreate = ({ user, setShow }) => {
   const handleCancel = (e) => {
     e.stopPropagation();
     setShow(false);
+    setMenuActive(false);
   }
 
   const handleClick = (e) => {
-    e.target.className === styles.overlay && setShow(false);
+    if (e.target.className === styles.overlay) {
+      setShow(false);
+      setMenuActive(false);
+    }
   }
 
   return (

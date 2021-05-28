@@ -40,9 +40,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: relative; */
   z-index: 100;
 }
+
+.recipeActive {
+  height: 60px;
+  width: 100%;
+  border: 1px var(--pallet1-color-1) solid;
+  background-color: rgba(var(--pallet1-rgba-2), .9);
+  box-shadow: 0 2px 6px 0 var(--pallet1-color-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
 
 .leftWrapper {
   display: flex;

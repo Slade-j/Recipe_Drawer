@@ -20,6 +20,7 @@ const BooksDisplay = () => {
   const [ show, setShow ] = useState(false);
   const [ changed, setChanged ] = useState(false);
   const { location, setLocation } = useLocation();
+  const { menuActive, setMenuActive } = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
@@ -94,7 +95,7 @@ const BooksDisplay = () => {
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}>
+        <div className={menuActive? styles.recipeNav:styles.recipeActive}>
           <div className={styles.leftWrapper}>
             <h2 className={styles.title}>Recipe Drawer</h2>
             <span>{' | '}</span>

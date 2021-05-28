@@ -5,6 +5,7 @@ import RecipeEdit from '../RecipeEdit';
 import styles from './Recipe.module.css';
 import { removeRecipe } from '../../utils/bookUtil';
 import { deleteRecipe } from '../../utils/recipeUtil';
+import { useLocation } from '../../context/LocationProvider';
 
 
 const Recipe = ({recipe, bookId, setChanged, changed, setRecipes}) => {
@@ -14,6 +15,7 @@ const Recipe = ({recipe, bookId, setChanged, changed, setRecipes}) => {
   const ingredients = recipe.ingredients.split('\n');
   const [ show, setShow ] = useState(false);
   const [ addShow, setAddShow ] = useState(false);
+  const { setMenuActive } = useLocation();
 
 
 
@@ -22,10 +24,12 @@ const Recipe = ({recipe, bookId, setChanged, changed, setRecipes}) => {
   }, [changed]);
 
   const handleEClick = () => {
+    setMenuActive(true);
     setShow(true);
   }
 
   const handleAdd = () => {
+    setMenuActive(true);
     setAddShow(true);
   }
 

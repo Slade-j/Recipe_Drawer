@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
+import { useLocation } from '../../context/LocationProvider';
 import { deleteBook } from '../../store/books';
 import BookCreate from '../BookCreate';
 import styles from './BookMenu.module.css';
@@ -9,12 +10,14 @@ const BookMenu = ({ currentId, setLocation }) => {
   const userBooks = useSelector(state => state.books.allBooks);
   const user = useSelector(state => state.session.user);
   const [ show, setShow ] = useState(false);
+  const { setMenuActive } = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
 
 
   const handleCreate = (e) => {
     setShow(true);
+    setMenuActive(true);
   }
 
   const handleDelete = (bookId, title) => {
