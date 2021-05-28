@@ -3,13 +3,18 @@ import { useSelector } from 'react-redux';
 import styles from './BookAdd.module.css';
 import { addRecipe } from '../../utils/bookUtil';
 import Checkbox from '../Checkbox';
+import { useLocation } from '../../context/LocationProvider';
 
 const BookAdd = ({ setAddShow, recipe }) => {
   const books = useSelector(state => state.books.allBooks);
   const [ subValue, setSubValue ] = useState([]);
+  const { setMenuActive } = useLocation();
 
   const handleClick = (e) => {
-    e.target.className === styles.overlay && setAddShow(false);
+    if (e.target.className === styles.overlay) {
+      setAddShow(false);
+      setMenuActive(false);
+    }
   }
 
   const handleAddSubmit = (e) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './RecipeEdit.module.css';
 import { editRecipe } from '../../utils/recipeUtil';
+import { useLocation } from '../../context/LocationProvider';
 
 const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
   const [ title, setTitle ] = useState(recipe.title);
@@ -16,6 +17,7 @@ const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
   const [ directions, setDirections ] = useState(recipe.directions);
   const [ isDisabled, setIsDisabled ] = useState(true);
   const [ display, setDisplay ] = useState('');
+  const { setMenuActive } = useLocation();
   const history = useHistory();
 
   useEffect(() => {
@@ -38,7 +40,10 @@ const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
   }
 
   const handleClick = (e) => {
-    e.target.className === styles.overlay && setShow(false);
+    if (e.target.className === styles.overlay) {
+      setShow(false);
+      setMenuActive(false);
+    }
   }
 
   const handleTitle = (e) => {
@@ -86,6 +91,7 @@ const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
     e.preventDefault();
     e.stopPropagation();
     setShow(false);
+    setMenuActive(false);
 
   }
 

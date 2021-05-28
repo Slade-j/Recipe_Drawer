@@ -19,6 +19,7 @@ const RecipeDisplay = () => {
   const [ offset, setOffset ] = useState(0);
   const [ show, setShow ] = useState(false);
   const { location, setLocation } = useLocation();
+  const { menuActive, setMenuActive } = useLocation();
   const [ changed, setChanged ] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,6 +35,10 @@ const RecipeDisplay = () => {
         setIsLoading(false)
       })
   }, [isLoading])
+
+  useEffect(() => {
+    console.log(menuActive, "menuActive")
+  }, [menuActive])
 
   useEffect(() => {
     if (isLoading) return;
@@ -77,7 +82,7 @@ const RecipeDisplay = () => {
         <div className={styles.topSpacer}>
           <img className={styles.imger} src={header}></img>
         </div>
-        <div className={styles.recipeNav}>
+        <div className={menuActive? styles.recipeNav:styles.recipeActive}>
           <div className={styles.leftWrapper}>
             <h2 className={styles.title}>Recipe Drawer</h2>
             <span>{' | '}</span>
