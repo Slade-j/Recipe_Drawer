@@ -8,31 +8,6 @@
   z-index: 100;
 }
 
-.introBubble,
-.editBubble, .highlightBubble,
-.buttonsBubble, .createBubble {
-	background: #00aabb;
-	border-radius: 5px;
-  width: 200px;
-  height: 100px;
-}
-
-.editBubble:after, .highlightBubble:after,
-.buttonsBubble:after, .createBubble:after {
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-left-color: var(--pallet1-color-4);
-	border-right: 0;
-	border-bottom: 0;
-	margin-top: -10px;
-	margin-right: -20px;
-}
-
 .introBubble {
   position: absolute;
   top: 32%;
@@ -152,4 +127,169 @@
   width: 110px;
   font-size: 12px;
   border-radius: 2px;
+}
+
+.highlightBubble {
+  position: absolute;
+  top: 32%;
+  right: 37%;
+  background-color: rgba(var(--pallet1-rgba-4), .9);
+  width: auto;
+  height: auto;
+  padding: 10px 15px 15px 5px;
+  display: flex;
+  font-size: 18px;
+  color: var(--pallet2-color-3);
+  text-shadow: -.25px .25px 0 var(--pallet1-color-1);
+  box-shadow: -15px 15px 3px var(--pallet1-color-1);
+  border: 1px var(--pallet1-color-1) solid;
+}
+
+.highlightBubble:after {
+  content: '';
+	position: absolute;
+	left: 0;
+	top: 20%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: rgba(var(--pallet1-rgba-4), .95);
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: 20px;
+	margin-left: -20px;
+}
+
+.lightSpan {
+  text-align: center;
+  width: 85%;
+}
+
+.buttonsBubble {
+  position: absolute;
+  bottom: 10%;
+  right: 36%;
+  background-color: rgba(var(--pallet1-rgba-4), .9);
+  width: 304px;
+  height: auto;
+  padding: 10px 15px 15px 5px;
+  display: flex;
+  font-size: 18px;
+  color: var(--pallet2-color-3);
+  text-shadow: -.25px .25px 0 var(--pallet1-color-1);
+  box-shadow: -15px 15px 3px var(--pallet1-color-1);
+  border: 1px var(--pallet1-color-1) solid;
+}
+
+.buttonsBubble:after {
+  content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: rgba(var(--pallet1-rgba-4), .95);
+	border-right: 0;
+	border-top: 0;
+	margin-top: -50px;
+	margin-right: -20px;
+}
+
+.buttonsBubble:before {
+  content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: rgba(var(--pallet1-rgba-4), .95);
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: 50px;
+	margin-left: -20px;
+}
+
+.buttonSpan {
+  text-align: center;
+  width: 85%;
+}
+
+
+.editBubble {
+  position: absolute;
+  top: 32%;
+  right: 37%;
+  background-color: rgba(var(--pallet1-rgba-4), .9);
+  width: auto;
+  height: auto;
+  padding: 10px 15px 15px 10px;
+  display: flex;
+  font-size: 18px;
+  color: var(--pallet2-color-3);
+  text-shadow: -.25px .25px 0 var(--pallet1-color-1);
+  box-shadow: -15px 15px 3px var(--pallet1-color-1);
+  border: 1px var(--pallet1-color-1) solid;
+}
+
+.editBubble:after {
+  content: '';
+	position: absolute;
+	right: 0;
+	top: 40%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: rgba(var(--pallet1-rgba-4), .95);
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: 20px;
+	margin-right: -20px;
+}
+
+.editBubble:before {
+  content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: rgba(var(--pallet1-rgba-4), .95);
+	border-left: 0;
+	border-top: 0;
+	margin-top: -20px;
+	margin-left: -20px;
+}
+
+.createBubble {
+  position: absolute;
+  bottom: 14%;
+  right: 12%;
+  background-color: rgba(var(--pallet1-rgba-4), .9);
+  width: 225px;
+  height: auto;
+  padding: 10px 15px 15px 10px;
+  display: flex;
+  font-size: 18px;
+  color: var(--pallet2-color-3);
+  text-shadow: -.25px .25px 0 var(--pallet1-color-1);
+  box-shadow: -15px 15px 3px var(--pallet1-color-1);
+  border: 1px var(--pallet1-color-1) solid;
+}
+
+.createBubble:before {
+  content: '';
+	position: absolute;
+	left: 0;
+	bottom: 15%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: rgba(var(--pallet1-rgba-4), .95);
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -20px;
+	margin-left: -20px;
 }
