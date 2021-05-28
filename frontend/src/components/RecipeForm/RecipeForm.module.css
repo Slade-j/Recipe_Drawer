@@ -46,8 +46,35 @@
   font-size: 20px;
 }
 
-.cancel, .hintHider {
+.cancel {
   margin: 0;
+}
+
+.hintEnabled, .hintDisabled {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+}
+
+.hintDisabled:hover {
+  color: var(--pallet3-color-1)
+}
+
+.hintEnabled:hover {
+  color: rgb(34, 178, 34)
+}
+
+.hintSpan {
+  color: rgba(245, 245, 245, .8);
+}
+
+.hintEnabled {
+  color:rgba(34, 178, 34, .8);
+}
+
+.hintDisabled {
+  color: rgb(178, 34, 34);
+
 }
 
 .cancel {

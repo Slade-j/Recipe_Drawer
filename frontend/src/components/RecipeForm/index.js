@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { createRecipe } from '../../utils/recipeUtil';
 import * as sessionActions from '../../store/session';
+import Prompts from '../Prompts';
 import Uploader from '../Uploader';
 import styles from './RecipeForm.module.css';
 import { resetReview } from '../../store/recipe';
@@ -19,6 +20,8 @@ const RecipeForm = () => {
   const [ instructionCheck, setInstructionCheck ] = useState('');
   const [ mainIngredientCheck, setMainIngredientCheck ] = useState('');
   const [ mainIngredient, setMainIngredient ] = useState('');
+  const [ showPrompts, setShowPrompts ] = useState(true);
+  const [ enablePrompts, setEnablePrompts ] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector(state => state.recipe.review);
@@ -111,12 +114,20 @@ const RecipeForm = () => {
     history.goBack();
   }
 
+  const disablePrompts = () => {
+    setEnablePrompts(!enablePrompts);
+  }
+
   return (
     <div className={styles.mainWrapper}>
+      {showPrompts && enablePrompts && <Prompts setShowPrompts={setShowPrompts} setEnablePrompts={setEnablePrompts} />}
       <div className={styles.grid}>
         <div className={styles.header}>
           <div className={styles.headerFlex}>
-          <button className={styles.hintHider}>Disable prompts</button>
+          <button className={enablePrompts?styles.hintEnabled:styles.hintDisabled} onClick={disablePrompts}>
+            <span className={styles.hintSpan}>Help: </span>
+            {enablePrompts?'enabled':'disabled'}
+          </button>
             <span className={styles.headerTitle}>
               Create a new Recipe
             </span>
