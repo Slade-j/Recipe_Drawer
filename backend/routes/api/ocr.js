@@ -64,7 +64,7 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
     // must set filetype because of default content-type comming back from aws
 
     const response = await microsofComputerVision.orcImage({
-      "Ocp-Apim-Subscription-Key": "8018252732464058a1bfea1480876b04",
+      "Ocp-Apim-Subscription-Key": ,
       "request-origin":"westus",
       "content-type": "application/json",
       "url": `${url}`,
