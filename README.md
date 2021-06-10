@@ -1,4 +1,4 @@
-# Recipe_Drawer
+# Recipe Drawer
 
 This is a simple app that allows you to digitize your personal recipe collection. The OCR is capable of reading text from pictures taken from smartphones or pdf images. 
 The higher the quality image, the more accurate the OCR is able to read text. In this app a user will also be able to orginize their collection into sub categories called "books".
