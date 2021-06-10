@@ -157,7 +157,7 @@
 
 .location {
   width: 280px;
-  height: 60px;
+  height: fit-content;
   margin: 60px 40px 0 75px;
   position: sticky;
   top: 20px;
@@ -174,10 +174,12 @@
   color: var(--pallet3-color-1);
   text-shadow: -.5px .5px .5px var(--pallet1-color-1);
   font-style: italic;
+  margin: 0;
 }
 
 .locationText i {
   margin-right: 12px;
+
 }
 
 .scroller {

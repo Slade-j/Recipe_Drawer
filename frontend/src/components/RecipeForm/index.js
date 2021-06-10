@@ -174,7 +174,7 @@ const RecipeForm = () => {
               <div className={styles.setWrapper}>
                 <button className={styles.titleButton} onClick={handleTitle}>Set Title</button>
                 <button className={styles.ingredientButton} onClick={handleIngredients}>Set Ingredients</button>
-                <button className={styles.instructionButton} onClick={handleDiscription}>Set Discription</button>
+                <button className={styles.instructionButton} onClick={handleDiscription}>Set Directions</button>
               </div>
             </form>
           </div>
@@ -182,22 +182,37 @@ const RecipeForm = () => {
             <form className={styles.submitForm} onSubmit={handleSubmit}>
               <div className={`${styles.titleInput} ${titleCheck}`}>
                 <div className={styles.inputWrapper}>
-                  <input className={styles.inputTitle} value={title} onChange={e => setTitle(e.target.value)} />
+                  <input
+                    className={styles.inputTitle}
+                    value={title} onChange={e => setTitle(e.target.value)}
+                    placeholder='--Enter Or Set a Title--'/>
                 </div>
               </div>
               <div className={`${styles.titleInput} ${mainIngredientCheck}`}>
                 <div className={styles.inputWrapper}>
-                  <input className={styles.inputMain} value={mainIngredient} onChange={e => setMainIngredient(e.target.value)} placeholder='--Enter The Main Ingredient--'/>
+                  <input
+                    className={styles.inputMain}
+                    value={mainIngredient}
+                    onChange={e => setMainIngredient(e.target.value)}
+                    placeholder='--Enter The Main Ingredient--'/>
                 </div>
               </div>
               <div className={`${styles.ingredientInput} ${ingredientsCheck}`}>
                 <div className={styles.ingredientTextWrapper}>
-                  <textarea className={styles.ingredient} value={ingredients} onChange={e => setIngredients(e.target.value)} />
+                  <textarea
+                    className={styles.ingredient}
+                    value={ingredients}
+                    onChange={e => setIngredients(e.target.value)}
+                    placeholder='--Enter Or Set The Ingredients--'/>
                 </div>
               </div>
               <div className={`${styles.instructionInput} ${instructionCheck}`}>
                 <div className={styles.instructionTextWrapper}>
-                  <textarea className={styles.directions} value={instruction} onChange={e => setInstruction(e.target.value)} />
+                  <textarea
+                    className={styles.directions}
+                    value={instruction}
+                    onChange={e => setInstruction(e.target.value)}
+                    placeholder='--Enter Or Set The Directions--'/>
                 </div>
               </div>
               <div className={styles.subButtonWrapper}>

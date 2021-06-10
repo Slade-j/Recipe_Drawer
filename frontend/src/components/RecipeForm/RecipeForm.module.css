@@ -181,6 +181,7 @@
   height: 100%;
   width: 100%;
   border: none;
+  padding: 10px;
 }
 
 .mainWrapper button:active {
@@ -288,9 +289,26 @@
   border:2px rgb(178, 34, 34) solid;
 }
 
-.inputMain {
+.inputMain,
+.inputTitle {
   text-align: center;
+}
+
+.inputMain,
+.inputTitle,
+.ingredient,
+.directions {
   font-size: 15px;
+  padding: 10px;
+}
+
+
+.directions::-webkit-input-placeholder,
+.directions::placeholder,
+.ingredient::-webkit-input-placeholder,
+.ingredient::placeholder
+ {
+  text-align: center;
 }
 
 .inputMain:focus {
@@ -300,7 +318,7 @@
     -6px 6px 12px rgba(0, 109, 172, .3),
     6px -6px 12px rgba(0, 109, 172, .3);
   outline: none;
-  border: 2px rgb(0, 109, 172) solid;
+  border: solid 2px rgb(0, 109, 172);
 }
 
 .ingredient:focus {
@@ -320,7 +338,7 @@
     -6px 6px 12px rgba(34, 178, 34, .3),
     6px -6px 12px rgba(34, 178, 34, .3);
   outline: none;
-  border:2px rgb(34, 178, 34,) solid;
+  border:2px rgb(34, 178, 34) solid;
 }
 
 .subButtonWrapper {

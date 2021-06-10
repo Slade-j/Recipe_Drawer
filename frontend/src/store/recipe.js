@@ -32,9 +32,11 @@ export const fetchReview = (data) => async (dispatch) => {
     headers: { "Content-Type": "multipart/form-data" }
   })
 
-  const { response, url } = await res.json();
+  const { recipe, url } = await res.json();
+  console.log(recipe, "RECIPE IN THUNK")
 
-  const review = response.ParsedResults[0].ParsedText
+  const review = recipe.map(line => line.join(' ')).join('\n')
+  console.log(review, "REVIEW IN THUNK")
   dispatch(setUrl(url))
   dispatch(setReview(review));
 }
