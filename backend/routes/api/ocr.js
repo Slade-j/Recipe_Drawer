@@ -42,8 +42,8 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
       })
     })
 
-    console.log(recipe)
     return res.json({ recipe, url });
+
    } catch (error) {
     console.error(error)
    }
