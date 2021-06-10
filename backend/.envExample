@@ -8,3 +8,4 @@ JWT_EXPIRES_IN=604800
 AWS_ACCESS_KEY_ID=<<awsKey>>
 AWS_SECRET_ACCESS_KEY=<<awsKey>>
 API_KEY=<<ocr.open apiKey>>
+MICROSOFT_KEY=<<microsoft azure/vision key>>
