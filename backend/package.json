@@ -27,6 +27,7 @@
     "faker": "^5.4.0",
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
+    "microsoft-computer-vision": "^0.4.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
