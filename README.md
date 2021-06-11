@@ -15,17 +15,15 @@ https://the-drawer.herokuapp.com/
    - micro-soft-vision
 
 ## Features
-   - Live chat
-   - Create channels
-   - Create group and 1-1 DMs
-   - Join/Leave channels
-   - Customize messages with rich text editor
-   - React to messages with emojis
-   - Upload your own profile photo
+   - Upload images from pictures
+   - Create Books to orginize recipes
+   - Create recipes from scrtch
+   - Remove recipes/books
+   - Remove recipes from books
 
 ## Site Walk-through
 
-### Splashpage
+### Login/Signup
 ![splashpage](https://user-images.githubusercontent.com/74396674/121299586-44953200-c8bb-11eb-8ae4-5280124d58e4.PNG)
 
 ### Global/Channel Chat
