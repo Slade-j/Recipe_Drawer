@@ -40,7 +40,7 @@ All the users recipes will be collectied in a single location where they can edi
 
 ### Books
 A User can create a "Book" where they can place recipes therein. Here a user also has access to create, delete, or remove the recipe form the book
-![groupDMs](https://user-images.githubusercontent.com/74396674/121299778-8a51fa80-c8bb-11eb-98fa-e2bea01c1acf.PNG)
+![Screenshot (13)](https://user-images.githubusercontent.com/73794462/121971874-04a8d180-cd37-11eb-9cce-3f1b952a47b4.png)
 
 
 ## Further Documentation
