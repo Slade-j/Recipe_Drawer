@@ -26,19 +26,20 @@ https://the-drawer.herokuapp.com/
 ### Login/Signup
 ![splashpage](https://user-images.githubusercontent.com/74396674/121299586-44953200-c8bb-11eb-8ae4-5280124d58e4.PNG)
 
-### Global/Channel Chat
-Add a blurb here about how chat works
-Add pictures of rich text editor, and emojis panel
+### Uploading a new Recipe
+To create a new recipe the user can either enter a recipe from scratch or use a picture stored on their computer.
+Once the user has chosen a picture, either from their computer or one they have taken themselves, they simply need to follow the 
+prompts to populate the recipe form with the text that was ripped from the image.
 ![global-chat](https://user-images.githubusercontent.com/74396674/121299718-760dfd80-c8bb-11eb-9cf2-2c65fb9e34eb.PNG)
 
 
-### Channel Join/Leave
-Add picture of list of channels to add/leave
+### All Recipe
+All the users recipes will be collectied in a single location where they can edit, delete, or move the recipe into a new location called a book
 ![channels](https://user-images.githubusercontent.com/74396674/121299748-81f9bf80-c8bb-11eb-8e60-9d91eb806f00.PNG)
 
 
-### Creating Group DMs
-Add picture of creating DMs group
+### Books
+A User can create a "Book" where they can place recipes therein. Here a user also has access to create, delete, or remove the recipe form the book
 ![groupDMs](https://user-images.githubusercontent.com/74396674/121299778-8a51fa80-c8bb-11eb-98fa-e2bea01c1acf.PNG)
 
 
