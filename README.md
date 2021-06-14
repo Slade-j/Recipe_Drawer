@@ -35,7 +35,7 @@ prompts to populate the recipe form with the text that was ripped from the image
 
 ### All Recipes
 All the users recipes will be collectied in a single location where they can edit, delete, or move the recipe into a new location called a book
-![channels](https://user-images.githubusercontent.com/74396674/121299748-81f9bf80-c8bb-11eb-8e60-9d91eb806f00.PNG)
+![Screenshot (9)](https://user-images.githubusercontent.com/73794462/121971736-af6cc000-cd36-11eb-9287-e1d2fcd1c124.png)
 
 
 ### Books
