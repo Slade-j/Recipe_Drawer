@@ -27,10 +27,6 @@ const BooksDisplay = () => {
   const id = useParams().bookid;
   const limit = 3;
 
-  useEffect(() => {
-    if (location === '') return;
-    console.log(location, 'Location in bookdisplY')
-  }, [location])
 
   useEffect(() => {
     if (!isLoading) return;
@@ -61,10 +57,6 @@ const BooksDisplay = () => {
     })
   }, [changed])
 
-  const handleAdd = () => {
-    console.log('clicked')
-  }
-
   const signout = () => {
     dispatch(logout())
   }
@@ -77,9 +69,7 @@ const BooksDisplay = () => {
     if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
       getLimitBooks({ offset, limit, id })
         .then(res => setRecipes(prevState => [...prevState, ...res]))
-        .then(() =>  setOffset(prevState => {
-          console.log(prevState, 'prevstate', prevState + 3, 'addition');
-          return prevState + 3}))
+        .then(() =>  setOffset(prevState => prevState + 3))
     }
   }
 
@@ -100,20 +90,21 @@ const BooksDisplay = () => {
             <h2 className={styles.title}>Recipe Drawer</h2>
             <span>{' | '}</span>
             <div className={'uploadWrapper'}>
-              <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+              <button className={styles.uploader} onClick={handleUpload}>Upload Recipe</button>
             </div>
           </div>
           <div className={styles.rightWrapper}>
-            <div className={'linkWrapper'}>
+            <div className={styles.linkwrapper}>
               <Link
                 id={styles.link}
                 exact={true}
+                className={styles.allRecipe}
                 to={'/recipe'}>
                 All Recipes
                 </Link>
             </div>
             <div className={'logoutWrapper'}>
-              <button className={'logout'} onClick={signout}>Signout</button>
+              <button className={styles.logout} onClick={signout}>Signout</button>
             </div>
           </div>
         </div>

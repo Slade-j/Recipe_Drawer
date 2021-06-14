@@ -33,10 +33,9 @@ export const fetchReview = (data) => async (dispatch) => {
   })
 
   const { recipe, url } = await res.json();
-  console.log(recipe, "RECIPE IN THUNK")
 
   const review = recipe.map(line => line.join(' ')).join('\n')
-  console.log(review, "REVIEW IN THUNK")
+
   dispatch(setUrl(url))
   dispatch(setReview(review));
 }

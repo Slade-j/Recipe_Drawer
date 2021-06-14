@@ -58,7 +58,6 @@ const RecipeEdit = ({recipe, setShow, show, changed, setChanged}) => {
 
   const handleMainIngredient = (e) => {
     setMainIngredient(e.target.value);
-    console.log(!e.target.value, recipe.mainIngredient, "COMPARE")
 
     if (e.target.value !== recipe.mainIngredient) {
       setIsDisabled(false);
