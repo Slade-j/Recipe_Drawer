@@ -24,7 +24,8 @@ https://the-drawer.herokuapp.com/
 ## Site Walk-through
 
 ### Login/Signup
-![splashpage](https://user-images.githubusercontent.com/74396674/121299586-44953200-c8bb-11eb-8ae4-5280124d58e4.PNG)
+![Screenshot (4)](https://user-images.githubusercontent.com/73794462/121971913-1c805580-cd37-11eb-9ad2-fa9efdab52ef.png)
+
 
 ### Uploading a new Recipe
 To create a new recipe the user can either enter a recipe from scratch or use a picture stored on their computer.
