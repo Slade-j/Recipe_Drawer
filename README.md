@@ -33,7 +33,7 @@ prompts to populate the recipe form with the text that was ripped from the image
 ![global-chat](https://user-images.githubusercontent.com/74396674/121299718-760dfd80-c8bb-11eb-9cf2-2c65fb9e34eb.PNG)
 
 
-### All Recipe
+### All Recipes
 All the users recipes will be collectied in a single location where they can edit, delete, or move the recipe into a new location called a book
 ![channels](https://user-images.githubusercontent.com/74396674/121299748-81f9bf80-c8bb-11eb-8e60-9d91eb806f00.PNG)
 
