@@ -30,7 +30,7 @@ https://the-drawer.herokuapp.com/
 To create a new recipe the user can either enter a recipe from scratch or use a picture stored on their computer.
 Once the user has chosen a picture, either from their computer or one they have taken themselves, they simply need to follow the 
 prompts to populate the recipe form with the text that was ripped from the image.
-![global-chat](https://user-images.githubusercontent.com/74396674/121299718-760dfd80-c8bb-11eb-9cf2-2c65fb9e34eb.PNG)
+![Screenshot (11)](https://user-images.githubusercontent.com/73794462/121971565-3c634980-cd36-11eb-8e8e-fe1ad61a9624.png)
 
 
 ### All Recipes
