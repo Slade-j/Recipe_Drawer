@@ -24,7 +24,7 @@ https://the-drawer.herokuapp.com/
 ## Site Walk-through
 
 ### Login/Signup
-![Screenshot (4)](https://user-images.githubusercontent.com/73794462/121971913-1c805580-cd37-11eb-9ad2-fa9efdab52ef.png)
+![recipe_drawer](https://user-images.githubusercontent.com/73794462/121972082-7b45cf00-cd37-11eb-9c0d-5f01d0acb417.png)
 ![Screenshot (15)](https://user-images.githubusercontent.com/73794462/121972092-800a8300-cd37-11eb-90db-ffa764039593.png)
 
 
