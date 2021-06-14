@@ -18,11 +18,6 @@ const Recipe = ({recipe, bookId, setChanged, changed, setRecipes}) => {
   const { setMenuActive } = useLocation();
 
 
-
-  useEffect(() => {
-    // console.log(ingredients.split('\n'), 'RECIPE from recipe')
-  }, [changed]);
-
   const handleEClick = () => {
     setMenuActive(true);
     setShow(true);

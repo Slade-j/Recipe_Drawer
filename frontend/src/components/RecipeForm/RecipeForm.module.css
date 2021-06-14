@@ -57,11 +57,13 @@
 }
 
 .hintDisabled:hover {
-  color: var(--pallet3-color-1)
+  color: var(--pallet3-color-1);
+  cursor: pointer;
 }
 
 .hintEnabled:hover {
-  color: rgb(34, 178, 34)
+  color: rgb(34, 178, 34);
+  cursor: pointer;
 }
 
 .hintSpan {
@@ -88,38 +90,8 @@
 .cancel:hover {
   background-color: firebrick;
   color: #fff;
+  cursor: pointer;
 }
-
-/* .headSpacer {
-  height: 100%;
-  width: 50%;
-} */
-
-/* .statusContainer {
-  flex: 1 1 0;
-  box-sizing: border-box;
-  display: flex;
-  height: inherit;
-  align-items: center;
-} */
-
-/* .status {
-  height: 64px;
-  width: 64px;
-  background-color: whitesmoke;
-} */
-
-/* .status.titleGood {
-  background-color: red;
-} */
-
-/* .status.ingredientsGood {
-  background-color: yellow;
-} */
-
-/* .discriptionGood {
-  background-color: green;
-} */
 
 .enabled {
   background-color: green;
@@ -127,6 +99,7 @@
 
 .enabled:hover {
   filter:brightness(80%);
+  cursor: pointer;
 }
 
 .formsWrapper {

@@ -13,11 +13,10 @@ function LoginFormPage() {
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) {
-			console.log(sessionUser, "USER")
 			return (
         <Redirect to='/recipe' />
-    );
-			}
+    	)
+		}
 
 		const handleSubmit = (e) => {
 			e.preventDefault();

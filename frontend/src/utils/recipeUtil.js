@@ -30,7 +30,6 @@ export const editRecipe = async (data) => {
     header: { 'Content-Type': 'application/json'},
   });
   const value =  await response.json();
-  console.log(value, "return value from update");
   return value;
 
 }

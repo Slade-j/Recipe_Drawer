@@ -36,9 +36,6 @@ const RecipeDisplay = () => {
       })
   }, [isLoading])
 
-  useEffect(() => {
-    console.log(menuActive, "menuActive")
-  }, [menuActive])
 
   useEffect(() => {
     if (isLoading) return;
@@ -66,9 +63,7 @@ const RecipeDisplay = () => {
     if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
       getLimitRecipes({ offset, limit, userId: user.id })
       .then(res => setRecipes(prevState => [...prevState, ...res]))
-      .then(() =>  setOffset(prevState => {
-        console.log(prevState, 'prevstate', prevState + 3, 'addition');
-        return prevState + 3}))
+      .then(() =>  setOffset(prevState => prevState + 3))
     }
   }
 
@@ -87,20 +82,21 @@ const RecipeDisplay = () => {
             <h2 className={styles.title}>Recipe Drawer</h2>
             <span>{' | '}</span>
             <div className={'uploadWrapper'}>
-              <button className={'uploader'} onClick={handleUpload}>Upload Recipe</button>
+              <button className={styles.uploader} onClick={handleUpload}>Upload Recipe</button>
             </div>
           </div>
           <div className={styles.rightWrapper}>
-            <div className={'linkWrapper'}>
+            <div className={styles.linkwrapper}>
               <NavLink
                 exact={true}
                 to={'/recipe'}
+                className={styles.allRecipe}
                 activeClassName={styles.selected}>
                 All Recipes
                 </NavLink>
             </div>
             <div className={'logoutWrapper'}>
-              <button className={'logout'} onClick={signout}>Signout</button>
+              <button className={styles.logout} onClick={signout}>Signout</button>
             </div>
           </div>
         </div>

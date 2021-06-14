@@ -32,7 +32,7 @@ router.post('/recipes', asyncHandler(async (req, res) => {
     return res.json(recipes);
 
   } catch (err) {
-    console.log(err, "errfrom post")
+    // handle error
   }
 }));
 

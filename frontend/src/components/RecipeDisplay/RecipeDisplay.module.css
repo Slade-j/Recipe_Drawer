@@ -71,11 +71,17 @@
   margin: 0 10px 0 10px;
 }
 
-.leftWrapper button {
+.uploader {
   border: none;
   background-color: transparent;
   color: var(--pallet3-color-1);
   cursor: pointer;
+  width: 107px;
+}
+
+.uploader:hover {
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .title {
@@ -100,7 +106,15 @@
   color: var(--pallet3-color-1);
 }
 
-.rightWrapper button {
+.linkwrapper {
+  width: 88px;
+}
+
+.allRecipe:hover {
+  font-weight: bold;
+}
+
+.logout {
   margin-right: 25px;
   margin-left: 25px;
   height: 40px;
@@ -109,6 +123,11 @@
   color: var(--pallet1-color-4);
   font-size: 18px;
   border: none;
+}
+
+.logout:hover {
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .header {
