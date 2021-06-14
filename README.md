@@ -44,9 +44,5 @@ A User can create a "Book" where they can place recipes therein. Here a user als
 
 
 ## Further Documentation
-https://github.com/junaidmaknojia/sn4ck/wiki
+https://github.com/Slade-j/Recipe_Drawer/wiki
 
-### Media Credits
-   - Images: Unsplash
-   - Splashpage Design: Slack
-   - Logo: FontAwesome
