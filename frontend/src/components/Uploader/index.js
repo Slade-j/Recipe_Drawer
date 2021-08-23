@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchReview } from '../../store/recipe';
-import Outoforder from '../Outoforder';
 import styles from './Uploader.module.css';
 
 const Uploader = () => {
@@ -32,7 +31,7 @@ const Uploader = () => {
     <div className={styles.mainWrapper}>
       {isLoading? <div className={styles.isLoading}><h1>Loading...</h1></div>:
         <div className={styles.uploadForm}>
-          {/*<label
+          <label
             htmlFor='file'
             className={styles.uploadSelector}>{recipeFile ? "Change selection":
             'Choose recipe from file'}
@@ -42,8 +41,7 @@ const Uploader = () => {
             name='file'
             className={styles.uploader}
             onChange={handleNewRecipe}
-          type='file' />*/}
-          <Outoforder />
+          type='file' />
           {recipeFile &&
             <div className={styles.previewer}>
               <img className={styles.imger}src={URL.createObjectURL(recipeFile)} />
